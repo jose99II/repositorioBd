@@ -540,7 +540,7 @@ QTableWidget QTableCornerButton::section {
              <item>
               <widget class="QStackedWidget" name="stackedWidget">
                <property name="currentIndex">
-                <number>2</number>
+                <number>0</number>
                </property>
                <widget class="QWidget" name="page_datos">
                 <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -560,27 +560,37 @@ QTableWidget QTableCornerButton::section {
                     <widget class="QTableWidget" name="tabla_productos">
                      <column>
                       <property name="text">
-                       <string>CODIGO</string>
+                       <string>CodigoBarras</string>
                       </property>
                      </column>
                      <column>
                       <property name="text">
-                       <string>NOMBRE</string>
+                       <string>CodigoPro</string>
                       </property>
                      </column>
                      <column>
                       <property name="text">
-                       <string>MODELO</string>
+                       <string>categoria</string>
                       </property>
                      </column>
                      <column>
                       <property name="text">
-                       <string>PRECIO</string>
+                       <string>precio Pr</string>
                       </property>
                      </column>
                      <column>
                       <property name="text">
-                       <string>CANTIDAD</string>
+                       <string>Precio Venta</string>
+                      </property>
+                     </column>
+                     <column>
+                      <property name="text">
+                       <string>Disponibles</string>
+                      </property>
+                     </column>
+                     <column>
+                      <property name="text">
+                       <string>Descripcion</string>
                       </property>
                      </column>
                     </widget>

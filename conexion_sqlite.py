@@ -42,6 +42,13 @@ class Comunicacion():
         cursor.execute(query)
         cursor.close()
 
+
+    def mostrar(self):
+        cursor = connetion.cursor()
+        bd = """ SELECT * FROM vendedor """
+        cursor.execute(bd)
+        registro = cursor.fetchall()
+        return registro
   
 
 
