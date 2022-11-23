@@ -806,6 +806,19 @@ QTableWidget QTableCornerButton::section {
                     </spacer>
                    </item>
                    <item>
+                    <widget class="QPushButton" name="RefaccionesBTN">
+                     <property name="minimumSize">
+                      <size>
+                       <width>120</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>REFACCIONES</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
                     <widget class="QPushButton" name="btnProvedor">
                      <property name="minimumSize">
                       <size>
@@ -834,6 +847,268 @@ QTableWidget QTableCornerButton::section {
                   </layout>
                  </item>
                 </layout>
+               </widget>
+               <widget class="QWidget" name="page_refacciones">
+                <widget class="QLabel" name="REG_REFACCIONES">
+                 <property name="geometry">
+                  <rect>
+                   <x>250</x>
+                   <y>100</y>
+                   <width>600</width>
+                   <height>13</height>
+                  </rect>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>600</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>REGISTRO DE REFACCIONES POR PRIMERA VEZ</string>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="CBtxt">
+                 <property name="geometry">
+                  <rect>
+                   <x>370</x>
+                   <y>200</y>
+                   <width>271</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="codigoProduct">
+                 <property name="geometry">
+                  <rect>
+                   <x>370</x>
+                   <y>260</y>
+                   <width>271</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="categoriatxtregistrorefa">
+                 <property name="geometry">
+                  <rect>
+                   <x>370</x>
+                   <y>320</y>
+                   <width>271</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="precioProvedor">
+                 <property name="geometry">
+                  <rect>
+                   <x>370</x>
+                   <y>380</y>
+                   <width>271</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="precioPublic">
+                 <property name="geometry">
+                  <rect>
+                   <x>370</x>
+                   <y>440</y>
+                   <width>271</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="UnidadesRecibidas">
+                 <property name="geometry">
+                  <rect>
+                   <x>370</x>
+                   <y>500</y>
+                   <width>271</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="descripcion_txt_">
+                 <property name="geometry">
+                  <rect>
+                   <x>370</x>
+                   <y>560</y>
+                   <width>271</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="REG_REFACCIONES_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>170</x>
+                   <y>200</y>
+                   <width>300</width>
+                   <height>13</height>
+                  </rect>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>300</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>CODIGO DE BARRAS</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="REG_REFACCIONES_3">
+                 <property name="geometry">
+                  <rect>
+                   <x>150</x>
+                   <y>260</y>
+                   <width>300</width>
+                   <height>13</height>
+                  </rect>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>300</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>CODIGO DE PRODUCTO</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="REG_REFACCIONES_4">
+                 <property name="geometry">
+                  <rect>
+                   <x>220</x>
+                   <y>320</y>
+                   <width>300</width>
+                   <height>13</height>
+                  </rect>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>300</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>CATEGORIA</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="REG_REFACCIONES_5">
+                 <property name="geometry">
+                  <rect>
+                   <x>150</x>
+                   <y>380</y>
+                   <width>300</width>
+                   <height>13</height>
+                  </rect>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>300</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>PRECIO DE PROVEDOR</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="REG_REFACCIONES_6">
+                 <property name="geometry">
+                  <rect>
+                   <x>170</x>
+                   <y>440</y>
+                   <width>300</width>
+                   <height>13</height>
+                  </rect>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>300</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>PRECIO AL PUBLICO</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="REG_REFACCIONES_7">
+                 <property name="geometry">
+                  <rect>
+                   <x>150</x>
+                   <y>500</y>
+                   <width>300</width>
+                   <height>13</height>
+                  </rect>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>300</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>UNIDADES RECIBIDAS</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="REG_REFACCIONES_8">
+                 <property name="geometry">
+                  <rect>
+                   <x>90</x>
+                   <y>560</y>
+                   <width>300</width>
+                   <height>13</height>
+                  </rect>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>300</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>DESCRIPCION DEL PRODUCTO</string>
+                 </property>
+                </widget>
+                <widget class="QPushButton" name="reg_refaccion_p">
+                 <property name="geometry">
+                  <rect>
+                   <x>430</x>
+                   <y>630</y>
+                   <width>120</width>
+                   <height>30</height>
+                  </rect>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>120</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>REGISTRAR</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="avisoregistro">
+                 <property name="geometry">
+                  <rect>
+                   <x>470</x>
+                   <y>670</y>
+                   <width>500</width>
+                   <height>13</height>
+                  </rect>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>500</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
                </widget>
                <widget class="QWidget" name="page_provedor">
                 <widget class="QLabel" name="label_9">

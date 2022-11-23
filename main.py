@@ -30,6 +30,8 @@ class VentanaPrincipal(QMainWindow):
 
         self.btregistra.clicked.connect(self.registrar_provedor) 
         self.btnLimpiarProvedor.clicked.connect(self.LimpiarProvedor) 
+        self.reg_refaccion_p.clicked.connect(self.registrar_Refaccion) 
+
 
 
 
@@ -58,6 +60,8 @@ class VentanaPrincipal(QMainWindow):
         self.bt_eliminar.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_eliminar))
         self.bt_ajustes.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_ajustes))
         self.btnProvedor.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_provedor))
+        self.RefaccionesBTN.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_refacciones))
+
 
 
         # Ancho de columna adaptable
@@ -196,6 +200,40 @@ class VentanaPrincipal(QMainWindow):
          
 
             self.IDsprovedor.setText('Provedor Registrado con ID '+IDprovedor)
+            
+        else:
+            self.IDsprovedor.setText('Hay Espacios Vacios o incorrectos')
+
+
+    def registrar_Refaccion(self):#registrar vendedor
+        
+
+        codigoBarras=int(self.CBtxt.text())
+        codigoProducto = self.codigoProduct.text().upper() 
+        categoria = self.categoriatxtregistrorefa.text().upper() 
+        PrecioProvedor=int(self.precioProvedor.text())
+        PrecioPublico=int(self.precioPublic.text())
+        UnidadesRecibidas=int(self.UnidadesRecibidas.text())
+        descripcion = self.descripcion_txt_.text().upper() 
+
+
+
+        
+
+         
+        if descripcion != '' and codigoProducto != ''    and categoria != '' and PrecioProvedor > 0 and PrecioPublico > 0 and UnidadesRecibidas > -1 and codigoBarras > 0:
+            self.base_datos.altaRefaccion(codigoBarras,codigoProducto,categoria,PrecioProvedor,PrecioPublico,UnidadesRecibidas,descripcion)
+
+         
+
+            self.avisoregistro.setText('Refaccion Registrada')
+            self.CBtxt.clear()
+            self.codigoProduct.clear()
+            self.categoriatxtregistrorefa.clear()
+            self.precioProvedor.clear()
+            self.precioPublic.clear()
+            self.UnidadesRecibidas.clear()
+            self.descripcion_txt_.clear()
             
         else:
             self.IDsprovedor.setText('Hay Espacios Vacios o incorrectos')

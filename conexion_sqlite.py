@@ -36,6 +36,12 @@ class Comunicacion():
         cursor.execute(query)
         cursor.close()
 
+    def altaRefaccion(self,codigoBarras,codigoProducto,categoria,PrecioProvedor,PrecioPublico,UnidadesRecibidas,descripcion):#registra a un empleado
+        cursor=connetion.cursor()
+        query= f""" INSERT INTO refacciones(codigobarras,codigop,categoria,preciocosto,precioventa,existencias,descripcion) values('{codigoBarras}','{codigoProducto}','{categoria}','{PrecioProvedor}','{PrecioPublico}','{UnidadesRecibidas}','{descripcion}') """
+        cursor.execute(query)
+        cursor.close()
+
   
 
 
