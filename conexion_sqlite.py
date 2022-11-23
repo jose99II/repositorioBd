@@ -30,6 +30,12 @@ class Comunicacion():
         cursor.execute(query)
         cursor.close()
 
+    def altaProvedor(self,IDprovedor,marca,telefono,calle,exterior,codigopostal,estado):#registra a un empleado
+        cursor=connetion.cursor()
+        query= f""" INSERT INTO provedor(idprovedor,marca,telefono,calle,numexterior,codigopostal,estado) values('{IDprovedor}','{marca}','{telefono}','{calle}','{exterior}','{codigopostal}','{estado}') """
+        cursor.execute(query)
+        cursor.close()
+
   
 
 

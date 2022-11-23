@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>910</width>
-    <height>698</height>
+    <height>769</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -988,17 +988,7 @@ QTableWidget QTableCornerButton::section {
                   <string>ESTADO</string>
                  </property>
                 </widget>
-                <widget class="QLineEdit" name="lineEdit">
-                 <property name="geometry">
-                  <rect>
-                   <x>440</x>
-                   <y>90</y>
-                   <width>271</width>
-                   <height>20</height>
-                  </rect>
-                 </property>
-                </widget>
-                <widget class="QLineEdit" name="lineEdit_2">
+                <widget class="QLineEdit" name="marcatxt">
                  <property name="geometry">
                   <rect>
                    <x>440</x>
@@ -1008,7 +998,7 @@ QTableWidget QTableCornerButton::section {
                   </rect>
                  </property>
                 </widget>
-                <widget class="QLineEdit" name="lineEdit_3">
+                <widget class="QLineEdit" name="telefonotxt_">
                  <property name="geometry">
                   <rect>
                    <x>440</x>
@@ -1018,7 +1008,7 @@ QTableWidget QTableCornerButton::section {
                   </rect>
                  </property>
                 </widget>
-                <widget class="QLineEdit" name="lineEdit_4">
+                <widget class="QLineEdit" name="calle_txt">
                  <property name="geometry">
                   <rect>
                    <x>450</x>
@@ -1028,7 +1018,7 @@ QTableWidget QTableCornerButton::section {
                   </rect>
                  </property>
                 </widget>
-                <widget class="QLineEdit" name="lineEdit_5">
+                <widget class="QLineEdit" name="exteriortxt_">
                  <property name="geometry">
                   <rect>
                    <x>460</x>
@@ -1038,7 +1028,7 @@ QTableWidget QTableCornerButton::section {
                   </rect>
                  </property>
                 </widget>
-                <widget class="QLineEdit" name="lineEdit_6">
+                <widget class="QLineEdit" name="CP_txt">
                  <property name="geometry">
                   <rect>
                    <x>460</x>
@@ -1048,7 +1038,7 @@ QTableWidget QTableCornerButton::section {
                   </rect>
                  </property>
                 </widget>
-                <widget class="QLineEdit" name="lineEdit_7">
+                <widget class="QLineEdit" name="estado_txt">
                  <property name="geometry">
                   <rect>
                    <x>460</x>
@@ -1058,7 +1048,7 @@ QTableWidget QTableCornerButton::section {
                   </rect>
                  </property>
                 </widget>
-                <widget class="QPushButton" name="pushButton">
+                <widget class="QPushButton" name="btregistra">
                  <property name="geometry">
                   <rect>
                    <x>530</x>
@@ -1075,6 +1065,45 @@ QTableWidget QTableCornerButton::section {
                  </property>
                  <property name="text">
                   <string>REGISTRAR</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="ID_provedor_">
+                 <property name="geometry">
+                  <rect>
+                   <x>440</x>
+                   <y>90</y>
+                   <width>500</width>
+                   <height>13</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="IDsprovedor">
+                 <property name="geometry">
+                  <rect>
+                   <x>370</x>
+                   <y>650</y>
+                   <width>500</width>
+                   <height>13</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+                <widget class="QPushButton" name="btnLimpiarProvedor">
+                 <property name="geometry">
+                  <rect>
+                   <x>370</x>
+                   <y>610</y>
+                   <width>120</width>
+                   <height>30</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>Limpiar</string>
                  </property>
                 </widget>
                </widget>

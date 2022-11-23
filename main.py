@@ -26,7 +26,12 @@ class VentanaPrincipal(QMainWindow):
         self.bt_borrar.clicked.connect(self.eliminar_productos)
         self.bt_actualiza_tabla.clicked.connect(self.modificar_productos)
         self.bt_actualiza_buscar.clicked.connect(self.buscar_por_nombre_actualiza) 
-        self.bt_buscar_borrar.clicked.connect(self.buscar_por_nombre_eliminar)   
+        self.bt_buscar_borrar.clicked.connect(self.buscar_por_nombre_eliminar) 
+
+        self.btregistra.clicked.connect(self.registrar_provedor) 
+        self.btnLimpiarProvedor.clicked.connect(self.LimpiarProvedor) 
+
+
 
 
         self.bt_minimizar.clicked.connect(self.control_bt_minimizar)     
@@ -140,8 +145,6 @@ class VentanaPrincipal(QMainWindow):
         telefono=self.txttelefono.text().upper() 
         estado=self.txtestado.text().upper() 
         cp=int(self.txtcp.text())
-
-         
         if nombre != '' and npaterno != '' and nmaterno != '' and salario > 0 and exterior > 0 and calle != '' and telefono != '' and estado !='' and cp > 0:
             self.base_datos.alta(nombre,npaterno,nmaterno,salario,exterior,calle,telefono,estado,cp)
 
@@ -160,6 +163,42 @@ class VentanaPrincipal(QMainWindow):
             
         else:
             self.signal_registrar.setText('Hay Espacios Vacios o incorrectos')
+
+    def LimpiarProvedor(self):
+        self.marcatxt.clear()
+        self.telefonotxt_.clear()
+        self.marcatxt.clear() 
+        self.ID_provedor_.clear()
+        self.calle_txt.clear()
+        self.exteriortxt_.clear()
+        self.CP_txt.clear()
+        self.estado_txt.clear() 
+        self.IDsprovedor.clear()
+
+    def registrar_provedor(self):#registrar vendedor
+        
+
+        marca = self.marcatxt.text().upper() 
+        telefono = self.telefonotxt_.text().upper() 
+        IDprovedor = self.telefonotxt_.text().upper()+self.marcatxt.text().upper() 
+        self.ID_provedor_.setText(IDprovedor)
+        calle = self.calle_txt.text().upper()
+        exterior=int(self.exteriortxt_.text())
+        codigopostal =int(self.CP_txt.text())
+        estado=self.estado_txt.text().upper() 
+
+
+
+         
+        if marca != ''    and exterior > 0 and calle != '' and telefono != '' and estado !='' and codigopostal > 0:
+            self.base_datos.altaProvedor(IDprovedor,marca,telefono,calle,exterior,codigopostal,estado)
+
+         
+
+            self.IDsprovedor.setText('Provedor Registrado con ID '+IDprovedor)
+            
+        else:
+            self.IDsprovedor.setText('Hay Espacios Vacios o incorrectos')
 
     def buscar_por_nombre_actualiza(self):
         id_producto = self.act_buscar.text().upper() 
