@@ -10,7 +10,7 @@ connetion.autocommit=True
 
 def altaRefaccion():#registra a un empleado
         cursor=connetion.cursor()
-        query= """ SELECT * FROM  vendedor """
+        query= """ SELECT """
         cursor.execute(query)
         cursor.close()
 

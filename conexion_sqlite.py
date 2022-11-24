@@ -70,6 +70,16 @@ class Comunicacion():
         cursor.close()     
         #nombreX devuelve todos los datos
         return nombreX 
+    
+
+    def busca_refaccioness(self,nombre):
+        cursor=connetion.cursor()
+        query= f"""    select * from refacciones where codigobarras={nombre} """   
+        cursor.execute(query)
+        nombreX = cursor.fetchall()
+        cursor.close()     
+        #nombreX devuelve todos los datos
+        return nombreX 
 
 
 
@@ -115,6 +125,14 @@ class Comunicacion():
         cursor.execute(bd)
         self.conexion.commit()    
         cursor.close()
+
+    def elimina_productoss(self, nombre):
+        print(nombre)
+        cursor=connetion.cursor()
+        query= f"""    delete  from refacciones where codigobarras={nombre} """ 
+        cursor.execute(query)
+        #self.connetion.commit()    
+        cursor.close()
   
     def actualiza_productos(self,Id, codigo, nombre, modelo, precio, cantidad):
         cursor = self.conexion.cursor()
@@ -125,4 +143,11 @@ class Comunicacion():
         self.conexion.commit()    
         cursor.close()
         return a  
+
+
+    def actualizacion_(self,id,codigop,categoria,preciocosto,precioventa,existencias,descripcion):#registra a un empleado
+        cursor=connetion.cursor()
+        query= f""" UPDATE refacciones values('{id}','{codigop}','{categoria}','{preciocosto}','{precioventa}','{existencias}','{descripcion}') """
+        cursor.execute(query)
+        cursor.close()
 

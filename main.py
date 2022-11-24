@@ -25,7 +25,7 @@ class VentanaPrincipal(QMainWindow):
         self.bt_agregar.clicked.connect(self.registrar_productos)
         self.bt_borrar.clicked.connect(self.eliminar_productos)
         self.bt_actualiza_tabla.clicked.connect(self.modificar_productos)
-        self.bt_actualiza_buscar.clicked.connect(self.buscar_por_nombre_actualiza) 
+        
         self.bt_buscar_borrar.clicked.connect(self.buscar_por_nombre_eliminar) 
 
         self.btregistra.clicked.connect(self.registrar_provedor) 
@@ -33,6 +33,13 @@ class VentanaPrincipal(QMainWindow):
         self.reg_refaccion_p.clicked.connect(self.registrar_Refaccion) 
         self.btnBuscar.clicked.connect(self.buscar_p)
         self.radioButton.clicked.connect(self.buscar_po)
+        self.btneliminar.clicked.connect(self.eliminar_refaccion)
+        self.bt_actualiza_buscar.clicked.connect(self.actualiza)
+
+       
+
+        
+
         
 
 
@@ -64,6 +71,10 @@ class VentanaPrincipal(QMainWindow):
         self.bt_ajustes.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_ajustes))
         self.btnProvedor.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_provedor))
         self.RefaccionesBTN.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_refacciones))
+        self.actua.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_actualizar))
+       
+
+            
       
 
         
@@ -259,19 +270,7 @@ class VentanaPrincipal(QMainWindow):
         else:
             self.IDsprovedor.setText('Hay Espacios Vacios o incorrectos')
 
-    def buscar_por_nombre_actualiza(self):
-        id_producto = self.act_buscar.text().upper() 
-        id_producto = str("'" + id_producto + "'")
-        self.producto = self.base_datos.busca_refaccion(id_producto)
-        if len(self.producto) !=0:
-            self.Id = self.producto[0][0]
-            self.act_codigo.setText(self.producto[0][1])
-            self.act_nombre.setText(self.producto[0][2])
-            self.act_modelo.setText(self.producto[0][3])
-            self.act_precio.setText(self.producto[0][4])
-            self.act_cantidad.setText(self.producto[0][5])
-        else:
-            self.signal_actualizar.setText("NO EXISTE")
+    
 
 
 
@@ -305,10 +304,46 @@ class VentanaPrincipal(QMainWindow):
 
 
 
-       
 
 
        
+    def actualiza(self):
+        nombre_producto = self.act_buscar.text()
+        nombre_producto = str("'" + nombre_producto + "'")
+        producto = self.base_datos.busca_refaccioness(nombre_producto)
+        self.tableWidget.setRowCount(len(producto))
+
+        if len(producto) == 0:
+            self.buscar.setText(' No Existe')       
+        else:
+            self.buscar.setText('Producto Encontrado')
+        tablerow = 0
+        for row in producto:
+            self.producto_a_borrar = row[2]
+            columna1=QtWidgets.QTableWidgetItem(str(row[0]))
+            columna3=QtWidgets.QTableWidgetItem(str(row[3]))
+            columna4=QtWidgets.QTableWidgetItem(str(row[4]))
+            columna5=QtWidgets.QTableWidgetItem(str(row[5]))
+            self.tableWidget.setItem(tablerow,0,columna1)
+            self.tableWidget.setItem(tablerow,1,QtWidgets.QTableWidgetItem(row[1]))
+            self.tableWidget.setItem(tablerow,2,QtWidgets.QTableWidgetItem(row[2]))
+            self.tableWidget.setItem(tablerow,3,columna3)
+            self.tableWidget.setItem(tablerow,4,columna4)
+            self.tableWidget.setItem(tablerow,5,columna5)
+            self.tableWidget.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
+
+            
+            tablerow +=1
+
+
+
+
+
+
+  
+        
+
+
 
 
     def buscar_po(self):
@@ -389,6 +424,14 @@ class VentanaPrincipal(QMainWindow):
             self.base_datos.elimina_productos("'" + self.producto_a_borrar + "'")
             self.signal_eliminacion.setText('Producto Eliminado')
             self.eliminar_buscar.setText('')
+
+
+
+    def eliminar_refaccion(self):
+        nombre_producto = self.buscar.text()
+        nombre_producto = str("'" + nombre_producto + "'")
+        print(nombre_producto)
+        self.base_datos.elimina_productoss(nombre_producto)
 
 if __name__ == "__main__":
      app = QApplication(sys.argv)

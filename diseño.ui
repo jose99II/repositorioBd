@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>910</width>
-    <height>769</height>
+    <width>959</width>
+    <height>604</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -540,7 +540,7 @@ QTableWidget QTableCornerButton::section {
              <item>
               <widget class="QStackedWidget" name="stackedWidget">
                <property name="currentIndex">
-                <number>0</number>
+                <number>5</number>
                </property>
                <widget class="QWidget" name="page_datos">
                 <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -652,6 +652,32 @@ QTableWidget QTableCornerButton::section {
                         </size>
                        </property>
                       </spacer>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="btneliminar">
+                       <property name="minimumSize">
+                        <size>
+                         <width>120</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Eliminar</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="actua">
+                       <property name="minimumSize">
+                        <size>
+                         <width>120</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Modificar</string>
+                       </property>
+                      </widget>
                      </item>
                      <item>
                       <spacer name="horizontalSpacer_2">
@@ -1505,6 +1531,45 @@ QTableWidget QTableCornerButton::section {
                     </widget>
                    </item>
                   </layout>
+                 </item>
+                 <item>
+                  <widget class="QTableWidget" name="tableWidget">
+                   <column>
+                    <property name="text">
+                     <string>Codigo barras</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>codigo producto</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>categoria</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>precioCosto</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>precio venta</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>existencias</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>descripcion</string>
+                    </property>
+                   </column>
+                  </widget>
                  </item>
                  <item>
                   <spacer name="verticalSpacer_4">
