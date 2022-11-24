@@ -627,6 +627,33 @@ QTableWidget QTableCornerButton::section {
                    <item>
                     <layout class="QHBoxLayout" name="horizontalLayout_3">
                      <item>
+                      <widget class="QRadioButton" name="radioButton">
+                       <property name="text">
+                        <string>RadioButton</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="label_30">
+                       <property name="text">
+                        <string>Refacciones sin unidades</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_8">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
                       <spacer name="horizontalSpacer_2">
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>

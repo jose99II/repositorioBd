@@ -62,6 +62,14 @@ class Comunicacion():
         return nombreX 
 
 
+    def busca_refacciones(self):
+        cursor=connetion.cursor()
+        query= f"""    select * from refacciones where existencias=0 """   
+        cursor.execute(query)
+        nombreX = cursor.fetchall()
+        cursor.close()     
+        #nombreX devuelve todos los datos
+        return nombreX 
 
 
 

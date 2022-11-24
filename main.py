@@ -32,6 +32,7 @@ class VentanaPrincipal(QMainWindow):
         self.btnLimpiarProvedor.clicked.connect(self.LimpiarProvedor) 
         self.reg_refaccion_p.clicked.connect(self.registrar_Refaccion) 
         self.btnBuscar.clicked.connect(self.buscar_p)
+        self.radioButton.clicked.connect(self.buscar_po)
         
 
 
@@ -310,7 +311,33 @@ class VentanaPrincipal(QMainWindow):
        
 
 
+    def buscar_po(self):
+        nombre_producto = '0'
+        nombre_producto = str("'" + nombre_producto + "'")
+        producto = self.base_datos.busca_refacciones()
+        self.tabla_productos.setRowCount(len(producto))
 
+        if len(producto) == 0:
+            self.buscar.setText(' No Existe')       
+        else:
+            self.buscar.setText('Producto Encontrado')
+        tablerow = 0
+        for row in producto:
+            self.producto_a_borrar = row[2]
+            columna1=QtWidgets.QTableWidgetItem(str(row[0]))
+            columna3=QtWidgets.QTableWidgetItem(str(row[3]))
+            columna4=QtWidgets.QTableWidgetItem(str(row[4]))
+            columna5=QtWidgets.QTableWidgetItem(str(row[5]))
+            self.tabla_productos.setItem(tablerow,0,columna1)
+            self.tabla_productos.setItem(tablerow,1,QtWidgets.QTableWidgetItem(row[1]))
+            self.tabla_productos.setItem(tablerow,2,QtWidgets.QTableWidgetItem(row[2]))
+            self.tabla_productos.setItem(tablerow,3,columna3)
+            self.tabla_productos.setItem(tablerow,4,columna4)
+            self.tabla_productos.setItem(tablerow,5,columna5)
+            self.tabla_productos.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
+
+            
+            tablerow +=1
 
 
 
