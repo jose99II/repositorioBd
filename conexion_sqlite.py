@@ -147,7 +147,14 @@ class Comunicacion():
 
     def actualizacion_(self,id,codigop,categoria,preciocosto,precioventa,existencias,descripcion):#registra a un empleado
         cursor=connetion.cursor()
-        query= f""" UPDATE refacciones values('{id}','{codigop}','{categoria}','{preciocosto}','{precioventa}','{existencias}','{descripcion}') """
+        query= f""" UPDATE refacciones set values('{id}','{codigop}','{categoria}','{preciocosto}','{precioventa}','{existencias}','{descripcion}') """
+        cursor.execute(query)
+        cursor.close()
+
+    def actual(self,id,codigop,categoria,preciocosto,precioventa,existencias,descripcion):#registra a un empleado
+        print("hola")
+        cursor=connetion.cursor()
+        query= f""" UPDATE refacciones set  codigop='{codigop}',categoria='{categoria}',preciocosto='{preciocosto}',precioventa='{precioventa}',existencias='{existencias}',descripcion='{descripcion}'  where codigobarras='{id}'"""       
         cursor.execute(query)
         cursor.close()
 

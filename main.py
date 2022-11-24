@@ -24,7 +24,6 @@ class VentanaPrincipal(QMainWindow):
         self.bt_refrescar.clicked.connect(self.mostrar_productos)
         self.bt_agregar.clicked.connect(self.registrar_productos)
         self.bt_borrar.clicked.connect(self.eliminar_productos)
-        self.bt_actualiza_tabla.clicked.connect(self.modificar_productos)
         
         self.bt_buscar_borrar.clicked.connect(self.buscar_por_nombre_eliminar) 
 
@@ -35,6 +34,7 @@ class VentanaPrincipal(QMainWindow):
         self.radioButton.clicked.connect(self.buscar_po)
         self.btneliminar.clicked.connect(self.eliminar_refaccion)
         self.bt_actualiza_buscar.clicked.connect(self.actualiza)
+        self.bt_12.clicked.connect(self.modificar_productosss)
 
        
 
@@ -314,9 +314,11 @@ class VentanaPrincipal(QMainWindow):
         self.tableWidget.setRowCount(len(producto))
 
         if len(producto) == 0:
-            self.buscar.setText(' No Existe')       
+            self.signal_actualizar.setText(' No Existe')       
         else:
-            self.buscar.setText('Producto Encontrado')
+            self.signal_actualizar.setText('Producto Encontrado')
+           
+
         tablerow = 0
         for row in producto:
             self.producto_a_borrar = row[2]
@@ -331,6 +333,7 @@ class VentanaPrincipal(QMainWindow):
             self.tableWidget.setItem(tablerow,4,columna4)
             self.tableWidget.setItem(tablerow,5,columna5)
             self.tableWidget.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
+           
 
             
             tablerow +=1
@@ -433,6 +436,29 @@ class VentanaPrincipal(QMainWindow):
         print(nombre_producto)
         self.base_datos.elimina_productoss(nombre_producto)
 
+
+
+    def modificar_productosss(self):
+        
+            codigo = int(self.act_codigo.text())
+            codigop = self.act_nombre.text().upper() 
+            categoria = self.categoria.text().upper() 
+            precio = int(self.act_precio.text())
+            cantidad = int(self.act_cantidad.text())
+            unidades = int(self.unidades_2.text())
+            descripcion = self.descripcion.text().upper() 
+
+            
+
+            act = self.base_datos.actual(codigo,codigop,categoria,precio,cantidad,unidades,descripcion)
+           
+            self.act_codigo.clear()
+            self.act_nombre.clear()
+            self.categoria.clear()
+            self.act_precio.clear()
+            self.act_cantidad.clear()
+            self.unidades_2.clear()
+            self.descripcion.clear()
 if __name__ == "__main__":
      app = QApplication(sys.argv)
      mi_app = VentanaPrincipal()

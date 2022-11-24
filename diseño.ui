@@ -1601,28 +1601,28 @@ QTableWidget QTableCornerButton::section {
                      <item>
                       <widget class="QLabel" name="label_5">
                        <property name="text">
-                        <string>NOMBRE</string>
+                        <string>codigoP</string>
                        </property>
                       </widget>
                      </item>
                      <item>
                       <widget class="QLabel" name="label_6">
                        <property name="text">
-                        <string>MODELO</string>
+                        <string>Categoria</string>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLabel" name="label_12">
+                      <widget class="QLabel" name="precioc">
                        <property name="text">
-                        <string>PRECIO</string>
+                        <string>PRECIO Costo</string>
                        </property>
                       </widget>
                      </item>
                      <item>
                       <widget class="QLabel" name="label_13">
                        <property name="text">
-                        <string>CANTIDAD</string>
+                        <string>precio venta</string>
                        </property>
                       </widget>
                      </item>
@@ -1640,7 +1640,7 @@ QTableWidget QTableCornerButton::section {
                       <widget class="QLineEdit" name="act_nombre"/>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="act_modelo"/>
+                      <widget class="QLineEdit" name="categoria"/>
                      </item>
                      <item>
                       <widget class="QLineEdit" name="act_precio"/>
@@ -1649,6 +1649,69 @@ QTableWidget QTableCornerButton::section {
                       <widget class="QLineEdit" name="act_cantidad"/>
                      </item>
                     </layout>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="codigoB">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_9">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="codigoP">
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="unidades_2"/>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="unidades">
+                     <property name="text">
+                      <string>unidades</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="verticalSpacer">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_32">
+                     <property name="text">
+                      <string>descripcion</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="descripcion"/>
                    </item>
                    <item>
                     <spacer name="horizontalSpacer_6">
@@ -1710,7 +1773,7 @@ QTableWidget QTableCornerButton::section {
                     </spacer>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="bt_actualiza_tabla">
+                    <widget class="QPushButton" name="bt_12">
                      <property name="minimumSize">
                       <size>
                        <width>120</width>
