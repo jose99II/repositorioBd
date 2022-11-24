@@ -547,6 +547,35 @@ QTableWidget QTableCornerButton::section {
                  <item>
                   <layout class="QVBoxLayout" name="verticalLayout_4">
                    <item>
+                    <spacer name="horizontalSpacer_4">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="buscar"/>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="btnBuscar">
+                     <property name="minimumSize">
+                      <size>
+                       <width>20</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>Buscar</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
                     <widget class="QLabel" name="label_3">
                      <property name="text">
                       <string>PRODUCTOS</string>
@@ -628,6 +657,21 @@ QTableWidget QTableCornerButton::section {
                   </layout>
                  </item>
                 </layout>
+               </widget>
+               <widget class="QWidget" name="page_buscar">
+                <widget class="QLineEdit" name="act_codigo_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>220</x>
+                   <y>100</y>
+                   <width>300</width>
+                   <height>23</height>
+                  </rect>
+                 </property>
+                 <property name="echoMode">
+                  <enum>QLineEdit::Normal</enum>
+                 </property>
+                </widget>
                </widget>
                <widget class="QWidget" name="page_registrar">
                 <layout class="QVBoxLayout" name="verticalLayout_8">

@@ -31,6 +31,8 @@ class VentanaPrincipal(QMainWindow):
         self.btregistra.clicked.connect(self.registrar_provedor) 
         self.btnLimpiarProvedor.clicked.connect(self.LimpiarProvedor) 
         self.reg_refaccion_p.clicked.connect(self.registrar_Refaccion) 
+        self.btnBuscar.clicked.connect(self.buscar_p)
+        
 
 
 
@@ -61,6 +63,9 @@ class VentanaPrincipal(QMainWindow):
         self.bt_ajustes.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_ajustes))
         self.btnProvedor.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_provedor))
         self.RefaccionesBTN.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_refacciones))
+      
+
+        
 
 
 
@@ -124,7 +129,7 @@ class VentanaPrincipal(QMainWindow):
     # Configuracion Pagina Base de datos
     def mostrar_productos(self):  
         datos = self.base_datos.mostrar()
-        print(datos)
+        
         i = len(datos)
         self.tabla_productos.setRowCount(i)
         print(i)
@@ -256,7 +261,7 @@ class VentanaPrincipal(QMainWindow):
     def buscar_por_nombre_actualiza(self):
         id_producto = self.act_buscar.text().upper() 
         id_producto = str("'" + id_producto + "'")
-        self.producto = self.base_datos.busca_producto(id_producto)
+        self.producto = self.base_datos.busca_refaccion(id_producto)
         if len(self.producto) !=0:
             self.Id = self.producto[0][0]
             self.act_codigo.setText(self.producto[0][1])
@@ -266,6 +271,48 @@ class VentanaPrincipal(QMainWindow):
             self.act_cantidad.setText(self.producto[0][5])
         else:
             self.signal_actualizar.setText("NO EXISTE")
+
+
+
+    def buscar_p(self):
+        nombre_producto = self.buscar.text()
+        nombre_producto = str("'" + nombre_producto + "'")
+        producto = self.base_datos.busca_productos(nombre_producto)
+        self.tabla_productos.setRowCount(len(producto))
+
+        if len(producto) == 0:
+            self.buscar.setText(' No Existe')       
+        else:
+            self.buscar.setText('Producto Encontrado')
+        tablerow = 0
+        for row in producto:
+            self.producto_a_borrar = row[2]
+            columna1=QtWidgets.QTableWidgetItem(str(row[0]))
+            columna3=QtWidgets.QTableWidgetItem(str(row[3]))
+            columna4=QtWidgets.QTableWidgetItem(str(row[4]))
+            columna5=QtWidgets.QTableWidgetItem(str(row[5]))
+            self.tabla_productos.setItem(tablerow,0,columna1)
+            self.tabla_productos.setItem(tablerow,1,QtWidgets.QTableWidgetItem(row[1]))
+            self.tabla_productos.setItem(tablerow,2,QtWidgets.QTableWidgetItem(row[2]))
+            self.tabla_productos.setItem(tablerow,3,columna3)
+            self.tabla_productos.setItem(tablerow,4,columna4)
+            self.tabla_productos.setItem(tablerow,5,columna5)
+            self.tabla_productos.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
+
+            
+            tablerow +=1
+
+
+
+       
+
+
+       
+
+
+
+
+
 
     def modificar_productos(self):
         if self.producto != '':

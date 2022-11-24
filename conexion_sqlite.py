@@ -49,6 +49,25 @@ class Comunicacion():
         cursor.execute(bd)
         registro = cursor.fetchall()
         return (registro)
+
+
+
+    def busca_refaccion(self, nombre_producto):
+        cursor=connetion.cursor()
+        query= f"""    select * from refacciones where codigobarras={nombre_producto} """   
+        cursor.execute(query)
+        nombreX = cursor.fetchall()
+        cursor.close()     
+        #nombreX devuelve todos los datos
+        return nombreX 
+
+
+
+
+
+
+
+
   
 
 
@@ -59,8 +78,23 @@ class Comunicacion():
         registro = cursor.fetchall()
         return registro
 
+    def busca_productos(self, nombre_producto):
+        cursor=connetion.cursor()
+        query= f"""    select * from refacciones where codigobarras={nombre_producto} """   
+        cursor.execute(query)
+        nombreX = cursor.fetchall()
+        cursor.close()    
+        
+        return nombreX 
+
+
+
+         
+
+
+
     def busca_producto(self, nombre_producto):
-        cursor = self.conexion.cursor()
+        cursor=connetion.cursor()
         bd = '''SELECT * FROM tabla_datos WHERE NOMBRE = {}'''.format(nombre_producto)
         cursor.execute(bd)
         nombreX = cursor.fetchall()
