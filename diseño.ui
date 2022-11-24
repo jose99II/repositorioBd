@@ -380,7 +380,7 @@ font: 77 10pt &quot;Arial Black&quot;;
                 </size>
                </property>
                <property name="text">
-                <string> ACTUALIZAR</string>
+                <string>VENTAS</string>
                </property>
                <property name="icon">
                 <iconset>
@@ -395,7 +395,7 @@ font: 77 10pt &quot;Arial Black&quot;;
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="bt_eliminar">
+              <widget class="QPushButton" name="bt_COBRAR">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -409,7 +409,7 @@ font: 77 10pt &quot;Arial Black&quot;;
                 <bool>false</bool>
                </property>
                <property name="text">
-                <string>  ELIMINAR</string>
+                <string>COBRAR</string>
                </property>
                <property name="icon">
                 <iconset>
@@ -438,7 +438,7 @@ font: 77 10pt &quot;Arial Black&quot;;
                 </size>
                </property>
                <property name="text">
-                <string>  AJUSTES</string>
+                <string>CONTROL</string>
                </property>
                <property name="icon">
                 <iconset>
@@ -540,7 +540,7 @@ QTableWidget QTableCornerButton::section {
              <item>
               <widget class="QStackedWidget" name="stackedWidget">
                <property name="currentIndex">
-                <number>5</number>
+                <number>8</number>
                </property>
                <widget class="QWidget" name="page_datos">
                 <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -1789,6 +1789,89 @@ QTableWidget QTableCornerButton::section {
                  </item>
                 </layout>
                </widget>
+               <widget class="QWidget" name="page">
+                <widget class="QLineEdit" name="buscar_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>250</x>
+                   <y>30</y>
+                   <width>271</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="c">
+                 <property name="geometry">
+                  <rect>
+                   <x>60</x>
+                   <y>40</y>
+                   <width>230</width>
+                   <height>13</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>codigo de barras</string>
+                 </property>
+                </widget>
+                <widget class="QPushButton" name="ingreso">
+                 <property name="geometry">
+                  <rect>
+                   <x>550</x>
+                   <y>20</y>
+                   <width>150</width>
+                   <height>30</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>Ingresar producto</string>
+                 </property>
+                </widget>
+                <widget class="QTableWidget" name="tableWidget_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>40</x>
+                   <y>90</y>
+                   <width>651</width>
+                   <height>211</height>
+                  </rect>
+                 </property>
+                 <column>
+                  <property name="text">
+                   <string>codigobarras</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>codigop</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>categoria</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>preciocosto</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>precio venta</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>existencia</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>descripcion</string>
+                  </property>
+                 </column>
+                </widget>
+               </widget>
                <widget class="QWidget" name="page_eliminar">
                 <layout class="QVBoxLayout" name="verticalLayout_13">
                  <item>
@@ -1905,7 +1988,34 @@ QTableWidget QTableCornerButton::section {
                  </item>
                 </layout>
                </widget>
-               <widget class="QWidget" name="page_ajustes"/>
+               <widget class="QWidget" name="page_ajustes">
+                <widget class="QLabel" name="inversion">
+                 <property name="geometry">
+                  <rect>
+                   <x>90</x>
+                   <y>50</y>
+                   <width>47</width>
+                   <height>13</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+                <widget class="QPushButton" name="pushButton">
+                 <property name="geometry">
+                  <rect>
+                   <x>474</x>
+                   <y>40</y>
+                   <width>101</width>
+                   <height>23</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>refrescar</string>
+                 </property>
+                </widget>
+               </widget>
               </widget>
              </item>
             </layout>

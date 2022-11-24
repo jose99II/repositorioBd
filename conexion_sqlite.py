@@ -1,6 +1,4 @@
-  # Aplicacion de CRUD con pyQt5 y SQLite
-# @autor: Magno Efren
-# Youtube: https://www.youtube.com/c/MagnoEfren
+
 
 import sqlite3
 import psycopg2
@@ -22,6 +20,14 @@ class Comunicacion():
         cursor.execute(bd)
         self.conexion.commit()    
         cursor.close()
+
+    def financiar():
+        cursor = connetion.cursor()
+        bd = """ SELECT sum(preciocosto) FROM refacciones """
+        cursor.execute(bd)
+        registro = cursor.fetchall()
+        return (registro)
+
 
 
     def alta(self,nombre,npaterno,nmaterno,salario,exterior,calle,telefono,estado,cp):#registra a un empleado

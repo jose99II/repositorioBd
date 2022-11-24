@@ -1,7 +1,3 @@
-# @autor: Magno Efren
-# Aplicacion de CRUD con pyQt5 y SQLite
-# Youtube: https://www.youtube.com/c/MagnoEfren
-
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QHeaderView
 from PyQt5.QtCore import  QPropertyAnimation,QEasingCurve
@@ -9,24 +5,18 @@ from PyQt5 import QtCore, QtWidgets
 from PyQt5.uic import loadUi
 from conexion_sqlite import Comunicacion
 
-
 class VentanaPrincipal(QMainWindow):
+    total=0
     def __init__(self):
         super(VentanaPrincipal, self).__init__()
         loadUi('diseño.ui', self)
-
         self.bt_menu.clicked.connect(self.mover_menu)
-
         self.base_datos = Comunicacion() 
-
         self.bt_restaurar.hide()
-
         self.bt_refrescar.clicked.connect(self.mostrar_productos)
         self.bt_agregar.clicked.connect(self.registrar_productos)
         self.bt_borrar.clicked.connect(self.eliminar_productos)
-        
         self.bt_buscar_borrar.clicked.connect(self.buscar_por_nombre_eliminar) 
-
         self.btregistra.clicked.connect(self.registrar_provedor) 
         self.btnLimpiarProvedor.clicked.connect(self.LimpiarProvedor) 
         self.reg_refaccion_p.clicked.connect(self.registrar_Refaccion) 
@@ -35,59 +25,35 @@ class VentanaPrincipal(QMainWindow):
         self.btneliminar.clicked.connect(self.eliminar_refaccion)
         self.bt_actualiza_buscar.clicked.connect(self.actualiza)
         self.bt_12.clicked.connect(self.modificar_productosss)
-
-       
-
-        
-
-        
-
-
-
-
-
+        self.ingreso.clicked.connect(self.buscarp)
+        self.pushButton.clicked.connect(self.finanzas)
         self.bt_minimizar.clicked.connect(self.control_bt_minimizar)     
         self.bt_restaurar.clicked.connect(self.control_bt_normal)
         self.bt_maximizar.clicked.connect(self.control_bt_maximizar)
         self.bt_cerrar.clicked.connect(lambda: self.close())
-
-
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setWindowOpacity(1)
-
         #SizeGrip
         self.gripSize = 10
         self.grip = QtWidgets.QSizeGrip(self)
         self.grip.resize(self.gripSize, self.gripSize)
-
         # mover ventana
         self.frame_superior.mouseMoveEvent = self.mover_ventana
-
         # coneccion botones
         self.bt_datos.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_datos))
         self.bt_registrar.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_registrar))
         self.bt_actualizar.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_actualizar))
-        self.bt_eliminar.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_eliminar))
+        self.bt_COBRAR.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page))
         self.bt_ajustes.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_ajustes))
         self.btnProvedor.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_provedor))
         self.RefaccionesBTN.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_refacciones))
         self.actua.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_actualizar))
-       
-
-            
-      
-
-        
-
-
-
         # Ancho de columna adaptable
         self.tabla_borrar.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch) 
         self.tabla_productos.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch) 
-
+    total=0
     def control_bt_minimizar(self):
         self.showMinimized()        
-
     def  control_bt_normal(self): 
         self.showNormal()       
         self.bt_restaurar.hide()
@@ -98,7 +64,6 @@ class VentanaPrincipal(QMainWindow):
         self.bt_maximizar.hide()
         self.bt_restaurar.show()
 
-    ## SizeGrip
     def resizeEvent(self, event):
         rect = self.rect()
         self.grip.move(rect.right() - self.gripSize, rect.bottom() - self.gripSize)
@@ -122,7 +87,6 @@ class VentanaPrincipal(QMainWindow):
             self.bt_restaurar.hide()
             self.bt_maximizar.show()
 
-    # Metodo para mover el menu lateral izquierdo
     def mover_menu(self):
         if True:            
             width = self.frame_control.width()
@@ -141,24 +105,16 @@ class VentanaPrincipal(QMainWindow):
     # Configuracion Pagina Base de datos
     def mostrar_productos(self):  
         datos = self.base_datos.mostrar()
-        
         i = len(datos)
         self.tabla_productos.setRowCount(i)
         print(i)
         tablerow = 0
-      
         for row in datos:
             self.Id = row[0]
-
             columna1=QtWidgets.QTableWidgetItem(str(row[0]))
             columna3=QtWidgets.QTableWidgetItem(str(row[3]))
             columna4=QtWidgets.QTableWidgetItem(str(row[4]))
             columna5=QtWidgets.QTableWidgetItem(str(row[5]))
-
-
-
-
-
             self.tabla_productos.setItem(tablerow,0,columna1)
             self.tabla_productos.setItem(tablerow,1,QtWidgets.QTableWidgetItem(row[1]))
             self.tabla_productos.setItem(tablerow,2,QtWidgets.QTableWidgetItem(row[2]))
@@ -183,7 +139,6 @@ class VentanaPrincipal(QMainWindow):
         cp=int(self.txtcp.text())
         if nombre != '' and npaterno != '' and nmaterno != '' and salario > 0 and exterior > 0 and calle != '' and telefono != '' and estado !='' and cp > 0:
             self.base_datos.alta(nombre,npaterno,nmaterno,salario,exterior,calle,telefono,estado,cp)
-
             self.txtnombre.clear()
             self.txtpaterno.clear()
             self.txtmaterno.clear()
@@ -193,10 +148,7 @@ class VentanaPrincipal(QMainWindow):
             self.txttelefono.clear()
             self.txtestado.clear()
             self.txtcp.clear()
-
-
             self.signal_registrar.setText('Productos Registrados')
-            
         else:
             self.signal_registrar.setText('Hay Espacios Vacios o incorrectos')
 
@@ -212,8 +164,6 @@ class VentanaPrincipal(QMainWindow):
         self.IDsprovedor.clear()
 
     def registrar_provedor(self):#registrar vendedor
-        
-
         marca = self.marcatxt.text().upper() 
         telefono = self.telefonotxt_.text().upper() 
         IDprovedor = self.telefonotxt_.text().upper()+self.marcatxt.text().upper() 
@@ -222,24 +172,13 @@ class VentanaPrincipal(QMainWindow):
         exterior=int(self.exteriortxt_.text())
         codigopostal =int(self.CP_txt.text())
         estado=self.estado_txt.text().upper() 
-
-
-
-         
         if marca != ''    and exterior > 0 and calle != '' and telefono != '' and estado !='' and codigopostal > 0:
             self.base_datos.altaProvedor(IDprovedor,marca,telefono,calle,exterior,codigopostal,estado)
-
-         
-
             self.IDsprovedor.setText('Provedor Registrado con ID '+IDprovedor)
             
         else:
             self.IDsprovedor.setText('Hay Espacios Vacios o incorrectos')
-
-
     def registrar_Refaccion(self):#registrar vendedor
-        
-
         codigoBarras=int(self.CBtxt.text())
         codigoProducto = self.codigoProduct.text().upper() 
         categoria = self.categoriatxtregistrorefa.text().upper() 
@@ -247,17 +186,8 @@ class VentanaPrincipal(QMainWindow):
         PrecioPublico=int(self.precioPublic.text())
         UnidadesRecibidas=int(self.UnidadesRecibidas.text())
         descripcion = self.descripcion_txt_.text().upper() 
-
-
-
-        
-
-         
         if descripcion != '' and codigoProducto != ''    and categoria != '' and PrecioProvedor > 0 and PrecioPublico > 0 and UnidadesRecibidas > -1 and codigoBarras > 0:
             self.base_datos.altaRefaccion(codigoBarras,codigoProducto,categoria,PrecioProvedor,PrecioPublico,UnidadesRecibidas,descripcion)
-
-         
-
             self.avisoregistro.setText('Refaccion Registrada')
             self.CBtxt.clear()
             self.codigoProduct.clear()
@@ -266,7 +196,6 @@ class VentanaPrincipal(QMainWindow):
             self.precioPublic.clear()
             self.UnidadesRecibidas.clear()
             self.descripcion_txt_.clear()
-            
         else:
             self.IDsprovedor.setText('Hay Espacios Vacios o incorrectos')
 
@@ -279,7 +208,6 @@ class VentanaPrincipal(QMainWindow):
         nombre_producto = str("'" + nombre_producto + "'")
         producto = self.base_datos.busca_productos(nombre_producto)
         self.tabla_productos.setRowCount(len(producto))
-
         if len(producto) == 0:
             self.buscar.setText(' No Existe')       
         else:
@@ -298,27 +226,47 @@ class VentanaPrincipal(QMainWindow):
             self.tabla_productos.setItem(tablerow,4,columna4)
             self.tabla_productos.setItem(tablerow,5,columna5)
             self.tabla_productos.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
-
-            
             tablerow +=1
 
 
+    def buscarp(self):
+        nombre_producto = self.buscar_2.text()
+        nombre_producto = str("'" + nombre_producto + "'")
+        producto = self.base_datos.busca_productos(nombre_producto)
+        self.tableWidget_2.setRowCount(len(producto))
+        if len(producto) == 0:
+            self.buscar.setText(' No Existe')       
+        else:
+            self.buscar.setText('Producto Encontrado')
+        tablerow = 0
+        for row in producto:
+            self.producto_a_borrar = row[2]
+            columna1=QtWidgets.QTableWidgetItem(str(row[0]))
+            columna3=QtWidgets.QTableWidgetItem(str(row[3]))
+            columna4=QtWidgets.QTableWidgetItem(str(row[4]))
+            total=QtWidgets.QTableWidgetItem(int(row[4]))
+            columna5=QtWidgets.QTableWidgetItem(str(row[5]))
+            self.tableWidget_2.setItem(tablerow,0,columna1)
+            self.tableWidget_2.setItem(tablerow,1,QtWidgets.QTableWidgetItem(row[1]))
+            self.tableWidget_2.setItem(tablerow,2,QtWidgets.QTableWidgetItem(row[2]))
+            self.tableWidget_2.setItem(tablerow,3,columna3)
+            self.tableWidget_2.setItem(tablerow,4,columna4)
+            self.tableWidget_2.setItem(tablerow,5,columna5)
+            self.tableWidget_2.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
+            tablerow +=1
 
-
-
-       
+    def finanzas(self):
+            producto = self.base_datos.financiar()
+            
     def actualiza(self):
         nombre_producto = self.act_buscar.text()
         nombre_producto = str("'" + nombre_producto + "'")
         producto = self.base_datos.busca_refaccioness(nombre_producto)
         self.tableWidget.setRowCount(len(producto))
-
         if len(producto) == 0:
             self.signal_actualizar.setText(' No Existe')       
         else:
             self.signal_actualizar.setText('Producto Encontrado')
-           
-
         tablerow = 0
         for row in producto:
             self.producto_a_borrar = row[2]
@@ -333,28 +281,13 @@ class VentanaPrincipal(QMainWindow):
             self.tableWidget.setItem(tablerow,4,columna4)
             self.tableWidget.setItem(tablerow,5,columna5)
             self.tableWidget.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
-           
-
-            
             tablerow +=1
-
-
-
-
-
-
-  
-        
-
-
-
 
     def buscar_po(self):
         nombre_producto = '0'
         nombre_producto = str("'" + nombre_producto + "'")
         producto = self.base_datos.busca_refacciones()
         self.tabla_productos.setRowCount(len(producto))
-
         if len(producto) == 0:
             self.buscar.setText(' No Existe')       
         else:
@@ -373,11 +306,7 @@ class VentanaPrincipal(QMainWindow):
             self.tabla_productos.setItem(tablerow,4,columna4)
             self.tabla_productos.setItem(tablerow,5,columna5)
             self.tabla_productos.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
-
-            
             tablerow +=1
-
-
 
     def modificar_productos(self):
         if self.producto != '':
@@ -405,7 +334,6 @@ class VentanaPrincipal(QMainWindow):
         nombre_producto = str("'" + nombre_producto + "'")
         producto = self.base_datos.busca_producto(nombre_producto)
         self.tabla_borrar.setRowCount(len(producto))
-
         if len(producto) == 0:
             self.signal_eliminacion.setText(' No Existe')       
         else:
@@ -439,7 +367,6 @@ class VentanaPrincipal(QMainWindow):
 
 
     def modificar_productosss(self):
-        
             codigo = int(self.act_codigo.text())
             codigop = self.act_nombre.text().upper() 
             categoria = self.categoria.text().upper() 
@@ -447,11 +374,7 @@ class VentanaPrincipal(QMainWindow):
             cantidad = int(self.act_cantidad.text())
             unidades = int(self.unidades_2.text())
             descripcion = self.descripcion.text().upper() 
-
-            
-
             act = self.base_datos.actual(codigo,codigop,categoria,precio,cantidad,unidades,descripcion)
-           
             self.act_codigo.clear()
             self.act_nombre.clear()
             self.categoria.clear()
