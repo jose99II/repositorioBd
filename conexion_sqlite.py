@@ -45,10 +45,10 @@ class Comunicacion():
 
     def mostrar(self):
         cursor = connetion.cursor()
-        bd = """ SELECT * FROM vendedor """
+        bd = """ SELECT * FROM refacciones """
         cursor.execute(bd)
         registro = cursor.fetchall()
-        return registro
+        return (registro)
   
 
 

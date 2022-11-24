@@ -129,23 +129,26 @@ class VentanaPrincipal(QMainWindow):
         self.tabla_productos.setRowCount(i)
         print(i)
         tablerow = 0
+      
         for row in datos:
             self.Id = row[0]
-            self.tabla_productos.setItem(tablerow,0,QtWidgets.QTableWidgetItem(row[0]))
+
+            columna1=QtWidgets.QTableWidgetItem(str(row[0]))
+            columna3=QtWidgets.QTableWidgetItem(str(row[3]))
+            columna4=QtWidgets.QTableWidgetItem(str(row[4]))
+            columna5=QtWidgets.QTableWidgetItem(str(row[5]))
+
+
+
+
+
+            self.tabla_productos.setItem(tablerow,0,columna1)
             self.tabla_productos.setItem(tablerow,1,QtWidgets.QTableWidgetItem(row[1]))
             self.tabla_productos.setItem(tablerow,2,QtWidgets.QTableWidgetItem(row[2]))
-            self.tabla_productos.setItem(tablerow,3,QtWidgets.QTableWidgetItem(row[3]))
-            self.tabla_productos.setItem(tablerow,4,QtWidgets.QTableWidgetItem(row[4]))
-            self.tabla_productos.setItem(tablerow,5,QtWidgets.QTableWidgetItem(row[5]))
+            self.tabla_productos.setItem(tablerow,3,columna3)
+            self.tabla_productos.setItem(tablerow,4,columna4)
+            self.tabla_productos.setItem(tablerow,5,columna5)
             self.tabla_productos.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
-            
-
-
-
-
-
-
-
             tablerow +=1
             self.signal_actualizar.setText("") 
             self.signal_registrar.setText("") 
