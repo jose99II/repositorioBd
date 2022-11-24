@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QHeaderView
 from PyQt5.QtCore import  QPropertyAnimation,QEasingCurve
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.uic import loadUi
-from conexion_sqlite import Comunicacion
+from conexion import Comunicacion
 
 class VentanaPrincipal(QMainWindow):
     total=0
@@ -33,7 +33,6 @@ class VentanaPrincipal(QMainWindow):
         self.bt_cerrar.clicked.connect(lambda: self.close())
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setWindowOpacity(1)
-        #SizeGrip
         self.gripSize = 10
         self.grip = QtWidgets.QSizeGrip(self)
         self.grip.resize(self.gripSize, self.gripSize)
