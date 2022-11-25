@@ -110,10 +110,6 @@ class VentanaPrincipal(QMainWindow):
         datos = self.base_datos.mostrar()
         i = len(datos)
         self.tabla_productos.setRowCount(i)
-<<<<<<< HEAD
-        print(i)
-=======
->>>>>>> 74ce53a (reparado bugs)
         tablerow = 0
         for row in datos:
             self.Id = row[0]
@@ -160,13 +156,9 @@ class VentanaPrincipal(QMainWindow):
             else:
                 cp=0
             if nombre != '' and npaterno != '' and nmaterno != '' and salario > 0 and exterior > 0 and calle != '' and telefono != '' and estado !='' and cp > 0:
-<<<<<<< HEAD
-                self.base_datos.alta(nombre,npaterno,nmaterno,salario,exterior,calle,telefono,estado,cp)
-=======
                 validacion=self.base_datos.busquedaDuplicidad(str(telefono))
                 if validacion==True:
                     self.base_datos.alta(nombre,npaterno,nmaterno,salario,exterior,calle,telefono,estado,cp)
->>>>>>> 74ce53a (reparado bugs)
                 self.txtnombre.clear()
                 self.txtpaterno.clear()
                 self.txtmaterno.clear()
@@ -208,14 +200,8 @@ class VentanaPrincipal(QMainWindow):
             codigopostal=0
         estado=self.estado_txt.text().upper() 
         if (marca != ''    and exterior > 0 and calle != '' and telefono != '' and estado !='' and codigopostal > 0):
-<<<<<<< HEAD
-            bandera=self.busquedaDuplicados(self.telefonotxt_.text().upper()+self.marcatxt.text().upper() )
-            print(bandera)
-            if bandera==False:
-=======
             validacion=self.base_datos.busquedaDuplicidadP(IDprovedor)
             if(validacion==True):
->>>>>>> 74ce53a (reparado bugs)
                 self.base_datos.altaProvedor(IDprovedor,marca,telefono,calle,exterior,codigopostal,estado)
                 self.IDsprovedor.setText('Provedor Registrado con ID '+IDprovedor)
                 self.ID_provedor_.setText(IDprovedor)
@@ -247,35 +233,6 @@ class VentanaPrincipal(QMainWindow):
             UnidadesRecibidas=0        
         descripcion = self.descripcion_txt_.text().upper() 
         if descripcion != '' and codigoProducto != ''    and categoria != '' and PrecioProvedor > 0 and PrecioPublico > 0 and UnidadesRecibidas > -1 and codigoBarras > 0:
-<<<<<<< HEAD
-
-
-           
-
-           
-                self.base_datos.altaRefaccion(codigoBarras,codigoProducto,categoria,PrecioProvedor,PrecioPublico,UnidadesRecibidas,descripcion)
-                self.avisoregistro.setText('Refaccion Registrada')
-                self.CBtxt.clear()
-                self.codigoProduct.clear()
-                self.categoriatxtregistrorefa.clear()
-                self.precioProvedor.clear()
-                self.precioPublic.clear()
-                self.UnidadesRecibidas.clear()
-                self.descripcion_txt_.clear()
-            
-    def is_valid(self,cadena):
-        longitud=len(cadena)
-        print(longitud)
-        contador=0
-        for validar in cadena:
-            if validar.isdigit():
-                contador=contador+1
-        if(contador==longitud and cadena!=''):
-            return True
-        return False
-
-
-=======
             validacion=self.base_datos.busquedaDuplicidad_(codigoBarras)
             if validacion==True:
                     self.base_datos.altaRefaccion(codigoBarras,codigoProducto,categoria,PrecioProvedor,PrecioPublico,UnidadesRecibidas,descripcion)
@@ -302,7 +259,6 @@ class VentanaPrincipal(QMainWindow):
         
 
         #valor=self.base_datos.busquedaDuplicidad(str(cadena))
->>>>>>> 74ce53a (reparado bugs)
 
 
 
@@ -312,10 +268,6 @@ class VentanaPrincipal(QMainWindow):
             return
         else:
             bandera=self.is_valid(nombre_producto)
-<<<<<<< HEAD
-            print(bandera)
-=======
->>>>>>> 74ce53a (reparado bugs)
             if(bandera==True):
                 nombre_producto = str("'" + nombre_producto + "'")
                 producto = self.base_datos.busca_productos(nombre_producto)
@@ -369,27 +321,6 @@ class VentanaPrincipal(QMainWindow):
 
     def finanzas(self):
             producto = self.base_datos.financiar()
-<<<<<<< HEAD
-
-    
-                 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> 74ce53a (reparado bugs)
             
     def actualiza(self):
         nombre_producto = self.act_buscar.text()
@@ -397,10 +328,6 @@ class VentanaPrincipal(QMainWindow):
             return
         else:
             bandera=self.is_valid(nombre_producto)
-<<<<<<< HEAD
-            print(bandera)
-=======
->>>>>>> 74ce53a (reparado bugs)
             if(bandera==True):
                 nombre_producto = str("'" + nombre_producto + "'")
                 producto = self.base_datos.busca_refaccioness(nombre_producto)
@@ -508,10 +435,6 @@ class VentanaPrincipal(QMainWindow):
             bandera=self.is_valid(nombre_producto)
             if(bandera==True):
                 nombre_producto = str("'" + nombre_producto + "'")
-<<<<<<< HEAD
-                print(nombre_producto)
-=======
->>>>>>> 74ce53a (reparado bugs)
                 self.base_datos.elimina_productoss(nombre_producto)
 
 
