@@ -1,6 +1,7 @@
 
 
 import psycopg2
+<<<<<<< HEAD
 try:
     connetion = psycopg2.connect(
                 host="localhost",
@@ -12,6 +13,17 @@ try:
     print("Conexion correcta") 
 except Exception as error:
     print(error)
+=======
+from psycopg2 import extras
+connetion = psycopg2.connect(
+            host="localhost",
+            user="postgres",
+            password="2020",
+            database="BdRefaccionaria_",
+            port="5432"
+        ) 
+connetion.autocommit=True
+>>>>>>> 74ce53a (reparado bugs)
 
 class Comunicacion():
 
@@ -42,7 +54,10 @@ class Comunicacion():
         bd = """ SELECT * FROM refacciones """
         cursor.execute(bd)
         registro = cursor.fetchall()
+<<<<<<< HEAD
         print(registro)
+=======
+>>>>>>> 74ce53a (reparado bugs)
         return (registro)
 
 
@@ -54,7 +69,10 @@ class Comunicacion():
         nombreX = cursor.fetchall()
         cursor.close()     
         #nombreX devuelve todos los datos
+<<<<<<< HEAD
         print(nombreX)
+=======
+>>>>>>> 74ce53a (reparado bugs)
         return nombreX 
 
 
@@ -73,8 +91,12 @@ class Comunicacion():
         query= f"""    select * from refacciones where codigobarras={nombre} """   
         cursor.execute(query)
         nombreX = cursor.fetchall()
+<<<<<<< HEAD
         cursor.close()   
         print(nombreX)  
+=======
+        cursor.close()     
+>>>>>>> 74ce53a (reparado bugs)
         #nombreX devuelve todos los datos
         return nombreX 
 
@@ -94,7 +116,10 @@ class Comunicacion():
         return nombreX 
 
     def elimina_productoss(self, nombre):
+<<<<<<< HEAD
         print(nombre)
+=======
+>>>>>>> 74ce53a (reparado bugs)
         cursor=connetion.cursor()
         query= f"""    delete  from refacciones where codigobarras={nombre} """ 
         cursor.execute(query)
@@ -113,3 +138,35 @@ class Comunicacion():
         cursor.execute(query)
         cursor.close()
 
+<<<<<<< HEAD
+=======
+    def busquedaDuplicidad(self,cadena):
+        cursor=connetion.cursor()
+        query=f"""   select * from vendedor where telefono='{cadena}' """
+        cursor.execute(query)
+        user=cursor.fetchone()
+        if user==None:
+           return True
+        return False
+
+    def busquedaDuplicidadP(self,cadena):
+        cursor=connetion.cursor()
+        query=f"""   select * from provedor where idprovedor='{cadena}' """
+        cursor.execute(query)
+        user=cursor.fetchone()
+        if user==None:
+           return True
+        return False
+
+    def busquedaDuplicidad_(self,cadena):
+        cursor=connetion.cursor()
+        query=f"""   select * from refacciones where codigobarras='{cadena}' """
+        cursor.execute(query)
+        user=cursor.fetchone()
+        if user==None:
+           return True
+        return False
+
+
+
+>>>>>>> 74ce53a (reparado bugs)
