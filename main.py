@@ -26,7 +26,6 @@ class VentanaPrincipal(QMainWindow):
         self.bt_actualiza_buscar.clicked.connect(self.actualiza)
         self.bt_12.clicked.connect(self.modificar_productosss)
         self.ingreso.clicked.connect(self.buscarp)
-        self.pushButton.clicked.connect(self.finanzas)
         self.bt_minimizar.clicked.connect(self.control_bt_minimizar)     
         self.bt_restaurar.clicked.connect(self.control_bt_normal)
         self.bt_maximizar.clicked.connect(self.control_bt_maximizar)
@@ -100,9 +99,14 @@ class VentanaPrincipal(QMainWindow):
             self.animacion.setEndValue(extender)
             self.animacion.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
             self.animacion.start()
+ 
 
     # Configuracion Pagina Base de datos
-    def mostrar_productos(self):  
+    def mostrar_productos(self): 
+        
+
+       
+
         datos = self.base_datos.mostrar()
         i = len(datos)
         self.tabla_productos.setRowCount(i)
@@ -127,29 +131,45 @@ class VentanaPrincipal(QMainWindow):
             self.signal_eliminacion.setText("") 
 
     def registrar_productos(self):#registrar vendedor
-        nombre = self.txtnombre.text().upper()  
-        npaterno = self.txtpaterno.text().upper() 
-        nmaterno = self.txtmaterno.text().upper() 
-        salario = int(self.txtsalario.text())
-        exterior=int(self.txtexterior.text())
-        calle =self.txtcalle.text().upper() 
-        telefono=self.txttelefono.text().upper() 
-        estado=self.txtestado.text().upper() 
-        cp=int(self.txtcp.text())
-        if nombre != '' and npaterno != '' and nmaterno != '' and salario > 0 and exterior > 0 and calle != '' and telefono != '' and estado !='' and cp > 0:
-            self.base_datos.alta(nombre,npaterno,nmaterno,salario,exterior,calle,telefono,estado,cp)
-            self.txtnombre.clear()
-            self.txtpaterno.clear()
-            self.txtmaterno.clear()
-            self.txtsalario.clear()
-            self.txtexterior.clear()
-            self.txtcalle.clear()
-            self.txttelefono.clear()
-            self.txtestado.clear()
-            self.txtcp.clear()
-            self.signal_registrar.setText('Productos Registrados')
+        if (len(self.txtcp.text())==0  and len(self.txtexterior.text())==0  and len(self.txtsalario.text())==0  and len(self.txtnombre.text())==0 and len(self.txtpaterno.text())==0 and len(self.txtmaterno.text())==0 and len(self.txtcalle.text())==0 and len(self.txttelefono.text())==0 and len(self.txtestado.text())==0):
+            return
         else:
-            self.signal_registrar.setText('Hay Espacios Vacios o incorrectos')
+            nombre = self.txtnombre.text().upper()  
+            npaterno = self.txtpaterno.text().upper() 
+            nmaterno = self.txtmaterno.text().upper() 
+            bandera=self.is_valid(self.txtsalario.text())
+            if bandera==True:
+                salario = int(self.txtsalario.text())
+            else:
+                salario=0
+        
+            bandera=self.is_valid(self.txtexterior.text())
+            if bandera==True:
+                exterior = int(self.txtexterior.text())
+            else:
+                exterior=0
+            calle =self.txtcalle.text().upper() 
+            telefono=self.txttelefono.text().upper() 
+            estado=self.txtestado.text().upper() 
+            bandera=self.is_valid(self.txtcp.text())
+            if bandera==True:
+                cp = int(self.txtcp.text())
+            else:
+                cp=0
+            if nombre != '' and npaterno != '' and nmaterno != '' and salario > 0 and exterior > 0 and calle != '' and telefono != '' and estado !='' and cp > 0:
+                self.base_datos.alta(nombre,npaterno,nmaterno,salario,exterior,calle,telefono,estado,cp)
+                self.txtnombre.clear()
+                self.txtpaterno.clear()
+                self.txtmaterno.clear()
+                self.txtsalario.clear()
+                self.txtexterior.clear()
+                self.txtcalle.clear()
+                self.txttelefono.clear()
+                self.txtestado.clear()
+                self.txtcp.clear()
+                self.signal_registrar.setText('Productos Registrados')
+            else:
+                self.signal_registrar.setText('Hay Espacios Vacios o incorrectos')
 
     def LimpiarProvedor(self):
         self.marcatxt.clear()
@@ -166,24 +186,48 @@ class VentanaPrincipal(QMainWindow):
         marca = self.marcatxt.text().upper() 
         telefono = self.telefonotxt_.text().upper() 
         IDprovedor = self.telefonotxt_.text().upper()+self.marcatxt.text().upper() 
-        self.ID_provedor_.setText(IDprovedor)
         calle = self.calle_txt.text().upper()
-        exterior=int(self.exteriortxt_.text())
-        codigopostal =int(self.CP_txt.text())
+        bandera=self.is_valid(self.exteriortxt_.text())
+        if bandera==True:
+            exterior = int(self.exteriortxt_.text())
+        else:
+            exterior=0
+        bandera=self.is_valid(self.CP_txt.text())
+        if bandera==True:
+            codigopostal = int(self.CP_txt.text())
+        else:
+            codigopostal=0
         estado=self.estado_txt.text().upper() 
-        if marca != ''    and exterior > 0 and calle != '' and telefono != '' and estado !='' and codigopostal > 0:
+        if (marca != ''    and exterior > 0 and calle != '' and telefono != '' and estado !='' and codigopostal > 0):
             self.base_datos.altaProvedor(IDprovedor,marca,telefono,calle,exterior,codigopostal,estado)
             self.IDsprovedor.setText('Provedor Registrado con ID '+IDprovedor)
+            self.ID_provedor_.setText(IDprovedor)
             
         else:
             self.IDsprovedor.setText('Hay Espacios Vacios o incorrectos')
     def registrar_Refaccion(self):#registrar vendedor
-        codigoBarras=int(self.CBtxt.text())
+        bandera=self.is_valid(self.CBtxt.text())
+        if bandera==True:
+            codigoBarras=int(self.CBtxt.text())
+        else:
+            codigoBarras=0
         codigoProducto = self.codigoProduct.text().upper() 
         categoria = self.categoriatxtregistrorefa.text().upper() 
-        PrecioProvedor=int(self.precioProvedor.text())
-        PrecioPublico=int(self.precioPublic.text())
-        UnidadesRecibidas=int(self.UnidadesRecibidas.text())
+        bandera=self.is_valid(self.precioProvedor.text())
+        if bandera==True:
+            PrecioProvedor=int(self.precioProvedor.text())
+        else:
+            PrecioProvedor=0
+        bandera=self.is_valid(self.precioPublic.text())
+        if bandera==True:
+            PrecioPublico=int(self.precioPublic.text())
+        else:
+            PrecioPublico=0
+        bandera=self.is_valid(self.precioPublic.text())
+        if bandera==True:
+            UnidadesRecibidas=int(self.UnidadesRecibidas.text())
+        else:
+            UnidadesRecibidas=0        
         descripcion = self.descripcion_txt_.text().upper() 
         if descripcion != '' and codigoProducto != ''    and categoria != '' and PrecioProvedor > 0 and PrecioPublico > 0 and UnidadesRecibidas > -1 and codigoBarras > 0:
             self.base_datos.altaRefaccion(codigoBarras,codigoProducto,categoria,PrecioProvedor,PrecioPublico,UnidadesRecibidas,descripcion)
@@ -198,34 +242,51 @@ class VentanaPrincipal(QMainWindow):
         else:
             self.IDsprovedor.setText('Hay Espacios Vacios o incorrectos')
 
-    
+    def is_valid(self,cadena):
+        longitud=len(cadena)
+        print(longitud)
+        contador=0
+        for validar in cadena:
+            if validar.isdigit():
+                contador=contador+1
+        if(contador==longitud and cadena!=''):
+            return True
+        return False
+
+
 
 
 
     def buscar_p(self):
         nombre_producto = self.buscar.text()
-        nombre_producto = str("'" + nombre_producto + "'")
-        producto = self.base_datos.busca_productos(nombre_producto)
-        self.tabla_productos.setRowCount(len(producto))
-        if len(producto) == 0:
-            self.buscar.setText(' No Existe')       
+        if len(nombre_producto)==0:
+            return
         else:
-            self.buscar.setText('Producto Encontrado')
-        tablerow = 0
-        for row in producto:
-            self.producto_a_borrar = row[2]
-            columna1=QtWidgets.QTableWidgetItem(str(row[0]))
-            columna3=QtWidgets.QTableWidgetItem(str(row[3]))
-            columna4=QtWidgets.QTableWidgetItem(str(row[4]))
-            columna5=QtWidgets.QTableWidgetItem(str(row[5]))
-            self.tabla_productos.setItem(tablerow,0,columna1)
-            self.tabla_productos.setItem(tablerow,1,QtWidgets.QTableWidgetItem(row[1]))
-            self.tabla_productos.setItem(tablerow,2,QtWidgets.QTableWidgetItem(row[2]))
-            self.tabla_productos.setItem(tablerow,3,columna3)
-            self.tabla_productos.setItem(tablerow,4,columna4)
-            self.tabla_productos.setItem(tablerow,5,columna5)
-            self.tabla_productos.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
-            tablerow +=1
+            bandera=self.is_valid(nombre_producto)
+            print(bandera)
+            if(bandera==True):
+                nombre_producto = str("'" + nombre_producto + "'")
+                producto = self.base_datos.busca_productos(nombre_producto)
+                self.tabla_productos.setRowCount(len(producto))
+                if len(producto) == 0:
+                    self.buscar.setText(' No Existe')       
+                else:
+                    self.buscar.setText('Producto Encontrado')
+                tablerow = 0
+                for row in producto:
+                    self.producto_a_borrar = row[2]
+                    columna1=QtWidgets.QTableWidgetItem(str(row[0]))
+                    columna3=QtWidgets.QTableWidgetItem(str(row[3]))
+                    columna4=QtWidgets.QTableWidgetItem(str(row[4]))
+                    columna5=QtWidgets.QTableWidgetItem(str(row[5]))
+                    self.tabla_productos.setItem(tablerow,0,columna1)
+                    self.tabla_productos.setItem(tablerow,1,QtWidgets.QTableWidgetItem(row[1]))
+                    self.tabla_productos.setItem(tablerow,2,QtWidgets.QTableWidgetItem(row[2]))
+                    self.tabla_productos.setItem(tablerow,3,columna3)
+                    self.tabla_productos.setItem(tablerow,4,columna4)
+                    self.tabla_productos.setItem(tablerow,5,columna5)
+                    self.tabla_productos.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
+                    tablerow +=1
 
 
     def buscarp(self):
@@ -259,28 +320,34 @@ class VentanaPrincipal(QMainWindow):
             
     def actualiza(self):
         nombre_producto = self.act_buscar.text()
-        nombre_producto = str("'" + nombre_producto + "'")
-        producto = self.base_datos.busca_refaccioness(nombre_producto)
-        self.tableWidget.setRowCount(len(producto))
-        if len(producto) == 0:
-            self.signal_actualizar.setText(' No Existe')       
+        if len(nombre_producto)==0:
+            return
         else:
-            self.signal_actualizar.setText('Producto Encontrado')
-        tablerow = 0
-        for row in producto:
-            self.producto_a_borrar = row[2]
-            columna1=QtWidgets.QTableWidgetItem(str(row[0]))
-            columna3=QtWidgets.QTableWidgetItem(str(row[3]))
-            columna4=QtWidgets.QTableWidgetItem(str(row[4]))
-            columna5=QtWidgets.QTableWidgetItem(str(row[5]))
-            self.tableWidget.setItem(tablerow,0,columna1)
-            self.tableWidget.setItem(tablerow,1,QtWidgets.QTableWidgetItem(row[1]))
-            self.tableWidget.setItem(tablerow,2,QtWidgets.QTableWidgetItem(row[2]))
-            self.tableWidget.setItem(tablerow,3,columna3)
-            self.tableWidget.setItem(tablerow,4,columna4)
-            self.tableWidget.setItem(tablerow,5,columna5)
-            self.tableWidget.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
-            tablerow +=1
+            bandera=self.is_valid(nombre_producto)
+            print(bandera)
+            if(bandera==True):
+                nombre_producto = str("'" + nombre_producto + "'")
+                producto = self.base_datos.busca_refaccioness(nombre_producto)
+                self.tableWidget.setRowCount(len(producto))
+                if len(producto) == 0:
+                    self.signal_actualizar.setText(' No Existe')       
+                else:
+                    self.signal_actualizar.setText('Producto Encontrado')
+                tablerow = 0
+                for row in producto:
+                    self.producto_a_borrar = row[2]
+                    columna1=QtWidgets.QTableWidgetItem(str(row[0]))
+                    columna3=QtWidgets.QTableWidgetItem(str(row[3]))
+                    columna4=QtWidgets.QTableWidgetItem(str(row[4]))
+                    columna5=QtWidgets.QTableWidgetItem(str(row[5]))
+                    self.tableWidget.setItem(tablerow,0,columna1)
+                    self.tableWidget.setItem(tablerow,1,QtWidgets.QTableWidgetItem(row[1]))
+                    self.tableWidget.setItem(tablerow,2,QtWidgets.QTableWidgetItem(row[2]))
+                    self.tableWidget.setItem(tablerow,3,columna3)
+                    self.tableWidget.setItem(tablerow,4,columna4)
+                    self.tableWidget.setItem(tablerow,5,columna5)
+                    self.tableWidget.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
+                    tablerow +=1
 
     def buscar_po(self):
         nombre_producto = '0'
@@ -359,28 +426,36 @@ class VentanaPrincipal(QMainWindow):
 
     def eliminar_refaccion(self):
         nombre_producto = self.buscar.text()
-        nombre_producto = str("'" + nombre_producto + "'")
-        print(nombre_producto)
-        self.base_datos.elimina_productoss(nombre_producto)
+        if len(nombre_producto)==0:
+            return
+        else:
+            bandera=self.is_valid(nombre_producto)
+            if(bandera==True):
+                nombre_producto = str("'" + nombre_producto + "'")
+                print(nombre_producto)
+                self.base_datos.elimina_productoss(nombre_producto)
 
 
 
     def modificar_productosss(self):
-            codigo = int(self.act_codigo.text())
-            codigop = self.act_nombre.text().upper() 
-            categoria = self.categoria.text().upper() 
-            precio = int(self.act_precio.text())
-            cantidad = int(self.act_cantidad.text())
-            unidades = int(self.unidades_2.text())
-            descripcion = self.descripcion.text().upper() 
-            act = self.base_datos.actual(codigo,codigop,categoria,precio,cantidad,unidades,descripcion)
-            self.act_codigo.clear()
-            self.act_nombre.clear()
-            self.categoria.clear()
-            self.act_precio.clear()
-            self.act_cantidad.clear()
-            self.unidades_2.clear()
-            self.descripcion.clear()
+        if(self.act_codigo.text()!=''):
+            bandera=self.is_valid(self.act_codigo.text())
+            if(bandera==True):
+                codigo = int(self.act_codigo.text())
+                codigop = self.act_nombre.text().upper() 
+                categoria = self.categoria.text().upper() 
+                precio = int(self.act_precio.text())
+                cantidad = int(self.act_cantidad.text())
+                unidades = int(self.unidades_2.text())
+                descripcion = self.descripcion.text().upper() 
+                act = self.base_datos.actual(codigo,codigop,categoria,precio,cantidad,unidades,descripcion)
+                self.act_codigo.clear()
+                self.act_nombre.clear()
+                self.categoria.clear()
+                self.act_precio.clear()
+                self.act_cantidad.clear()
+                self.unidades_2.clear()
+                self.descripcion.clear()
 if __name__ == "__main__":
      app = QApplication(sys.argv)
      mi_app = VentanaPrincipal()

@@ -12,13 +12,7 @@ connetion.autocommit=True
 
 class Comunicacion():
 
-    def financiar():
-        cursor = connetion.cursor()
-        bd = """ SELECT sum(preciocosto) FROM refacciones """
-        cursor.execute(bd)
-        registro = cursor.fetchall()
-        return (registro)
-
+   
 
 
     def alta(self,nombre,npaterno,nmaterno,salario,exterior,calle,telefono,estado,cp):#registra a un empleado
