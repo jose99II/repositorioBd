@@ -199,9 +199,12 @@ class VentanaPrincipal(QMainWindow):
             codigopostal=0
         estado=self.estado_txt.text().upper() 
         if (marca != ''    and exterior > 0 and calle != '' and telefono != '' and estado !='' and codigopostal > 0):
-            self.base_datos.altaProvedor(IDprovedor,marca,telefono,calle,exterior,codigopostal,estado)
-            self.IDsprovedor.setText('Provedor Registrado con ID '+IDprovedor)
-            self.ID_provedor_.setText(IDprovedor)
+            bandera=self.busquedaDuplicados(self.telefonotxt_.text().upper()+self.marcatxt.text().upper() )
+            print(bandera)
+            if bandera==False:
+                self.base_datos.altaProvedor(IDprovedor,marca,telefono,calle,exterior,codigopostal,estado)
+                self.IDsprovedor.setText('Provedor Registrado con ID '+IDprovedor)
+                self.ID_provedor_.setText(IDprovedor)
             
         else:
             self.IDsprovedor.setText('Hay Espacios Vacios o incorrectos')
@@ -230,18 +233,21 @@ class VentanaPrincipal(QMainWindow):
             UnidadesRecibidas=0        
         descripcion = self.descripcion_txt_.text().upper() 
         if descripcion != '' and codigoProducto != ''    and categoria != '' and PrecioProvedor > 0 and PrecioPublico > 0 and UnidadesRecibidas > -1 and codigoBarras > 0:
-            self.base_datos.altaRefaccion(codigoBarras,codigoProducto,categoria,PrecioProvedor,PrecioPublico,UnidadesRecibidas,descripcion)
-            self.avisoregistro.setText('Refaccion Registrada')
-            self.CBtxt.clear()
-            self.codigoProduct.clear()
-            self.categoriatxtregistrorefa.clear()
-            self.precioProvedor.clear()
-            self.precioPublic.clear()
-            self.UnidadesRecibidas.clear()
-            self.descripcion_txt_.clear()
-        else:
-            self.IDsprovedor.setText('Hay Espacios Vacios o incorrectos')
 
+
+           
+
+           
+                self.base_datos.altaRefaccion(codigoBarras,codigoProducto,categoria,PrecioProvedor,PrecioPublico,UnidadesRecibidas,descripcion)
+                self.avisoregistro.setText('Refaccion Registrada')
+                self.CBtxt.clear()
+                self.codigoProduct.clear()
+                self.categoriatxtregistrorefa.clear()
+                self.precioProvedor.clear()
+                self.precioPublic.clear()
+                self.UnidadesRecibidas.clear()
+                self.descripcion_txt_.clear()
+            
     def is_valid(self,cadena):
         longitud=len(cadena)
         print(longitud)
@@ -317,6 +323,24 @@ class VentanaPrincipal(QMainWindow):
 
     def finanzas(self):
             producto = self.base_datos.financiar()
+
+    
+                 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             
     def actualiza(self):
         nombre_producto = self.act_buscar.text()

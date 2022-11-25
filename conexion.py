@@ -1,14 +1,17 @@
 
 
 import psycopg2
-connetion = psycopg2.connect(
-            host="localhost",
-            user="postgres",
-            password="2020",
-            database="BdRefaccionaria_",
-            port="5432"
-        ) 
-connetion.autocommit=True
+try:
+    connetion = psycopg2.connect(
+                host="localhost",
+                user="postgres",
+                password="2020",
+                database="BdRefaccionaria_",
+                port="5432"
+            )
+    print("Conexion correcta") 
+except Exception as error:
+    print(error)
 
 class Comunicacion():
 
@@ -70,7 +73,8 @@ class Comunicacion():
         query= f"""    select * from refacciones where codigobarras={nombre} """   
         cursor.execute(query)
         nombreX = cursor.fetchall()
-        cursor.close()     
+        cursor.close()   
+        print(nombreX)  
         #nombreX devuelve todos los datos
         return nombreX 
 
