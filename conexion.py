@@ -81,10 +81,12 @@ class Comunicacion():
         return registro
 
     def busca_productos(self, nombre_producto):
-        cursor=connetion.cursor()
-        query= f"""    select * from refacciones where codigobarras={nombre_producto} """   
+        cursor=connetion.cursor(cursor_factory=extras.DictCursor)
+        query= f"""    select  * from refacciones where codigobarras={nombre_producto} """   
         cursor.execute(query)
-        nombreX = cursor.fetchall()
+        nombreX = cursor.fetchone()
+        print(nombreX)
+        
         cursor.close()    
         return nombreX 
 
@@ -128,6 +130,15 @@ class Comunicacion():
     def busquedaDuplicidad_(self,cadena):
         cursor=connetion.cursor()
         query=f"""   select * from refacciones where codigobarras='{cadena}' """
+        cursor.execute(query)
+        user=cursor.fetchone()
+        if user==None:
+           return True
+        return False
+
+    def busquedaDuplicidad_P(self,cadena):
+        cursor=connetion.cursor()
+        query=f"""   select * from refacciones where codigop='{cadena}' """
         cursor.execute(query)
         user=cursor.fetchone()
         if user==None:

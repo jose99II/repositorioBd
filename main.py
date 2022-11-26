@@ -7,6 +7,7 @@ from conexion import Comunicacion
 
 class VentanaPrincipal(QMainWindow):
     def __init__(self):
+        self.total=0
         super(VentanaPrincipal, self).__init__()
         loadUi('diseño.ui', self)
         self.bt_menu.clicked.connect(self.mover_menu)
@@ -231,7 +232,7 @@ class VentanaPrincipal(QMainWindow):
             UnidadesRecibidas=0        
         descripcion = self.descripcion_txt_.text().upper() 
         if descripcion != '' and codigoProducto != ''    and categoria != '' and PrecioProvedor > 0 and PrecioPublico > 0 and UnidadesRecibidas > -1 and codigoBarras > 0:
-            validacion=self.base_datos.busquedaDuplicidad_(codigoBarras)
+            validacion=self.base_datos.busquedaDuplicidad_P(codigoProducto)
             if validacion==True:
                     self.base_datos.altaRefaccion(codigoBarras,codigoProducto,categoria,PrecioProvedor,PrecioPublico,UnidadesRecibidas,descripcion)
                     self.avisoregistro.setText('Refaccion Registrada')
@@ -290,31 +291,22 @@ class VentanaPrincipal(QMainWindow):
                     self.tabla_productos.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
                     tablerow +=1
 
-
     def buscarp(self):
         nombre_producto = self.buscar_2.text()
-        nombre_producto = str("'" + nombre_producto + "'")
-        producto = self.base_datos.busca_productos(nombre_producto)
-        self.tableWidget_2.setRowCount(len(producto))
-        if len(producto) == 0:
-            self.buscar.setText(' No Existe')       
+        if len(nombre_producto)==0:
+            return
         else:
-            self.buscar.setText('Producto Encontrado')
-        tablerow = 0
-        for row in producto:
-            self.producto_a_borrar = row[2]
-            columna1=QtWidgets.QTableWidgetItem(str(row[0]))
-            columna3=QtWidgets.QTableWidgetItem(str(row[3]))
-            columna4=QtWidgets.QTableWidgetItem(str(row[4]))
-            columna5=QtWidgets.QTableWidgetItem(str(row[5]))
-            self.tableWidget_2.setItem(tablerow,0,columna1)
-            self.tableWidget_2.setItem(tablerow,1,QtWidgets.QTableWidgetItem(row[1]))
-            self.tableWidget_2.setItem(tablerow,2,QtWidgets.QTableWidgetItem(row[2]))
-            self.tableWidget_2.setItem(tablerow,3,columna3)
-            self.tableWidget_2.setItem(tablerow,4,columna4)
-            self.tableWidget_2.setItem(tablerow,5,columna5)
-            self.tableWidget_2.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
-            tablerow +=1
+            bandera=self.is_valid(nombre_producto)
+            if(bandera==True):
+                nombre_producto = self.buscar_2.text()
+                nombre_producto = str("'" + nombre_producto + "'")
+                producto = self.base_datos.busca_productos(nombre_producto)
+                self.total=self.total+producto[4]
+                
+                self.subtotal.setText(str(self.total))
+
+
+               
 
     def finanzas(self):
             producto = self.base_datos.financiar()
