@@ -6,7 +6,6 @@ from PyQt5.uic import loadUi
 from conexion import Comunicacion
 
 class VentanaPrincipal(QMainWindow):
-    total=0
     def __init__(self):
         super(VentanaPrincipal, self).__init__()
         loadUi('diseño.ui', self)
@@ -49,7 +48,6 @@ class VentanaPrincipal(QMainWindow):
         # Ancho de columna adaptable
         self.tabla_borrar.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch) 
         self.tabla_productos.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch) 
-    total=0
     def control_bt_minimizar(self):
         self.showMinimized()        
     def  control_bt_normal(self): 
@@ -308,7 +306,6 @@ class VentanaPrincipal(QMainWindow):
             columna1=QtWidgets.QTableWidgetItem(str(row[0]))
             columna3=QtWidgets.QTableWidgetItem(str(row[3]))
             columna4=QtWidgets.QTableWidgetItem(str(row[4]))
-            total=QtWidgets.QTableWidgetItem(int(row[4]))
             columna5=QtWidgets.QTableWidgetItem(str(row[5]))
             self.tableWidget_2.setItem(tablerow,0,columna1)
             self.tableWidget_2.setItem(tablerow,1,QtWidgets.QTableWidgetItem(row[1]))

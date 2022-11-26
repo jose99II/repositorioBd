@@ -472,11 +472,10 @@ border:0px solid #14C8DC;
 }
 
 QLineEdit{
-
 border:0px;
-color: rgb(255, 255, 255);
-background:rgb(255,255,255);
+color: rgb(0,0,0);
 border-bottom:2px solid  rgb(255,255,255);
+background-color:rgb(255,255,255);
 font: 75 12pt &quot;Times New Roman&quot;;
 
 }
