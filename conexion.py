@@ -55,7 +55,7 @@ class Comunicacion():
         user=cursor.fetchone()
         if user==None:
            return True
-        return False
+        return False#
 
     def alta(self,nombre,npaterno,nmaterno,salario,exterior,calle,telefono,estado,cp):#registra a un empleado
         cursor=connetion.cursor()
