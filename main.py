@@ -21,7 +21,7 @@ class VentanaPrincipal(QMainWindow):
         self.btnLimpiarProvedor.clicked.connect(self.LimpiarProvedor) 
         self.reg_refaccion_p.clicked.connect(self.registrar_Refaccion) 
         self.btnBuscar.clicked.connect(self.Buscar_LlavePrimariaVarchar)
-        self.radioButton.clicked.connect(self.buscar_po)
+        self.radioButton.clicked.connect(self.buscar_MateriaInexistente)
         self.btneliminar.clicked.connect(self.eliminar_refaccion)
         self.bt_actualiza_buscar.clicked.connect(self.actualiza)
         self.bt_12.clicked.connect(self.modificar_productosss)
@@ -305,8 +305,6 @@ class VentanaPrincipal(QMainWindow):
                     producto = self.base_datos.BuscarRefaccion(nombre_producto)
                     self.mostraTabla_productos(producto)
                     
-
-
     def is_valid(self,cadena):#valida si todos sus caracteres son numericos
             longitud=len(cadena)
             contador=0
@@ -322,13 +320,11 @@ class VentanaPrincipal(QMainWindow):
         datos = self.base_datos.mostrar()
         self.mostraTabla_productos(datos)
        
-
-    def buscar_po(self):#muestra solo los que no tienen en existencia
+    def buscar_MateriaInexistente(self):#muestra solo los que no tienen en existencia
         nombre_producto = '0'
         nombre_producto = str("'" + nombre_producto + "'")
         producto = self.base_datos.busca_refacciones()
         self.mostraTabla_productos(producto)
-       
 
     def mostraTabla_productos(self,datos):#muestra la tabla tabla_productos
         self.tabla_productos.setRowCount(len(datos))
@@ -482,13 +478,9 @@ class VentanaPrincipal(QMainWindow):
                 self.base_datos.altaProvedor(IDprovedor,marca,telefono,calle,exterior,codigopostal,estado)
                 self.IDsprovedor.setText('PROVEDOR REGISTRADO CON ID '+IDprovedor)
                 self.ID_provedor_.setText(IDprovedor)
-                self.LimpiarProvedor
         else:
             self.IDsprovedor.setText('ESPACIOS VACIOS O INVALIDOS')
-        self.LimpiarProvedor
 
-            
-       
     def LimpiarProvedor(self):
         self.marcatxt.clear()
         self.telefonotxt_.clear()
@@ -499,28 +491,6 @@ class VentanaPrincipal(QMainWindow):
         self.CP_txt.clear()
         self.estado_txt.clear() 
         self.IDsprovedor.clear()
-
-    
-
-
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 if __name__ == "__main__":
      app = QApplication(sys.argv)
