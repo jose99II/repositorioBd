@@ -16,11 +16,7 @@ class Comunicacion():
    
 
 
-    def alta(self,nombre,npaterno,nmaterno,salario,exterior,calle,telefono,estado,cp):#registra a un empleado
-        cursor=connetion.cursor()
-        query= f""" INSERT INTO vendedor(nombre,paterno,materno,salario,telefono,calle,numexterior,codigopostal,estado) values('{nombre}','{npaterno}','{nmaterno}','{salario}','{telefono}','{calle}','{exterior}','{cp}','{estado}') """
-        cursor.execute(query)
-        cursor.close()
+    
 
     def altaProvedor(self,IDprovedor,marca,telefono,calle,exterior,codigopostal,estado):#registra a un empleado
         cursor=connetion.cursor()
@@ -54,14 +50,7 @@ class Comunicacion():
         return nombreX 
 
 
-    def busca_refacciones(self):
-        cursor=connetion.cursor()
-        query= f"""    select * from refacciones where existencias=0 """   
-        cursor.execute(query)
-        nombreX = cursor.fetchall()
-        cursor.close()     
-        #nombreX devuelve todos los datos
-        return nombreX 
+    
     
 
     def busca_refaccioness(self,nombre):
@@ -81,22 +70,14 @@ class Comunicacion():
         return registro
 
     def busca_productos(self, nombre_producto):
-        cursor=connetion.cursor(cursor_factory=extras.DictCursor)
-        query= f"""    select  * from refacciones where codigobarras={nombre_producto} """   
+        cursor=connetion.cursor()
+        query= f"""    select  * from refacciones where codigop={nombre_producto} """   
         cursor.execute(query)
-        nombreX = cursor.fetchone()
-        print(nombreX)
-        
+        nombreX = cursor.fetchall()
         cursor.close()    
         return nombreX 
 
-    def elimina_productoss(self, nombre):
-        cursor=connetion.cursor()
-        query= f"""    delete  from refacciones where codigobarras={nombre} """ 
-        cursor.execute(query)
-        #self.connetion.commit()    
-        cursor.close()
-  
+    
     def actualizacion_(self,id,codigop,categoria,preciocosto,precioventa,existencias,descripcion):#registra a un empleado
         cursor=connetion.cursor()
         query= f""" UPDATE refacciones set values('{id}','{codigop}','{categoria}','{preciocosto}','{precioventa}','{existencias}','{descripcion}') """
@@ -109,23 +90,9 @@ class Comunicacion():
         cursor.execute(query)
         cursor.close()
 
-    def busquedaDuplicidad(self,cadena):
-        cursor=connetion.cursor()
-        query=f"""   select * from vendedor where telefono='{cadena}' """
-        cursor.execute(query)
-        user=cursor.fetchone()
-        if user==None:
-           return True
-        return False
+   
 
-    def busquedaDuplicidadP(self,cadena):
-        cursor=connetion.cursor()
-        query=f"""   select * from provedor where idprovedor='{cadena}' """
-        cursor.execute(query)
-        user=cursor.fetchone()
-        if user==None:
-           return True
-        return False
+    
 
     def busquedaDuplicidad_(self,cadena):
         cursor=connetion.cursor()
@@ -144,6 +111,69 @@ class Comunicacion():
         if user==None:
            return True
         return False
+#reacomodo
 
+    def BuscarRefaccion(self, nombre_producto):#busca varchar de primary key
+        cursor=connetion.cursor()
+        query= f"""    select  * from refacciones where codigobarras={nombre_producto} """   
+        cursor.execute(query)
+        nombreX = cursor.fetchall()
+        cursor.close()    
+        return nombreX 
 
+    def mostrar(self):
+        cursor = connetion.cursor()
+        bd = """ SELECT * FROM refacciones """
+        cursor.execute(bd)
+        registro = cursor.fetchall()
+        return (registro)
 
+    def busca_refacciones(self):
+        cursor=connetion.cursor()
+        query= f"""    select * from refacciones where existencias=0 """   
+        cursor.execute(query)
+        nombreX = cursor.fetchall()
+        cursor.close()     
+        return nombreX 
+
+    def elimina_productoss(self, nombre):
+        cursor=connetion.cursor()
+        query= f"""    delete  from refacciones where codigobarras={nombre} """ 
+        cursor.execute(query)
+        connetion.commit()    
+        cursor.close()
+
+    def busquedaDuplicidad(self,cadena):
+        cursor=connetion.cursor()
+        query=f"""   select * from vendedor where telefono='{cadena}' """
+        cursor.execute(query)
+        user=cursor.fetchone()
+        if user==None:
+           return True
+        return False
+
+    def busquedaDuplicidadP(self,cadena):
+        cursor=connetion.cursor()
+        query=f"""   select * from refacciones where codigobarras='{cadena}' """
+        cursor.execute(query)
+        user=cursor.fetchone()
+        if user==None:
+           return True
+        return False
+
+    def alta(self,nombre,npaterno,nmaterno,salario,exterior,calle,telefono,estado,cp):#registra a un empleado
+        cursor=connetion.cursor()
+        query= f""" INSERT INTO vendedor(nombre,paterno,materno,salario,telefono,calle,numexterior,codigopostal,estado) values('{nombre}','{npaterno}','{nmaterno}','{salario}','{telefono}','{calle}','{exterior}','{cp}','{estado}') """
+        cursor.execute(query)
+        connetion.commit()    
+        cursor.close()
+
+    def busquedaDuplicidadProve(self,cadena):
+        cursor=connetion.cursor()
+        query=f"""   select * from provedor where idprovedor='{cadena}' """
+        cursor.execute(query)
+        user=cursor.fetchone()
+        if user==None:
+           return True
+        return False
+  

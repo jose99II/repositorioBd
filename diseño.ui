@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1120</width>
-    <height>604</height>
+    <width>1115</width>
+    <height>738</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -541,7 +541,7 @@ QTableWidget QTableCornerButton::section {
              <item>
               <widget class="QStackedWidget" name="stackedWidget">
                <property name="currentIndex">
-                <number>6</number>
+                <number>3</number>
                </property>
                <widget class="QWidget" name="page_datos">
                 <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -637,7 +637,7 @@ QTableWidget QTableCornerButton::section {
                      <item>
                       <widget class="QLabel" name="label_30">
                        <property name="text">
-                        <string>Refacciones sin unidades</string>
+                        <string>REFACCIONES SIN UNIDADES</string>
                        </property>
                       </widget>
                      </item>
@@ -677,6 +677,13 @@ QTableWidget QTableCornerButton::section {
                        </property>
                        <property name="text">
                         <string>Modificar</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="aviso">
+                       <property name="text">
+                        <string/>
                        </property>
                       </widget>
                      </item>
@@ -979,7 +986,7 @@ QTableWidget QTableCornerButton::section {
                 <widget class="QLineEdit" name="CBtxt">
                  <property name="geometry">
                   <rect>
-                   <x>370</x>
+                   <x>380</x>
                    <y>200</y>
                    <width>271</width>
                    <height>20</height>
@@ -989,7 +996,7 @@ QTableWidget QTableCornerButton::section {
                 <widget class="QLineEdit" name="codigoProduct">
                  <property name="geometry">
                   <rect>
-                   <x>370</x>
+                   <x>380</x>
                    <y>260</y>
                    <width>271</width>
                    <height>20</height>
@@ -999,7 +1006,7 @@ QTableWidget QTableCornerButton::section {
                 <widget class="QLineEdit" name="categoriatxtregistrorefa">
                  <property name="geometry">
                   <rect>
-                   <x>370</x>
+                   <x>380</x>
                    <y>320</y>
                    <width>271</width>
                    <height>20</height>
@@ -1009,7 +1016,7 @@ QTableWidget QTableCornerButton::section {
                 <widget class="QLineEdit" name="precioProvedor">
                  <property name="geometry">
                   <rect>
-                   <x>370</x>
+                   <x>380</x>
                    <y>380</y>
                    <width>271</width>
                    <height>20</height>
@@ -1019,7 +1026,7 @@ QTableWidget QTableCornerButton::section {
                 <widget class="QLineEdit" name="precioPublic">
                  <property name="geometry">
                   <rect>
-                   <x>370</x>
+                   <x>380</x>
                    <y>440</y>
                    <width>271</width>
                    <height>20</height>
@@ -1029,7 +1036,7 @@ QTableWidget QTableCornerButton::section {
                 <widget class="QLineEdit" name="UnidadesRecibidas">
                  <property name="geometry">
                   <rect>
-                   <x>370</x>
+                   <x>380</x>
                    <y>500</y>
                    <width>271</width>
                    <height>20</height>
@@ -1039,7 +1046,7 @@ QTableWidget QTableCornerButton::section {
                 <widget class="QLineEdit" name="descripcion_txt_">
                  <property name="geometry">
                   <rect>
-                   <x>370</x>
+                   <x>380</x>
                    <y>560</y>
                    <width>271</width>
                    <height>20</height>
@@ -1049,10 +1056,10 @@ QTableWidget QTableCornerButton::section {
                 <widget class="QLabel" name="REG_REFACCIONES_2">
                  <property name="geometry">
                   <rect>
-                   <x>170</x>
+                   <x>70</x>
                    <y>200</y>
                    <width>300</width>
-                   <height>13</height>
+                   <height>16</height>
                   </rect>
                  </property>
                  <property name="minimumSize">
@@ -1068,7 +1075,7 @@ QTableWidget QTableCornerButton::section {
                 <widget class="QLabel" name="REG_REFACCIONES_3">
                  <property name="geometry">
                   <rect>
-                   <x>150</x>
+                   <x>70</x>
                    <y>260</y>
                    <width>300</width>
                    <height>13</height>
@@ -1087,7 +1094,7 @@ QTableWidget QTableCornerButton::section {
                 <widget class="QLabel" name="REG_REFACCIONES_4">
                  <property name="geometry">
                   <rect>
-                   <x>220</x>
+                   <x>70</x>
                    <y>320</y>
                    <width>300</width>
                    <height>13</height>
@@ -1106,7 +1113,7 @@ QTableWidget QTableCornerButton::section {
                 <widget class="QLabel" name="REG_REFACCIONES_5">
                  <property name="geometry">
                   <rect>
-                   <x>150</x>
+                   <x>70</x>
                    <y>380</y>
                    <width>300</width>
                    <height>13</height>
@@ -1125,7 +1132,7 @@ QTableWidget QTableCornerButton::section {
                 <widget class="QLabel" name="REG_REFACCIONES_6">
                  <property name="geometry">
                   <rect>
-                   <x>170</x>
+                   <x>80</x>
                    <y>440</y>
                    <width>300</width>
                    <height>13</height>
@@ -1144,7 +1151,7 @@ QTableWidget QTableCornerButton::section {
                 <widget class="QLabel" name="REG_REFACCIONES_7">
                  <property name="geometry">
                   <rect>
-                   <x>150</x>
+                   <x>70</x>
                    <y>500</y>
                    <width>300</width>
                    <height>13</height>
@@ -1163,7 +1170,7 @@ QTableWidget QTableCornerButton::section {
                 <widget class="QLabel" name="REG_REFACCIONES_8">
                  <property name="geometry">
                   <rect>
-                   <x>90</x>
+                   <x>80</x>
                    <y>560</y>
                    <width>300</width>
                    <height>13</height>
