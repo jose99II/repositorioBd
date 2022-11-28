@@ -541,7 +541,7 @@ QTableWidget QTableCornerButton::section {
              <item>
               <widget class="QStackedWidget" name="stackedWidget">
                <property name="currentIndex">
-                <number>3</number>
+                <number>1</number>
                </property>
                <widget class="QWidget" name="page_datos">
                 <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -719,12 +719,109 @@ QTableWidget QTableCornerButton::section {
                  </item>
                 </layout>
                </widget>
-               <widget class="QWidget" name="page_buscar">
-                <widget class="QLineEdit" name="act_codigo_2">
+               <widget class="QWidget" name="page_INGRESAR">
+                <widget class="QLineEdit" name="barras">
+                 <property name="geometry">
+                  <rect>
+                   <x>410</x>
+                   <y>170</y>
+                   <width>300</width>
+                   <height>23</height>
+                  </rect>
+                 </property>
+                 <property name="echoMode">
+                  <enum>QLineEdit::Normal</enum>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="cantidad_">
+                 <property name="geometry">
+                  <rect>
+                   <x>410</x>
+                   <y>280</y>
+                   <width>300</width>
+                   <height>23</height>
+                  </rect>
+                 </property>
+                 <property name="echoMode">
+                  <enum>QLineEdit::Normal</enum>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="label_35">
+                 <property name="geometry">
+                  <rect>
+                   <x>260</x>
+                   <y>70</y>
+                   <width>141</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>ID PROVEDOR</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="label_36">
                  <property name="geometry">
                   <rect>
                    <x>220</x>
-                   <y>100</y>
+                   <y>170</y>
+                   <width>181</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>CODIGO DE BARRAS</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="label_38">
+                 <property name="geometry">
+                  <rect>
+                   <x>190</x>
+                   <y>280</y>
+                   <width>211</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>CANTIDAD</string>
+                 </property>
+                </widget>
+                <widget class="QPushButton" name="INGRESAR">
+                 <property name="geometry">
+                  <rect>
+                   <x>520</x>
+                   <y>350</y>
+                   <width>120</width>
+                   <height>30</height>
+                  </rect>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>120</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>INGRESAR</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="info">
+                 <property name="geometry">
+                  <rect>
+                   <x>320</x>
+                   <y>20</y>
+                   <width>381</width>
+                   <height>16</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="id">
+                 <property name="geometry">
+                  <rect>
+                   <x>410</x>
+                   <y>70</y>
                    <width>300</width>
                    <height>23</height>
                   </rect>
@@ -919,6 +1016,19 @@ QTableWidget QTableCornerButton::section {
                       </size>
                      </property>
                     </spacer>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="surtir">
+                     <property name="minimumSize">
+                      <size>
+                       <width>140</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>INGRESAR MERCANCIA</string>
+                     </property>
+                    </widget>
                    </item>
                    <item>
                     <widget class="QPushButton" name="RefaccionesBTN">
@@ -1222,6 +1332,38 @@ QTableWidget QTableCornerButton::section {
                  </property>
                  <property name="text">
                   <string/>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="prov">
+                 <property name="geometry">
+                  <rect>
+                   <x>380</x>
+                   <y>140</y>
+                   <width>300</width>
+                   <height>23</height>
+                  </rect>
+                 </property>
+                 <property name="echoMode">
+                  <enum>QLineEdit::Normal</enum>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="REG_REFACCIONES_9">
+                 <property name="geometry">
+                  <rect>
+                   <x>70</x>
+                   <y>140</y>
+                   <width>300</width>
+                   <height>16</height>
+                  </rect>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>300</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>CODIGO PROVEDOR</string>
                  </property>
                 </widget>
                </widget>

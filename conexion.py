@@ -73,15 +73,26 @@ class Comunicacion():
            return True
         return False
   
-    def altaRefaccion(self,codigoBarras,codigoProducto,categoria,PrecioProvedor,PrecioPublico,UnidadesRecibidas,descripcion):#registra a una refaccion
+    def altaRefaccion(self,codigoBarras,codigoProducto,categoria,PrecioProvedor,PrecioPublico,UnidadesRecibidas,descripcion,id):#registra a una refaccion
         cursor=connetion.cursor()
-        query= f""" INSERT INTO refacciones(codigobarras,codigop,categoria,preciocosto,precioventa,existencias,descripcion) values('{codigoBarras}','{codigoProducto}','{categoria}','{PrecioProvedor}','{PrecioPublico}','{UnidadesRecibidas}','{descripcion}') """
+        query= f""" INSERT INTO refacciones(codigobarras,codigop,categoria,preciocosto,precioventa,existencias,descripcion,idprovedorwe) values('{codigoBarras}','{codigoProducto}','{categoria}','{PrecioProvedor}','{PrecioPublico}','{UnidadesRecibidas}','{descripcion}','{id}') """
         cursor.execute(query)
         cursor.close()
+        
 
     def altaProvedor(self,IDprovedor,marca,telefono,calle,exterior,codigopostal,estado):#registra a un provedor
         cursor=connetion.cursor()
         query= f""" INSERT INTO provedor(idprovedor,marca,telefono,calle,numexterior,codigopostal,estado) values('{IDprovedor}','{marca}','{telefono}','{calle}','{exterior}','{codigopostal}','{estado}') """
         cursor.execute(query)
         cursor.close()
+
+
+    def UPDATESurte(self,codigobarras,cantidad):
+        cursor=connetion.cursor()
+        query= f""" UPDATE  refacciones SET existencias='{cantidad}' WHERE codigobarras='{codigobarras}' """
+        cursor.execute(query)
+        connetion.commit()    
+        cursor.close()
+
+
 

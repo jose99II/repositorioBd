@@ -24,6 +24,7 @@ class VentanaPrincipal(QMainWindow):
         self.bt_minimizar.clicked.connect(self.control_bt_minimizar)     
         self.bt_restaurar.clicked.connect(self.control_bt_normal)
         self.bt_maximizar.clicked.connect(self.control_bt_maximizar)
+        self.INGRESAR.clicked.connect(self.ingresarMercancia)
         self.bt_cerrar.clicked.connect(lambda: self.close())
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setWindowOpacity(1)
@@ -41,6 +42,7 @@ class VentanaPrincipal(QMainWindow):
         self.btnProvedor.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_provedor))
         self.RefaccionesBTN.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_refacciones))
         self.actua.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_actualizar))
+        self.surtir.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_INGRESAR))
         # Ancho de columna adaptable
         self.tabla_borrar.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch) 
         self.tabla_productos.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch) 
@@ -240,17 +242,25 @@ class VentanaPrincipal(QMainWindow):
         descripcion = self.descripcion_txt_.text().upper() 
         if descripcion != '' and codigoProducto != ''    and categoria != '' and PrecioProvedor > 0 and PrecioPublico > 0 and UnidadesRecibidas > -1 and codigoBarras > 0:
             validacion=self.base_datos.busquedaDuplicidadP(codigoBarras)
-            self.avisoregistro.setText('CODIGO DE BARRAS REGISTRADO PPREVIAMENTE')
+            
             if validacion==True:
-                    self.base_datos.altaRefaccion(codigoBarras,codigoProducto,categoria,PrecioProvedor,PrecioPublico,UnidadesRecibidas,descripcion)
-                    self.avisoregistro.setText('REFACCION REGISTRADA')
-                    self.CBtxt.clear()
-                    self.codigoProduct.clear()
-                    self.categoriatxtregistrorefa.clear()
-                    self.precioProvedor.clear()
-                    self.precioPublic.clear()
-                    self.UnidadesRecibidas.clear()
-                    self.descripcion_txt_.clear()
+                        #ME QUEDE
+                    verifica=self.base_datos.busquedaDuplicidadProve(self.prov.text())
+                    if verifica==False:
+                        self.base_datos.altaRefaccion(codigoBarras,codigoProducto,categoria,PrecioProvedor,PrecioPublico,UnidadesRecibidas,descripcion,self.prov.text())
+                        self.avisoregistro.setText('REFACCION REGISTRADA')
+                        self.CBtxt.clear()
+                        self.codigoProduct.clear()
+                        self.categoriatxtregistrorefa.clear()
+                        self.precioProvedor.clear()
+                        self.precioPublic.clear()
+                        self.UnidadesRecibidas.clear()
+                        self.descripcion_txt_.clear()
+                        self.prov.clear()
+                    else:
+                        self.avisoregistro.setText('ID DE PROVEDOR NO VALIDO')
+            else:
+                self.avisoregistro.setText('CODIGO DE BARRAS REGISTRADO PPREVIAMENTE')
         else:
             self.IDsprovedor.setText('EXISTEN ESPACIOS VACIOS O INCORRECTOS')
 
@@ -292,6 +302,36 @@ class VentanaPrincipal(QMainWindow):
         self.CP_txt.clear()
         self.estado_txt.clear() 
         self.IDsprovedor.clear()
+        
+
+    def ingresarMercancia(self):
+        if(self.id.text()!='' and self.barras.text() !=''  and  self.cantidad_.text()!=''):
+            #verificacion
+            verifica=self.base_datos.busquedaDuplicidadProve(self.id.text())
+            if verifica==False:
+                verifica=self.is_valid(self.barras.text())
+                if verifica==True:
+                    barras=int(self.barras.text())  
+                    verifica=self.base_datos.busquedaDuplicidadP(barras)  
+                    if verifica==False:
+                        verifica=self.is_valid(self.cantidad_.text())
+                        if verifica ==True:
+                            cantidad=int(self.cantidad_.text())
+                            if cantidad > 0:
+                                self.base_datos.UPDATESurte(barras,cantidad)
+                                self.info.setText('PARTES INGRESADAS CORRECTAMENTE')
+                                
+            else:
+                self.info.setText('ESPACIOS VACIOS O DATOS INVALIDOS')
+        else:
+            self.info.setText('ESPACIOS VACIOS O DATOS INVALIDOS')
+           
+        self.id.clear()
+        self.barras.clear()
+        self.cantidad_.clear()
+        
+
+
 
 if __name__ == "__main__":
      app = QApplication(sys.argv)
