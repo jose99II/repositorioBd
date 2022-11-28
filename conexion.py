@@ -103,5 +103,29 @@ class Comunicacion():
            return True
         return False
 
+    def busquedaDuplicidadCliente(self,cadena):#evita duplicidad de un provedor
+        cursor=connetion.cursor()
+        query=f"""   select * from cliente where telefono='{cadena}' """
+        cursor.execute(query)
+        user=cursor.fetchone()
+        if user==None:
+           return True
+        return False
+
+    def altaCliente(self,nombre,npaterno,nmaterno,clienteclave,email,telefono,exterior,calle,estado,cp):#registra a un empleado
+        cursor=connetion.cursor()
+        query= f""" INSERT INTO cliente(nombre,paterno,materno,clienteclave,email,telefono,calle,numexterior,codigopostal,estado) values('{nombre}','{npaterno}','{nmaterno}','{clienteclave}','{email}','{telefono}','{calle}','{exterior}','{cp}','{estado}') """
+        cursor.execute(query)
+        connetion.commit()    
+        cursor.close()
+
+    def devolver(self,num):
+        cursor=connetion.cursor()
+        query=f"""   select numcliente from cliente where telefono='{num}' """
+        cursor.execute(query)
+        user=cursor.fetchone()
+        return user
+
+    
 
 

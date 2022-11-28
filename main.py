@@ -25,6 +25,8 @@ class VentanaPrincipal(QMainWindow):
         self.bt_restaurar.clicked.connect(self.control_bt_normal)
         self.bt_maximizar.clicked.connect(self.control_bt_maximizar)
         self.INGRESAR.clicked.connect(self.ingresarMercancia)
+        self.registra.clicked.connect(self.registrar_CLIENTE)
+
         self.bt_cerrar.clicked.connect(lambda: self.close())
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setWindowOpacity(1)
@@ -43,6 +45,8 @@ class VentanaPrincipal(QMainWindow):
         self.RefaccionesBTN.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_refacciones))
         self.actua.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_actualizar))
         self.surtir.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_INGRESAR))
+        self.CLIENTE.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_registrarCliente))
+
         # Ancho de columna adaptable
         self.tabla_borrar.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch) 
         self.tabla_productos.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch) 
@@ -291,6 +295,63 @@ class VentanaPrincipal(QMainWindow):
                 self.ID_provedor_.setText(IDprovedor)
         else:
             self.IDsprovedor.setText('ESPACIOS VACIOS O INVALIDOS')
+
+    def registrar_CLIENTE(self):#registrar provedor
+        nombre = self.nombre.text().upper() 
+        peterno = self.paterno.text().upper() 
+        materno = self.materno.text().upper() 
+        bandera = self.is_valid(self.atiende.text())
+        if bandera==True:
+            Patiende = (self.atiende.text())
+        
+        email=self.email.text().upper()
+        bandera = self.is_valid(self.telefono.text())
+        if bandera==True:
+            telefono = (self.telefono.text())
+        calle = self.calle.text().upper() 
+        bandera = self.is_valid(self.nume.text())
+        if bandera==True:
+            nume = int(self.nume.text())
+        else:
+            nume=0
+        bandera = self.is_valid(self.cp.text())
+        if bandera==True:
+            cp = int(self.cp.text())
+        else:
+            cp=0
+        estado=self.estado.text().upper()
+        if ( nombre != '' and self.atiende.text() != ''and peterno != ''and materno != ''and email != ''   and nume > 0 and calle != '' and telefono != '' and estado !='' and cp > 0):
+            validacion=self.base_datos. busquedaDuplicidadCliente(telefono)
+           
+            if(validacion==True):
+                validacion=self.base_datos.busquedaDuplicidad(Patiende)
+                if validacion==False:
+                    self.base_datos.altaCliente(nombre,peterno,materno,Patiende,email,telefono,nume,calle,estado,cp)
+                    self.avisar.setText('REGISTRADO')
+                    var=self.base_datos.devolver(telefono)
+                    self.avisar.setText(str(var[0]))
+
+                else:
+                    self.avisar.setText('CLAVE DE VENDEDOR INVALIDA')
+            else:
+                self.avisar.setText('CLIENTE PREVIAMENTE REGISTRADO O CLAVE DE VENDEDOR INVALIDA')
+        
+        else:
+            self.avisar.setText('ESPACIOS VACIOS O INVALIDOS')
+        self.nombre.clear()
+        self.paterno.clear()
+        self.materno.clear()
+        self.atiende.clear()
+        self.email.clear()
+        self.telefono.clear()
+        self.calle.clear()
+        self.nume.clear()
+        self.cp.clear()
+        self.estado.clear()
+
+
+
+
 
     def LimpiarProvedor(self):
         self.marcatxt.clear()
