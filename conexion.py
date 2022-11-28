@@ -168,8 +168,12 @@ class Comunicacion():
         cursor.close()
 
         if user==None:
-           self.meterArticulos(barras,num)
+           
+           vari=self.busquedaDuplicidadP(barras)
+           if vari==False:
+            self.meterArticulos(barras,num)
         else:
+           
             var=int(user[0])+1
             cursor=connetion.cursor()
             query= f""" UPDATE  genera SET cantidadp='{var}' WHERE numfactura='{num}' and codigobarras='{barras}'"""

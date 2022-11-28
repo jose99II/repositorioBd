@@ -388,7 +388,7 @@ class VentanaPrincipal(QMainWindow):
         else:
             self.info.setText('ESPACIOS VACIOS')
 
-  
+    
     def verificarUsuario(self):
         if self.X.text() !='':
             valido=self.is_valid(self.X.text())
@@ -404,32 +404,36 @@ class VentanaPrincipal(QMainWindow):
                     self.Nombre.setText("NO ENCONTRADO")
 
     def agregar(self):
-        barras=self.act_buscar.text()
-        self.base_datos.bsuca(self.NUMFACTURA[0],barras)
-        datos=self.base_datos.mostrarM(self.NUMFACTURA[0])
-        #self.mostraTabla_productos(datos)
-        self.tableWidget.setRowCount(len(datos))
-        if len(datos) == 0:
-            self.aviso.setText(' NO EXISTE')       
-        else:
-            self.aviso.setText('PRODUCTO ENCONTRADO')
-        i = len(datos)
-        self.tableWidget.setRowCount(i)
-        tablerow = 0
-        for row in datos:
-            self.Id = row[0]
-            columna1=QtWidgets.QTableWidgetItem(str(row[0]))
-            columna3=QtWidgets.QTableWidgetItem(str(row[1]))
-            columna4=QtWidgets.QTableWidgetItem(str(row[2]))
-            columna5=QtWidgets.QTableWidgetItem(str(row[4]))
-            self.tableWidget.setItem(tablerow,0,columna1)
-            self.tableWidget.setItem(tablerow,1,columna3)
-            self.tableWidget.setItem(tablerow,2,columna4)
-            self.tableWidget.setItem(tablerow,3,QtWidgets.QTableWidgetItem(row[3]))
-            self.tableWidget.setItem(tablerow,4,columna5)
-            self.tableWidget.setItem(tablerow,5,QtWidgets.QTableWidgetItem(row[5]))
-            self.tableWidget.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
-            tablerow +=1
+          
+        
+            barras=self.act_buscar.text()
+            valida=self.is_valid(barras)
+            if (valida==True ):
+                self.base_datos.bsuca(self.NUMFACTURA[0],barras)
+                datos=self.base_datos.mostrarM(self.NUMFACTURA[0])
+            #self.mostraTabla_productos(datos)
+                self.tableWidget.setRowCount(len(datos))
+                if len(datos) == 0:
+                    self.aviso.setText(' NO EXISTE')       
+                else:
+                    self.aviso.setText('PRODUCTO ENCONTRADO')
+                i = len(datos)
+                self.tableWidget.setRowCount(i)
+                tablerow = 0
+                for row in datos:
+                    self.Id = row[0]
+                    columna1=QtWidgets.QTableWidgetItem(str(row[0]))
+                    columna3=QtWidgets.QTableWidgetItem(str(row[1]))
+                    columna4=QtWidgets.QTableWidgetItem(str(row[2]))
+                    columna5=QtWidgets.QTableWidgetItem(str(row[4]))
+                    self.tableWidget.setItem(tablerow,0,columna1)
+                    self.tableWidget.setItem(tablerow,1,columna3)
+                    self.tableWidget.setItem(tablerow,2,columna4)
+                    self.tableWidget.setItem(tablerow,3,QtWidgets.QTableWidgetItem(row[3]))
+                    self.tableWidget.setItem(tablerow,4,columna5)
+                    self.tableWidget.setItem(tablerow,5,QtWidgets.QTableWidgetItem(row[5]))
+                    self.tableWidget.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
+                    tablerow +=1
 
 
 
