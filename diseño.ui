@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1115</width>
+    <width>1627</width>
     <height>738</height>
    </rect>
   </property>
@@ -2022,9 +2022,9 @@ QTableWidget QTableCornerButton::section {
                     <widget class="QWidget" name="verticalLayoutWidget_4">
                      <property name="geometry">
                       <rect>
-                       <x>100</x>
+                       <x>10</x>
                        <y>230</y>
-                       <width>1161</width>
+                       <width>1281</width>
                        <height>301</height>
                       </rect>
                      </property>
@@ -2032,7 +2032,10 @@ QTableWidget QTableCornerButton::section {
                       <item>
                        <widget class="QTableWidget" name="tableWidget">
                         <attribute name="horizontalHeaderDefaultSectionSize">
-                         <number>165</number>
+                         <number>170</number>
+                        </attribute>
+                        <attribute name="horizontalHeaderMinimumSectionSize">
+                         <number>20</number>
                         </attribute>
                         <attribute name="horizontalHeaderStretchLastSection">
                          <bool>true</bool>
@@ -2044,7 +2047,12 @@ QTableWidget QTableCornerButton::section {
                         </column>
                         <column>
                          <property name="text">
-                          <string>CODIGO PRODUCTO</string>
+                          <string>CANTIDAD PRODUCTO</string>
+                         </property>
+                        </column>
+                        <column>
+                         <property name="text">
+                          <string>NUMERO FACTURA</string>
                          </property>
                         </column>
                         <column>
@@ -2054,22 +2062,17 @@ QTableWidget QTableCornerButton::section {
                         </column>
                         <column>
                          <property name="text">
-                          <string>PRECIO DE PROVEDOR</string>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>PRECIO DE VENTA</string>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>EXISTENCIA</string>
+                          <string>PRECIO</string>
                          </property>
                         </column>
                         <column>
                          <property name="text">
                           <string>DESCRIPCION</string>
+                         </property>
+                        </column>
+                        <column>
+                         <property name="text">
+                          <string>IDPROVEDOR</string>
                          </property>
                         </column>
                        </widget>

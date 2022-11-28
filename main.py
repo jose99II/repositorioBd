@@ -421,9 +421,14 @@ class VentanaPrincipal(QMainWindow):
             columna1=QtWidgets.QTableWidgetItem(str(row[0]))
             columna3=QtWidgets.QTableWidgetItem(str(row[1]))
             columna4=QtWidgets.QTableWidgetItem(str(row[2]))
+            columna5=QtWidgets.QTableWidgetItem(str(row[4]))
             self.tableWidget.setItem(tablerow,0,columna1)
-            self.tableWidget.setItem(tablerow,3,columna3)
-            self.tableWidget.setItem(tablerow,4,columna4)
+            self.tableWidget.setItem(tablerow,1,columna3)
+            self.tableWidget.setItem(tablerow,2,columna4)
+            self.tableWidget.setItem(tablerow,3,QtWidgets.QTableWidgetItem(row[3]))
+            self.tableWidget.setItem(tablerow,4,columna5)
+            self.tableWidget.setItem(tablerow,5,QtWidgets.QTableWidgetItem(row[5]))
+            self.tableWidget.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
             tablerow +=1
 
 

@@ -172,7 +172,7 @@ class Comunicacion():
         else:
             var=int(user[0])+1
             cursor=connetion.cursor()
-            query= f""" UPDATE  genera SET cantidadp='{var}' WHERE numfactura='{num}' """
+            query= f""" UPDATE  genera SET cantidadp='{var}' WHERE numfactura='{num}' and codigobarras='{barras}'"""
             cursor.execute(query)
             connetion.commit()    
             cursor.close()
@@ -181,13 +181,26 @@ class Comunicacion():
 
         return user
 
+    #def mostrarM(self,numfactu):#muestra todas las refacciones
+    #    cursor = connetion.cursor()
+    #    bd=f"""   select * from genera where numfactura='{numfactu}' """
+    #    cursor.execute(bd)
+    #    registro = cursor.fetchall()
+   #     return (registro)
+
+   
     def mostrarM(self,numfactu):#muestra todas las refacciones
         cursor = connetion.cursor()
-        bd=f"""   select * from genera where numfactura='{numfactu}' """
+        bd=f"""   select genera.codigobarras,genera.cantidadp,genera.numfactura,refacciones.categoria,refacciones.precioventa,refacciones.descripcion,refacciones.idprovedorwe from genera
+inner join refacciones on 
+genera.codigobarras=refacciones.codigobarras WHERE numfactura={numfactu}
+ """
         cursor.execute(bd)
         registro = cursor.fetchall()
         return (registro)
 
+   
+     
     
 
 
