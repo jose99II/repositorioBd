@@ -4,7 +4,7 @@ connetion = psycopg2.connect(
             host="localhost",
             user="postgres",
             password="2020",
-            database="refa",
+            database="refaccionaria",
             port="5432"
         ) 
 connetion.autocommit=True
@@ -126,6 +126,69 @@ class Comunicacion():
         user=cursor.fetchone()
         return user
 
+    def crearfactura(self,numcliente):
+        cursor=connetion.cursor()
+        query= f""" insert into factura (fechafactura,cantidadproductos,subtotal,iva,total,numcliente)values(current_date,'0','0','0','0','{numcliente}') RETURNING(numfactura)
+ """
+        cursor.execute(query)
+        user=cursor.fetchone()
+        connetion.commit()    
+        cursor.close()
+        return user
+       
+
+    def buscarCliente(self,num):
+        cursor=connetion.cursor()
+        query=f"""   select nombre,paterno,materno from cliente where numcliente='{num}' """
+        cursor.execute(query)
+        user=cursor.fetchone()
+        return user
+
+    def buscarNumfactura(self,num):
+        cursor=connetion.cursor()
+        query=f"""   select numfactura from factura where numcliente='{num}' """
+        cursor.execute(query)
+        user=cursor.fetchone()
+        return user
+
+    def meterArticulos(self,numbarras,numfacturas):
+        cursor=connetion.cursor()
+        query= f""" insert into genera (codigobarras,cantidadp,numfactura)values('{numbarras}','1','{numfacturas}')
+ """
+        cursor.execute(query)
+        connetion.commit()    
+        cursor.close()
+       
+    def bsuca(self,num,barras):
+        cursor=connetion.cursor()
+        query=f"""   select cantidadp from genera where numfactura='{num}' and  codigobarras='{barras}'  """
+        cursor.execute(query)
+        user=cursor.fetchone()
+        connetion.commit()    
+        cursor.close()
+
+        if user==None:
+           self.meterArticulos(barras,num)
+        else:
+            var=int(user[0])+1
+            cursor=connetion.cursor()
+            query= f""" UPDATE  genera SET cantidadp='{var}' WHERE numfactura='{num}' """
+            cursor.execute(query)
+            connetion.commit()    
+            cursor.close()
+
+
+
+        return user
+
+    def mostrarM(self,numfactu):#muestra todas las refacciones
+        cursor = connetion.cursor()
+        bd=f"""   select * from genera where numfactura='{numfactu}' """
+        cursor.execute(bd)
+        registro = cursor.fetchall()
+        return (registro)
+
     
+
 
 

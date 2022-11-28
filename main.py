@@ -26,6 +26,10 @@ class VentanaPrincipal(QMainWindow):
         self.bt_maximizar.clicked.connect(self.control_bt_maximizar)
         self.INGRESAR.clicked.connect(self.ingresarMercancia)
         self.registra.clicked.connect(self.registrar_CLIENTE)
+        self.VERIFICAR.clicked.connect(self.verificarUsuario)
+        self.bt_actualiza_buscar.clicked.connect(self.agregar)
+
+
 
         self.bt_cerrar.clicked.connect(lambda: self.close())
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
@@ -383,6 +387,52 @@ class VentanaPrincipal(QMainWindow):
                                 self.info.setText('INGRESE UNA CANTIDAD VALIDAD DE REFACCIONES')
         else:
             self.info.setText('ESPACIOS VACIOS')
+
+  
+    def verificarUsuario(self):
+        if self.X.text() !='':
+            valido=self.is_valid(self.X.text())
+            if valido==True:
+                numerocliente=int(self.X.text())
+                var=self.base_datos.buscarCliente(numerocliente)
+                if var!=None:
+                   self.NUMFACTURA= self.base_datos.crearfactura(numerocliente)
+                   self.Nombre.setText(str(var[0]))
+                   self.Apellido.setText(str(var[1]))
+                   self.Materno.setText(str(var[2]))
+                else:
+                    self.Nombre.setText("NO ENCONTRADO")
+
+    def agregar(self):
+        barras=self.act_buscar.text()
+        self.base_datos.bsuca(self.NUMFACTURA[0],barras)
+        datos=self.base_datos.mostrarM(self.NUMFACTURA[0])
+        #self.mostraTabla_productos(datos)
+        self.tableWidget.setRowCount(len(datos))
+        if len(datos) == 0:
+            self.aviso.setText(' NO EXISTE')       
+        else:
+            self.aviso.setText('PRODUCTO ENCONTRADO')
+        i = len(datos)
+        self.tableWidget.setRowCount(i)
+        tablerow = 0
+        for row in datos:
+            self.Id = row[0]
+            columna1=QtWidgets.QTableWidgetItem(str(row[0]))
+            columna3=QtWidgets.QTableWidgetItem(str(row[1]))
+            columna4=QtWidgets.QTableWidgetItem(str(row[2]))
+            self.tableWidget.setItem(tablerow,0,columna1)
+            self.tableWidget.setItem(tablerow,3,columna3)
+            self.tableWidget.setItem(tablerow,4,columna4)
+            tablerow +=1
+
+
+
+
+               
+
+
+
 
 
 

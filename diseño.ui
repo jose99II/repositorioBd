@@ -541,7 +541,7 @@ QTableWidget QTableCornerButton::section {
              <item>
               <widget class="QStackedWidget" name="stackedWidget">
                <property name="currentIndex">
-                <number>5</number>
+                <number>6</number>
                </property>
                <widget class="QWidget" name="page_datos">
                 <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -1946,14 +1946,14 @@ QTableWidget QTableCornerButton::section {
                 <layout class="QVBoxLayout" name="verticalLayout_12">
                  <item>
                   <widget class="QStackedWidget" name="stackedWidget_2">
-                   <widget class="QWidget" name="page_3">
+                   <widget class="QWidget" name="compra">
                     <widget class="QWidget" name="verticalLayoutWidget">
                      <property name="geometry">
                       <rect>
                        <x>300</x>
                        <y>0</y>
                        <width>351</width>
-                       <height>41</height>
+                       <height>54</height>
                       </rect>
                      </property>
                      <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -1963,7 +1963,7 @@ QTableWidget QTableCornerButton::section {
                          <enum>Qt::RightToLeft</enum>
                         </property>
                         <property name="text">
-                         <string>ACTUALIZAR PRODUCTOS</string>
+                         <string>COMPRAS REGISTRADAS</string>
                         </property>
                         <property name="textFormat">
                          <enum>Qt::PlainText</enum>
@@ -2009,23 +2009,23 @@ QTableWidget QTableCornerButton::section {
                     <widget class="QPushButton" name="bt_actualiza_buscar">
                      <property name="geometry">
                       <rect>
-                       <x>660</x>
+                       <x>670</x>
                        <y>60</y>
                        <width>120</width>
                        <height>30</height>
                       </rect>
                      </property>
                      <property name="text">
-                      <string>BUSCAR</string>
+                      <string>AGREGAR</string>
                      </property>
                     </widget>
                     <widget class="QWidget" name="verticalLayoutWidget_4">
                      <property name="geometry">
                       <rect>
                        <x>100</x>
-                       <y>120</y>
+                       <y>230</y>
                        <width>1161</width>
-                       <height>101</height>
+                       <height>301</height>
                       </rect>
                      </property>
                      <layout class="QVBoxLayout" name="verticalLayout_16">
@@ -2076,142 +2076,37 @@ QTableWidget QTableCornerButton::section {
                       </item>
                      </layout>
                     </widget>
-                    <widget class="QWidget" name="verticalLayoutWidget_5">
+                    <widget class="QLabel" name="Apellido">
                      <property name="geometry">
                       <rect>
-                       <x>240</x>
-                       <y>240</y>
-                       <width>341</width>
-                       <height>31</height>
-                      </rect>
-                     </property>
-                     <layout class="QVBoxLayout" name="verticalLayout_17">
-                      <item>
-                       <widget class="QLineEdit" name="act_codigo"/>
-                      </item>
-                     </layout>
-                    </widget>
-                    <widget class="QWidget" name="verticalLayoutWidget_6">
-                     <property name="geometry">
-                      <rect>
-                       <x>240</x>
-                       <y>280</y>
-                       <width>341</width>
-                       <height>31</height>
-                      </rect>
-                     </property>
-                     <layout class="QVBoxLayout" name="verticalLayout_18">
-                      <item>
-                       <widget class="QLineEdit" name="act_nombre"/>
-                      </item>
-                     </layout>
-                    </widget>
-                    <widget class="QWidget" name="verticalLayoutWidget_7">
-                     <property name="geometry">
-                      <rect>
-                       <x>240</x>
-                       <y>320</y>
-                       <width>341</width>
-                       <height>31</height>
-                      </rect>
-                     </property>
-                     <layout class="QVBoxLayout" name="verticalLayout_19">
-                      <item>
-                       <widget class="QLineEdit" name="categoria"/>
-                      </item>
-                     </layout>
-                    </widget>
-                    <widget class="QWidget" name="verticalLayoutWidget_8">
-                     <property name="geometry">
-                      <rect>
-                       <x>240</x>
-                       <y>360</y>
-                       <width>341</width>
-                       <height>31</height>
-                      </rect>
-                     </property>
-                     <layout class="QVBoxLayout" name="verticalLayout_20">
-                      <item>
-                       <widget class="QLineEdit" name="act_precio"/>
-                      </item>
-                     </layout>
-                    </widget>
-                    <widget class="QWidget" name="verticalLayoutWidget_9">
-                     <property name="geometry">
-                      <rect>
-                       <x>240</x>
-                       <y>400</y>
-                       <width>341</width>
-                       <height>31</height>
-                      </rect>
-                     </property>
-                     <layout class="QVBoxLayout" name="verticalLayout_21">
-                      <item>
-                       <widget class="QLineEdit" name="act_cantidad"/>
-                      </item>
-                     </layout>
-                    </widget>
-                    <widget class="QWidget" name="verticalLayoutWidget_10">
-                     <property name="geometry">
-                      <rect>
-                       <x>240</x>
-                       <y>440</y>
-                       <width>341</width>
-                       <height>31</height>
-                      </rect>
-                     </property>
-                     <layout class="QVBoxLayout" name="verticalLayout_22">
-                      <item>
-                       <widget class="QLineEdit" name="unidades_2"/>
-                      </item>
-                     </layout>
-                    </widget>
-                    <widget class="QWidget" name="verticalLayoutWidget_11">
-                     <property name="geometry">
-                      <rect>
-                       <x>240</x>
-                       <y>480</y>
-                       <width>341</width>
-                       <height>31</height>
-                      </rect>
-                     </property>
-                     <layout class="QVBoxLayout" name="verticalLayout_23">
-                      <item>
-                       <widget class="QLineEdit" name="descripcion"/>
-                      </item>
-                     </layout>
-                    </widget>
-                    <widget class="QLabel" name="label_6">
-                     <property name="geometry">
-                      <rect>
-                       <x>40</x>
-                       <y>250</y>
+                       <x>340</x>
+                       <y>170</y>
                        <width>181</width>
                        <height>20</height>
                       </rect>
                      </property>
                      <property name="text">
-                      <string>CODIGO DE BARRAS:</string>
+                      <string/>
                      </property>
                     </widget>
-                    <widget class="QLabel" name="label_12">
+                    <widget class="QLabel" name="Materno">
                      <property name="geometry">
                       <rect>
-                       <x>10</x>
-                       <y>290</y>
+                       <x>590</x>
+                       <y>170</y>
                        <width>211</width>
                        <height>20</height>
                       </rect>
                      </property>
                      <property name="text">
-                      <string>CODIGO DE PRODUCTO:</string>
+                      <string/>
                      </property>
                     </widget>
                     <widget class="QLabel" name="label_13">
                      <property name="geometry">
                       <rect>
                        <x>110</x>
-                       <y>330</y>
+                       <y>560</y>
                        <width>111</width>
                        <height>20</height>
                       </rect>
@@ -2220,24 +2115,24 @@ QTableWidget QTableCornerButton::section {
                       <string>CATEGORIA:</string>
                      </property>
                     </widget>
-                    <widget class="QLabel" name="label_14">
+                    <widget class="QLabel" name="Nombre">
                      <property name="geometry">
                       <rect>
-                       <x>20</x>
-                       <y>370</y>
-                       <width>201</width>
+                       <x>100</x>
+                       <y>170</y>
+                       <width>241</width>
                        <height>20</height>
                       </rect>
                      </property>
                      <property name="text">
-                      <string>PRECIO DE PROVEDOR:</string>
+                      <string/>
                      </property>
                     </widget>
                     <widget class="QLabel" name="label_15">
                      <property name="geometry">
                       <rect>
-                       <x>60</x>
-                       <y>410</y>
+                       <x>460</x>
+                       <y>610</y>
                        <width>171</width>
                        <height>20</height>
                       </rect>
@@ -2249,27 +2144,14 @@ QTableWidget QTableCornerButton::section {
                     <widget class="QLabel" name="label_31">
                      <property name="geometry">
                       <rect>
-                       <x>100</x>
-                       <y>450</y>
+                       <x>110</x>
+                       <y>610</y>
                        <width>131</width>
                        <height>20</height>
                       </rect>
                      </property>
                      <property name="text">
                       <string>EXISTENCIAS:</string>
-                     </property>
-                    </widget>
-                    <widget class="QLabel" name="label_32">
-                     <property name="geometry">
-                      <rect>
-                       <x>100</x>
-                       <y>490</y>
-                       <width>131</width>
-                       <height>20</height>
-                      </rect>
-                     </property>
-                     <property name="text">
-                      <string>DESCRIPCION:</string>
                      </property>
                     </widget>
                     <widget class="QLabel" name="signal_actualizar">
@@ -2288,14 +2170,50 @@ QTableWidget QTableCornerButton::section {
                     <widget class="QPushButton" name="bt_12">
                      <property name="geometry">
                       <rect>
-                       <x>630</x>
-                       <y>480</y>
+                       <x>590</x>
+                       <y>540</y>
                        <width>120</width>
                        <height>30</height>
                       </rect>
                      </property>
                      <property name="text">
-                      <string>actualizar</string>
+                      <string>comprar</string>
+                     </property>
+                    </widget>
+                    <widget class="QLineEdit" name="X">
+                     <property name="geometry">
+                      <rect>
+                       <x>270</x>
+                       <y>130</y>
+                       <width>351</width>
+                       <height>23</height>
+                      </rect>
+                     </property>
+                    </widget>
+                    <widget class="QPushButton" name="VERIFICAR">
+                     <property name="geometry">
+                      <rect>
+                       <x>650</x>
+                       <y>130</y>
+                       <width>131</width>
+                       <height>30</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>VERIFICAR</string>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="label_32">
+                     <property name="geometry">
+                      <rect>
+                       <x>60</x>
+                       <y>130</y>
+                       <width>201</width>
+                       <height>16</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>NUMERO DE CLIENTE</string>
                      </property>
                     </widget>
                    </widget>
