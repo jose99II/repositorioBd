@@ -809,7 +809,7 @@ QTableWidget QTableCornerButton::section {
                   <rect>
                    <x>320</x>
                    <y>20</y>
-                   <width>381</width>
+                   <width>500</width>
                    <height>16</height>
                   </rect>
                  </property>

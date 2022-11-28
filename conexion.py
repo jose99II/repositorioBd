@@ -4,7 +4,7 @@ connetion = psycopg2.connect(
             host="localhost",
             user="postgres",
             password="2020",
-            database="BdRefaccionaria_",
+            database="refa",
             port="5432"
         ) 
 connetion.autocommit=True
@@ -93,6 +93,15 @@ class Comunicacion():
         cursor.execute(query)
         connetion.commit()    
         cursor.close()
+
+    def busquedaDuplicidadProveYrefa(self,cadena,codigo):#evita duplicidad de un provedor
+        cursor=connetion.cursor()
+        query=f"""   select * from refacciones where idprovedorwe='{cadena}' and codigobarras='{codigo}' """
+        cursor.execute(query)
+        user=cursor.fetchone()
+        if user==None:
+           return True
+        return False
 
 
 

@@ -302,33 +302,33 @@ class VentanaPrincipal(QMainWindow):
         self.CP_txt.clear()
         self.estado_txt.clear() 
         self.IDsprovedor.clear()
-        
 
     def ingresarMercancia(self):
         if(self.id.text()!='' and self.barras.text() !=''  and  self.cantidad_.text()!=''):
-            #verificacion
-            verifica=self.base_datos.busquedaDuplicidadProve(self.id.text())
-            if verifica==False:
                 verifica=self.is_valid(self.barras.text())
                 if verifica==True:
                     barras=int(self.barras.text())  
-                    verifica=self.base_datos.busquedaDuplicidadP(barras)  
-                    if verifica==False:
-                        verifica=self.is_valid(self.cantidad_.text())
-                        if verifica ==True:
+                    verifica=self.is_valid(self.cantidad_.text())
+                    if verifica ==True:
                             cantidad=int(self.cantidad_.text())
                             if cantidad > 0:
-                                self.base_datos.UPDATESurte(barras,cantidad)
-                                self.info.setText('PARTES INGRESADAS CORRECTAMENTE')
-                                
-            else:
-                self.info.setText('ESPACIOS VACIOS O DATOS INVALIDOS')
+                                verifica=self.base_datos.busquedaDuplicidadProveYrefa(self.id.text(),barras)
+                                if verifica==False:
+                                    self.base_datos.UPDATESurte(barras,cantidad)
+                                    self.info.setText('REFACCIONES INGRESADAS')
+                                else:
+                                    self.info.setText('CODIGO DE BARRAS NO COINCIDE CON ID DE PROVEDOR')
+                            else:   
+                                self.info.setText('INGRESE UNA CANTIDAD VALIDAD DE REFACCIONES')
         else:
-            self.info.setText('ESPACIOS VACIOS O DATOS INVALIDOS')
-           
-        self.id.clear()
-        self.barras.clear()
-        self.cantidad_.clear()
+            self.info.setText('ESPACIOS VACIOS')
+
+
+
+
+
+                              
+        
         
 
 
