@@ -115,6 +115,12 @@ class VentanaPrincipal(QMainWindow):
                     nombre_producto = str("'" + nombre_producto + "'")
                     producto = self.base_datos.BuscarRefaccion(nombre_producto)
                     self.mostraTabla_productos(producto)
+                else:
+                    nombre_producto = str("'" + nombre_producto + "'")
+                    producto=self.base_datos.BuscarRefaccioncategoria(nombre_producto)
+                    self.mostraTabla_productos(producto)
+
+                    
                     
     def is_valid(self,cadena):#valida si todos sus caracteres son numericos
             longitud=len(cadena)
@@ -415,7 +421,7 @@ class VentanaPrincipal(QMainWindow):
                 self.tableWidget.setRowCount(len(datos))
                 if len(datos) == 0:
                     self.aviso.setText(' NO EXISTE')       
-                else:
+                else:   
                     self.aviso.setText('PRODUCTO ENCONTRADO')
                 i = len(datos)
                 self.tableWidget.setRowCount(i)

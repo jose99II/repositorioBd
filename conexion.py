@@ -203,6 +203,14 @@ genera.codigobarras=refacciones.codigobarras WHERE numfactura={numfactu}
         registro = cursor.fetchall()
         return (registro)
 
+    def BuscarRefaccioncategoria(self, nombre_producto):#busca entero de codigo de barras de refacciones
+        cursor=connetion.cursor()
+        query= f"""    select  * from refacciones where categoria={nombre_producto} """   
+        cursor.execute(query)
+        nombreX = cursor.fetchall()
+        cursor.close()    
+        return nombreX 
+
    
      
     
