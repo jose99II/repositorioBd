@@ -28,6 +28,8 @@ class VentanaPrincipal(QMainWindow):
         self.registra.clicked.connect(self.registrar_CLIENTE)
         self.VERIFICAR.clicked.connect(self.verificarUsuario)
         self.bt_actualiza_buscar.clicked.connect(self.agregar)
+        self.bt_12.clicked.connect(self.comprar)
+
 
 
 
@@ -116,7 +118,7 @@ class VentanaPrincipal(QMainWindow):
                     producto = self.base_datos.BuscarRefaccion(nombre_producto)
                     self.mostraTabla_productos(producto)
                 else:
-                    nombre_producto = str("'" + nombre_producto + "'")
+                   # nombre_producto = str("'" + nombre_producto + "'")
                     producto=self.base_datos.BuscarRefaccioncategoria(nombre_producto)
                     self.mostraTabla_productos(producto)
 
@@ -400,6 +402,7 @@ class VentanaPrincipal(QMainWindow):
 
     
     def verificarUsuario(self):
+        self.total=0
         if self.X.text() !='':
             valido=self.is_valid(self.X.text())
             if valido==True:
@@ -421,6 +424,10 @@ class VentanaPrincipal(QMainWindow):
             if (valida==True ):
                 self.base_datos.bsuca(self.NUMFACTURA[0],barras)
                 datos=self.base_datos.mostrarM(self.NUMFACTURA[0])
+                d=self.base_datos.mostra(self.NUMFACTURA[0],barras)
+                self.total=self.total+d[0]
+                print(self.total)
+                
             #self.mostraTabla_productos(datos)
                 self.tableWidget.setRowCount(len(datos))
                 if len(datos) == 0:
@@ -430,8 +437,11 @@ class VentanaPrincipal(QMainWindow):
                 i = len(datos)
                 self.tableWidget.setRowCount(i)
                 tablerow = 0
+                
                 for row in datos:
                     self.Id = row[0]
+                    
+                    
                     columna1=QtWidgets.QTableWidgetItem(str(row[0]))
                     columna3=QtWidgets.QTableWidgetItem(str(row[1]))
                     columna4=QtWidgets.QTableWidgetItem(str(row[2]))
@@ -444,6 +454,9 @@ class VentanaPrincipal(QMainWindow):
                     self.tableWidget.setItem(tablerow,5,QtWidgets.QTableWidgetItem(row[5]))
                     self.tableWidget.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
                     tablerow +=1
+
+    def comprar(self):
+         datos=self.base_datos.mostrarM(self.NUMFACTURA[0])
 
 
 

@@ -191,9 +191,9 @@ class Comunicacion():
         user=cursor.fetchone()
         return user
 
-    def meterArticulos(self,numbarras,numfacturas):
+    def meterArticulos(self,numbarras,numfacturas,codigo):
         cursor=connetion.cursor()
-        query= f""" insert into genera (codigobarras,cantidadp,numfactura)values('{numbarras}','1','{numfacturas}')
+        query= f""" insert into genera (codigobarras,cantidadp,numfactura,codigoproducto)values('{numbarras}','1','{numfacturas}',{codigo})
  """
         cursor.execute(query)
         connetion.commit()    
@@ -211,7 +211,7 @@ class Comunicacion():
            
            vari=self.busquedaDuplicidadP(barras)
            if vari==False:
-            self.meterArticulos(barras,num)
+            self.meterArticulos(barras,num,'30')
         else:
            
             var=int(user[0])+1
@@ -220,9 +220,9 @@ class Comunicacion():
             cursor.execute(query)
             connetion.commit()    
             cursor.close()
+        
 
-
-
+       
         return user
 
     #def mostrarM(self,numfactu):#muestra todas las refacciones
@@ -241,19 +241,42 @@ genera.codigobarras=refacciones.codigobarras WHERE numfactura={numfactu}
  """
         cursor.execute(bd)
         registro = cursor.fetchall()
+        
         return (registro)
 
     def BuscarRefaccioncategoria(self, nombre_producto):#busca entero de codigo de barras de refacciones
         cursor=connetion.cursor()
-        query= f"""    select  * from refacciones where categoria={nombre_producto} """   
+        query= f"""    select  * from refacciones where categoria ilike '%{nombre_producto}%' """   
         cursor.execute(query)
-        nombreX = cursor.fetchall()
+        nombreX = cursor.fetchone()
         cursor.close()    
         return nombreX 
 
    
      
-    
+    def mostra(self,numfactu,codigobarras):#muestra todas las refacciones
+        cursor = connetion.cursor()
+        codigop=self.ma(codigobarras)
+        
+        bd=f"""    select  refacciones.precioventa from genera
+inner join refacciones on 
+genera.codigobarras=refacciones.codigobarras WHERE codigop='{codigop[0]}' and numfactura='{numfactu}'
+
+ """
+        cursor.execute(bd)
+        registro = cursor.fetchone()
+       
+        return (registro)
+
+    def ma(self,codigo):
+        cursor=connetion.cursor()
+        query=f"""   select codigop from refacciones where codigobarras='{codigo}'   """
+        cursor.execute(query)
+        user=cursor.fetchone()
+        connetion.commit()    
+        cursor.close()
+        return user
+
 
 
 
