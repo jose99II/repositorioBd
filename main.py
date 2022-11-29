@@ -29,6 +29,8 @@ class VentanaPrincipal(QMainWindow):
         self.VERIFICAR.clicked.connect(self.verificarUsuario)
         self.bt_actualiza_buscar.clicked.connect(self.agregar)
         self.bt_12.clicked.connect(self.comprar)
+        self.limpiar.clicked.connect(self.Limpia)
+
 
 
 
@@ -118,7 +120,7 @@ class VentanaPrincipal(QMainWindow):
                     producto = self.base_datos.BuscarRefaccion(nombre_producto)
                     self.mostraTabla_productos(producto)
                 else:
-                   # nombre_producto = str("'" + nombre_producto + "'")
+                    #nombre_producto = str("'" + nombre_producto + "'")
                     producto=self.base_datos.BuscarRefaccioncategoria(nombre_producto)
                     self.mostraTabla_productos(producto)
 
@@ -465,6 +467,24 @@ class VentanaPrincipal(QMainWindow):
         jo=jose
         self.a.setText(str(jo))
         self.base_datos.meteractualizacon(var[0],self.total,iva,jo,self.NUMFACTURA[0])
+        self.base_datos.bajar(self.NUMFACTURA[0])
+
+    def Limpia(self):
+        self.act_buscar.clear()
+        self.X.clear()
+        self.a.clear()
+        self.label_15.clear()
+        self.label_14.clear()
+        self.Nombre.clear()
+        self.Apellido.clear()
+        self.Materno.clear()
+        
+
+
+
+
+
+
 
 
 

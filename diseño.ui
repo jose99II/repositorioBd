@@ -637,7 +637,7 @@ QTableWidget QTableCornerButton::section {
                      <item>
                       <widget class="QLabel" name="label_30">
                        <property name="text">
-                        <string>REFACCIONES SIN UNIDADES</string>
+                        <string>REFACCIONES POR TERMINARSE</string>
                        </property>
                       </widget>
                      </item>
@@ -2256,6 +2256,25 @@ QTableWidget QTableCornerButton::section {
                      </property>
                      <property name="text">
                       <string/>
+                     </property>
+                    </widget>
+                    <widget class="QPushButton" name="limpiar">
+                     <property name="geometry">
+                      <rect>
+                       <x>90</x>
+                       <y>590</y>
+                       <width>120</width>
+                       <height>30</height>
+                      </rect>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>120</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>Limpiar</string>
                      </property>
                     </widget>
                    </widget>

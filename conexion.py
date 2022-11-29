@@ -26,7 +26,7 @@ class Comunicacion():
 
     def busca_refacciones(self):#busca refacciones que ya no esten en el stock
         cursor=connetion.cursor()
-        query= f"""    select * from refacciones where existencias=0 """   
+        query= f"""    select * from refacciones where existencias=5 """   
         cursor.execute(query)
         nombreX = cursor.fetchall()
         cursor.close()     
@@ -248,7 +248,7 @@ genera.codigobarras=refacciones.codigobarras WHERE numfactura={numfactu}
         cursor=connetion.cursor()
         query= f"""    select  * from refacciones where categoria ilike '%{nombre_producto}%' """   
         cursor.execute(query)
-        nombreX = cursor.fetchone()
+        nombreX = cursor.fetchall()
         cursor.close()    
         return nombreX 
 
@@ -295,6 +295,18 @@ genera.codigobarras=refacciones.codigobarras WHERE codigop='{codigop[0]}' and nu
         connetion.commit()    
         cursor.close()
 
+
+    def bajar(self,factura):
+        cursor=connetion.cursor()
+        query= f"""UPDATE refacciones
+set existencias = existencias-genera.cantidadp
+from genera
+where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}'
+ """
+        cursor.execute(query)
+        connetion.commit()    
+        cursor.close()
+   
 
 
         
