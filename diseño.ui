@@ -2108,14 +2108,14 @@ QTableWidget QTableCornerButton::section {
                     <widget class="QLabel" name="label_13">
                      <property name="geometry">
                       <rect>
-                       <x>110</x>
+                       <x>310</x>
                        <y>560</y>
-                       <width>111</width>
+                       <width>41</width>
                        <height>20</height>
                       </rect>
                      </property>
                      <property name="text">
-                      <string>CATEGORIA:</string>
+                      <string>IVA:</string>
                      </property>
                     </widget>
                     <widget class="QLabel" name="Nombre">
@@ -2141,20 +2141,20 @@ QTableWidget QTableCornerButton::section {
                       </rect>
                      </property>
                      <property name="text">
-                      <string>PRECIO DE VENTA:</string>
+                      <string/>
                      </property>
                     </widget>
                     <widget class="QLabel" name="label_31">
                      <property name="geometry">
                       <rect>
-                       <x>110</x>
+                       <x>320</x>
                        <y>610</y>
                        <width>131</width>
                        <height>20</height>
                       </rect>
                      </property>
                      <property name="text">
-                      <string>EXISTENCIAS:</string>
+                      <string>SUBTOTAL:</string>
                      </property>
                     </widget>
                     <widget class="QLabel" name="signal_actualizar">
@@ -2217,6 +2217,45 @@ QTableWidget QTableCornerButton::section {
                      </property>
                      <property name="text">
                       <string>NUMERO DE CLIENTE</string>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="label_14">
+                     <property name="geometry">
+                      <rect>
+                       <x>390</x>
+                       <y>560</y>
+                       <width>171</width>
+                       <height>20</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="label_50">
+                     <property name="geometry">
+                      <rect>
+                       <x>880</x>
+                       <y>570</y>
+                       <width>131</width>
+                       <height>20</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>TOTAL:</string>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="a">
+                     <property name="geometry">
+                      <rect>
+                       <x>1020</x>
+                       <y>570</y>
+                       <width>131</width>
+                       <height>20</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string/>
                      </property>
                     </widget>
                    </widget>

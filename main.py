@@ -457,6 +457,19 @@ class VentanaPrincipal(QMainWindow):
 
     def comprar(self):
         self.label_15.setText(str(self.total))
+        var=self.base_datos.actualizarFacturas(self.NUMFACTURA[0])
+        iva=(16*self.total)/100#iva
+        jose=str(iva)
+        self.label_14.setText(jose)
+        jose=iva+self.total
+        jo=jose
+        self.a.setText(str(jo))
+        self.base_datos.meteractualizacon(var[0],self.total,iva,jo,self.NUMFACTURA[0])
+
+
+
+
+
 
 
 

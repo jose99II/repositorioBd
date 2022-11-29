@@ -276,6 +276,29 @@ genera.codigobarras=refacciones.codigobarras WHERE codigop='{codigop[0]}' and nu
         connetion.commit()    
         cursor.close()
         return user
+    
+    def actualizarFacturas(self,numfactura):
+        cursor=connetion.cursor()
+        query=f"""   select sum(cantidadp) from genera where numfactura='{numfactura}'   """
+        cursor.execute(query)
+        user=cursor.fetchone()
+        connetion.commit()    
+        cursor.close()
+        return user
+
+    def meteractualizacon(self,cantidad,subtotal,iva,total,numfactura):
+        cursor=connetion.cursor()
+        query= f""" update factura set  cantidadproductos='{cantidad}',subtotal='{subtotal}',iva='{iva}',total='{total}' where numfactura='{numfactura}' 
+ """
+
+        cursor.execute(query)
+        connetion.commit()    
+        cursor.close()
+
+
+
+        
+
 
 
 
