@@ -177,6 +177,10 @@ class VentanaPrincipal(QMainWindow):
                 nombre_producto = str("'" + nombre_producto + "'")
                 self.base_datos.elimina_productoss(nombre_producto)
                 self.mostrarRefacciones()
+            else:
+                self.base_datos.elimina_productoss2(nombre_producto)
+                self.mostrarRefacciones()
+            
 
     def registrar_productos(self):#registrar vendedor
         if (len(self.txtcp.text())==0  and len(self.txtexterior.text())==0  and len(self.txtsalario.text())==0  and len(self.txtnombre.text())==0 and len(self.txtpaterno.text())==0 and len(self.txtmaterno.text())==0 and len(self.txtcalle.text())==0 and len(self.txttelefono.text())==0 and len(self.txtestado.text())==0):

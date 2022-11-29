@@ -33,11 +33,51 @@ class Comunicacion():
         return nombreX 
 
     def elimina_productoss(self, nombre):#elimina por codigo de barras a un refaccion
+
+        cursor=connetion.cursor()
+        query= f"""    delete  from genera where codigobarras={nombre} """ 
+        cursor.execute(query)
+        connetion.commit()  
+
         cursor=connetion.cursor()
         query= f"""    delete  from refacciones where codigobarras={nombre} """ 
         cursor.execute(query)
-        connetion.commit()    
+        connetion.commit()   
+
+        
+
         cursor.close()
+
+    def elimina_productoss2(self, nombre):#elimina por codigo de barras a un refaccion
+        
+
+
+
+        cursor=connetion.cursor()
+        query= f"""    select codigobarras from refacciones where categoria='{nombre}' """ 
+        cursor.execute(query)
+        nombreX = cursor.fetchone()
+        
+       
+
+        if nombreX!= None:
+
+
+            query= f"""    delete  from genera where codigobarras='{nombreX[0]}' """ 
+            cursor.execute(query)
+            connetion.commit()  
+
+            cursor=connetion.cursor()
+            query= f"""    delete  from refacciones where codigobarras='{nombreX[0]}' """ 
+            cursor.execute(query)
+            connetion.commit()   
+
+        
+
+            cursor.close()
+        
+
+            cursor.close()
 
     def busquedaDuplicidad(self,cadena):#busca que en vendedor no este duplicada la primary key
         cursor=connetion.cursor()
