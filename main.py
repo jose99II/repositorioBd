@@ -456,7 +456,8 @@ class VentanaPrincipal(QMainWindow):
                     tablerow +=1
 
     def comprar(self):
-         datos=self.base_datos.mostrarM(self.NUMFACTURA[0])
+        self.label_15.setText(str(self.total))
+
 
 
 
