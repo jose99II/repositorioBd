@@ -338,6 +338,35 @@ where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}'
         return user
 
 
+    def mostrarinformacion(self,numfactura):
+        cursor=connetion.cursor()
+        query=f"""     select codigobarras,cantidadp,precioventa,descripcion  from genera natural join refacciones where numfactura='{numfactura}'
+
+   """
+        cursor.execute(query)
+        user=cursor.fetchall()
+        connetion.commit()    
+        cursor.close()
+        print(user)
+        return user
+
+
+    def mostrarinformacion_(self,numfactura):
+        cursor=connetion.cursor()
+        query=f"""     select fechafactura,cantidadproductos,subtotal,iva,codigoproducto,total from factura
+inner join genera on 
+factura.numfactura=genera.numfactura where numcliente='{numfactura}'
+
+
+
+   """
+        cursor.execute(query)
+        user=cursor.fetchall()
+        connetion.commit()    
+        cursor.close()
+        print(user)
+        return user
+
 
 
 
