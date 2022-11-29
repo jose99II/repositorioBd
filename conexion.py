@@ -309,7 +309,34 @@ where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}'
    
 
 
+    def imprimir(self,numfactura):
+        cursor=connetion.cursor()
+        query=f"""   select codigop,descripcion,categoria,idprovedorwe from genera natural join refacciones where numfactura='{numfactura}'   """
+
         
+
+        cursor.execute(query)
+        user=cursor.fetchall()
+        connetion.commit()    
+        cursor.close()
+        print(user)
+        return user
+
+
+    def imprimirDATOS(self,numfactura):
+        cursor=connetion.cursor()
+        query=f"""   select nombre,paterno,materno,fechafactura,numfactura,numcliente from factura natural join cliente where numfactura='{numfactura}'
+   """
+
+        
+
+        cursor.execute(query)
+        user=cursor.fetchone()
+        connetion.commit()    
+        cursor.close()
+        print(user)
+        return user
+
 
 
 

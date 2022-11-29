@@ -30,7 +30,7 @@ class PDF(FPDF):
                 tfont_size(self,10)
                 tcol_set(self, 'black')
                 tfont(self,'I')
-                self.cell(w = 0, h = 10, txt = 'Generado el 2020/11/20', border = 0, ln=2,#FECHA AUQI VA AQUI
+                self.cell(w = 0, h = 10, txt = 'Generado' ,border = 0, ln=2,#FECHA AUQI VA AQUI
                         align = 'C', fill = 0)
         
                 self.ln(5)
@@ -534,15 +534,18 @@ class VentanaPrincipal(QMainWindow):
         self.Materno.clear()
         
     def crearPdf(self):
-        lista_datos = (
-        (1, 'Carlos', 'carlos@gmail.com', '2020-02-25'),
-        (2, 'Jose', 'jose@gmail.com', '2019-03-12'),
-        (3, 'Marcos', 'marcos@gmail.com', '2018-01-31'),
-        (4, 'Luz', 'luz@gmail.com', '2017-02-15'),
-        (5, 'Elmer', 'elmer@gmail.com', '2016-11-23'),
-        (6, 'Elmer', 'elmer@gmail.com', '2016-11-23'),
+        var=(self.base_datos.imprimir(self.NUMFACTURA[0]))
+        
+
+
+
+
+        lista_datos = (var
         )#*8
 
+        variable=self.base_datos.imprimirDATOS(self.NUMFACTURA[0])
+
+      
 
         pdf = PDF(orientation = 'P', unit = 'mm', format='A4') 
         pdf.alias_nb_pages()
@@ -574,15 +577,15 @@ class VentanaPrincipal(QMainWindow):
                  align = 'R', fill = 0)
         
         tcol_set(pdf, 'black')         
-        pdf.cell(w = 45, h = h_sep, txt = 'AlexS', border = 0,#SE ESCRIBE NOMBRE AQUI
+        pdf.cell(w = 45, h = h_sep, txt = variable[0], border = 0,#SE ESCRIBE NOMBRE AQUI
                  align = 'L', fill = 0)
         
         tcol_set(pdf, 'gray')
         pdf.cell(w = 45, h = h_sep, txt = '#CLIENTE:', border = 0, 
                  align = 'R', fill = 0)
-        
+        var=str(variable[5])
         tcol_set(pdf, 'black') 
-        pdf.multi_cell(w = 0, h = h_sep, txt = 'alex7320k@gmail.com', border = 0,#AQUI VA OTRO DATO NUMERO DE CLIENTE
+        pdf.multi_cell(w = 0, h = h_sep, txt = var, border = 0,#AQUI VA OTRO DATO NUMERO DE CLIENTE
                  align = 'L', fill = 0)
         
         
@@ -592,15 +595,15 @@ class VentanaPrincipal(QMainWindow):
                  align = 'R', fill = 0)
         
         tcol_set(pdf, 'black')
-        pdf.cell(w = 45, h = h_sep, txt = 'ChuquillanquiSS', border = 0,#VA UN APELLIDO O LOS DOS AQUI
+        pdf.cell(w = 45, h = h_sep, txt = variable[1], border = 0,#VA UN APELLIDO O LOS DOS AQUI
                  align = 'L', fill = 0)
         
         tcol_set(pdf, 'gray')
         pdf.cell(w = 45, h = h_sep, txt = 'Fecha:', border = 0, 
                  align = 'R', fill = 0)
-        
+        fecha=str(variable[3])
         tcol_set(pdf, 'black')
-        pdf.multi_cell(w = 0, h = h_sep, txt = '2019/09/111', border = 0,#FECHA DE HOY FACTURA
+        pdf.multi_cell(w = 0, h = h_sep, txt = fecha, border = 0,#FECHA DE HOY FACTURA
                  align = 'L', fill = 0)
         
         # fila 3 --
@@ -608,16 +611,17 @@ class VentanaPrincipal(QMainWindow):
         pdf.cell(w = 45, h = h_sep, txt = 'Apellido M:', border = 0, 
                  align = 'R', fill = 0)
         
+        
         tcol_set(pdf, 'black')
-        pdf.cell(w = 45, h = h_sep, txt = '31', border = 0,#AQUI VA NUMERO DE FACTURA
+        pdf.cell(w = 45, h = h_sep, txt = variable[2], border = 0,#AQUI VA NUMERO DE FACTURA
                  align = 'L', fill = 0)
         
         tcol_set(pdf, 'gray')
         pdf.cell(w = 45, h = h_sep, txt = '#FACTURA:', border = 0, #OTRO AQUI
                  align = 'R', fill = 0)
-        
+        var=str(variable[4])
         tcol_set(pdf, 'black')
-        pdf.multi_cell(w = 0, h = h_sep, txt = 'Retirado', border = 0,#AQUI VA
+        pdf.multi_cell(w = 0, h = h_sep, txt = var, border = 0,#AQUI VA
                  align = 'L', fill = 0)
         
         
@@ -635,10 +639,10 @@ class VentanaPrincipal(QMainWindow):
         tfont_size(pdf,13)
         bcol_set(pdf, 'blue')
         
-        pdf.cell(w = 20, h = 10, txt = 'ID', border = 0, align = 'C', fill = 1)
-        pdf.cell(w = 40, h = 10, txt = 'CODIGO DE BARRAS', border = 0, align = 'C', fill = 1)
-        pdf.cell(w = 70, h = 10, txt = 'CANTIDAD PRODUCTO', border = 0, align = 'C', fill = 1)
-        pdf.multi_cell(w = 0, h = 10, txt = 'PRECIO', border = 0, align = 'C',
+        pdf.cell(w = 20, h = 10, txt = 'CODIGO', border = 0, align = 'C', fill = 1)
+        pdf.cell(w = 40, h = 10, txt = 'DESCRIPCION', border = 0, align = 'C', fill = 1)
+        pdf.cell(w = 70, h = 10, txt = 'CATEGORIA', border = 0, align = 'C', fill = 1)
+        pdf.multi_cell(w = 0, h = 10, txt = 'IDPROVEDOR', border = 0, align = 'C',
                      fill = 1)
         
         
