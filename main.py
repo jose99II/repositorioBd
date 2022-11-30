@@ -573,7 +573,7 @@ class VentanaPrincipal(QMainWindow):
         
             barras=self.act_buscar.text()
             valida=self.is_valid(barras)
-            if (valida==True ):
+            if (valida==True and self.X.text() !='' ):
                 a=self.base_datos.verifi(barras)
                 if a==True:
                     
@@ -614,17 +614,19 @@ class VentanaPrincipal(QMainWindow):
                     self.informacion.setText('PRODUCTO SIN EXISTENCIA')
 
     def comprar(self):
-        self.label_15.setText(str(self.total))
-        var=self.base_datos.actualizarFacturas(self.NUMFACTURA[0])
-        iva=(16*self.total)/100#iva
-        jose=str(iva)
-        self.label_14.setText(jose)
-        jose=iva+self.total
-        jo=jose
-        self.a.setText(str(jo))
-        self.base_datos.meteractualizacon(var[0],self.total,iva,jo,self.NUMFACTURA[0])
-        #self.base_datos.bajar(self.NUMFACTURA[0])
-        self.crearPdf(jo)
+        if self.X.text() and self.act_buscar.text()!='':
+            self.label_15.setText(str(self.total))
+            var=self.base_datos.actualizarFacturas(self.NUMFACTURA[0])
+            iva=(16*self.total)/100#iva
+            jose=str(iva)
+            self.label_14.setText(jose)
+            jose=iva+self.total
+            jo=jose
+            self.a.setText(str(jo))
+            self.base_datos.meteractualizacon(var[0],self.total,iva,jo,self.NUMFACTURA[0])
+           
+            #self.base_datos.bajar(self.NUMFACTURA[0])
+            self.crearPdf(jo)
 
     def Limpia(self):
         self.act_buscar.clear()
@@ -635,6 +637,10 @@ class VentanaPrincipal(QMainWindow):
         self.Nombre.clear()
         self.Apellido.clear()
         self.Materno.clear()
+        self.tableWidget.clearContents()
+        self.tableWidget.setRowCount(0)
+        print(self.NUMFACTURA)
+
         
     def crearPdf(self,jo):
         var=(self.base_datos.imprimir(self.NUMFACTURA[0]))
