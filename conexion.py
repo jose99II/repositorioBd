@@ -303,7 +303,7 @@ genera.codigobarras=refacciones.codigobarras WHERE codigop='{codigop[0]}' and nu
         query= f"""UPDATE refacciones
 set existencias = existencias-genera.cantidadp
 from genera
-where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}' and existencias>genera.cantidadp
+where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}' and existencias>=genera.cantidadp
  """
         cursor.execute(query)
         connetion.commit()    
@@ -385,6 +385,19 @@ where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}' an
         connetion.commit()    
         cursor.close()
         return user
+
+    def verifi(self,barras):
+        cursor=connetion.cursor()
+        query=f""" select existencias from refacciones where '{barras}'=codigobarras
+     """
+        cursor.execute(query)
+        user=cursor.fetchone()
+        print(user[0])
+        cursor.close()
+        if user[0]>0:
+            return True
+        else:
+            return False
 
 
 

@@ -574,37 +574,44 @@ class VentanaPrincipal(QMainWindow):
             barras=self.act_buscar.text()
             valida=self.is_valid(barras)
             if (valida==True ):
-                self.base_datos.bsuca(self.NUMFACTURA[0],barras)
-                datos=self.base_datos.mostrarM(self.NUMFACTURA[0])
-                d=self.base_datos.mostra(self.NUMFACTURA[0],barras)
-                self.total=self.total+d[0]
+                a=self.base_datos.verifi(barras)
+                if a==True:
+                    
+                    self.informacion.clear()
+                    self.base_datos.bsuca(self.NUMFACTURA[0],barras)
+                    self.base_datos.bajar(self.NUMFACTURA[0])
+                    datos=self.base_datos.mostrarM(self.NUMFACTURA[0])
+                    d=self.base_datos.mostra(self.NUMFACTURA[0],barras)
+                    self.total=self.total+d[0]
                 
-            #self.mostraTabla_productos(datos)
-                self.tableWidget.setRowCount(len(datos))
-                if len(datos) == 0:
-                    self.aviso.setText(' NO EXISTE')       
-                else:   
-                    self.aviso.setText('PRODUCTO ENCONTRADO')
-                i = len(datos)
-                self.tableWidget.setRowCount(i)
-                tablerow = 0
+                     #self.mostraTabla_productos(datos)
+                    self.tableWidget.setRowCount(len(datos))
+                    if len(datos) == 0:
+                        self.aviso.setText(' NO EXISTE')       
+                    else:   
+                        self.aviso.setText('PRODUCTO ENCONTRADO')
+                    i = len(datos)
+                    self.tableWidget.setRowCount(i)
+                    tablerow = 0
                 
-                for row in datos:
-                    self.Id = row[0]
+                    for row in datos:
+                        self.Id = row[0]
                     
                     
-                    columna1=QtWidgets.QTableWidgetItem(str(row[0]))
-                    columna3=QtWidgets.QTableWidgetItem(str(row[1]))
-                    columna4=QtWidgets.QTableWidgetItem(str(row[2]))
-                    columna5=QtWidgets.QTableWidgetItem(str(row[4]))
-                    self.tableWidget.setItem(tablerow,0,columna1)
-                    self.tableWidget.setItem(tablerow,1,columna3)
-                    self.tableWidget.setItem(tablerow,2,columna4)
-                    self.tableWidget.setItem(tablerow,3,QtWidgets.QTableWidgetItem(row[3]))
-                    self.tableWidget.setItem(tablerow,4,columna5)
-                    self.tableWidget.setItem(tablerow,5,QtWidgets.QTableWidgetItem(row[5]))
-                    self.tableWidget.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
-                    tablerow +=1
+                        columna1=QtWidgets.QTableWidgetItem(str(row[0]))
+                        columna3=QtWidgets.QTableWidgetItem(str(row[1]))
+                        columna4=QtWidgets.QTableWidgetItem(str(row[2]))
+                        columna5=QtWidgets.QTableWidgetItem(str(row[4]))
+                        self.tableWidget.setItem(tablerow,0,columna1)
+                        self.tableWidget.setItem(tablerow,1,columna3)
+                        self.tableWidget.setItem(tablerow,2,columna4)
+                        self.tableWidget.setItem(tablerow,3,QtWidgets.QTableWidgetItem(row[3]))
+                        self.tableWidget.setItem(tablerow,4,columna5)
+                        self.tableWidget.setItem(tablerow,5,QtWidgets.QTableWidgetItem(row[5]))
+                        self.tableWidget.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
+                        tablerow +=1
+                else:
+                    self.informacion.setText('PRODUCTO SIN EXISTENCIA')
 
     def comprar(self):
         self.label_15.setText(str(self.total))
@@ -616,7 +623,7 @@ class VentanaPrincipal(QMainWindow):
         jo=jose
         self.a.setText(str(jo))
         self.base_datos.meteractualizacon(var[0],self.total,iva,jo,self.NUMFACTURA[0])
-        self.base_datos.bajar(self.NUMFACTURA[0])
+        #self.base_datos.bajar(self.NUMFACTURA[0])
         self.crearPdf(jo)
 
     def Limpia(self):

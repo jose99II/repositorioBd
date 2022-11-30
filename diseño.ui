@@ -541,7 +541,7 @@ QTableWidget QTableCornerButton::section {
              <item>
               <widget class="QStackedWidget" name="stackedWidget">
                <property name="currentIndex">
-                <number>7</number>
+                <number>6</number>
                </property>
                <widget class="QWidget" name="page_datos">
                 <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -2262,6 +2262,19 @@ QTableWidget QTableCornerButton::section {
                      </property>
                      <property name="text">
                       <string>Limpiar</string>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="informacion">
+                     <property name="geometry">
+                      <rect>
+                       <x>810</x>
+                       <y>10</y>
+                       <width>371</width>
+                       <height>51</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string/>
                      </property>
                     </widget>
                    </widget>
