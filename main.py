@@ -631,7 +631,7 @@ class VentanaPrincipal(QMainWindow):
         
     def crearPdf(self):
         var=(self.base_datos.imprimir(self.NUMFACTURA[0]))
-        
+
         print(var)
         lista_datos = (var
         )#*8
@@ -725,7 +725,7 @@ class VentanaPrincipal(QMainWindow):
         # tabla ----
         
         bcol_set(pdf, 'green')
-        tfont_size(pdf,15)
+        tfont_size(pdf,12)
         tfont(pdf,'B')
         pdf.cell(w = 0, h = 15, txt = 'PRODUCTOS', border = 0,ln = 2, align = 'C', fill = 1)
         tfont(pdf,'')
@@ -734,9 +734,10 @@ class VentanaPrincipal(QMainWindow):
         bcol_set(pdf, 'blue')
         
         pdf.cell(w = 20, h = 10, txt = 'CODIGO', border = 0, align = 'C', fill = 1)
-        pdf.cell(w = 40, h = 10, txt = 'DESCRIPCION', border = 0, align = 'C', fill = 1)
-        pdf.cell(w = 70, h = 10, txt = 'CATEGORIA', border = 0, align = 'C', fill = 1)
-        pdf.multi_cell(w = 0, h = 10, txt = 'IDPROVEDOR', border = 0, align = 'C',
+        pdf.cell(w = 40, h = 10, txt = 'CANTIDAD', border = 0, align = 'C', fill = 1)
+        pdf.cell(w = 40, h = 10, txt = 'CATEGORIA', border = 0, align = 'C', fill = 1)
+        pdf.cell(w = 40, h = 10, txt = 'PRECIO', border = 0, align = 'C',fill = 1)
+        pdf.multi_cell(w = 0, h = 10, txt = 'DESCRIPCION', border = 0, align = 'C',
                      fill = 1)
         
         
@@ -752,9 +753,14 @@ class VentanaPrincipal(QMainWindow):
             else:bcol_set(pdf, 'white')
         
             pdf.cell(w = 20, h = 10, txt = str(datos[0]), border = 'TBL', align = 'C', fill = 1)
-            pdf.cell(w = 40, h = 10, txt = datos[1], border = 'TB', align = 'C', fill = 1)
-            pdf.cell(w = 70, h = 10, txt = datos[2], border = 'TB', align = 'C', fill = 1)
-            pdf.multi_cell(w = 0, h = 10, txt = datos[3], border = 'TBR', align = 'C', fill = 1)
+            pdf.cell(w = 30, h = 10, txt = str(datos[1]), border = 'TB', align = 'C', fill = 1)
+            pdf.cell(w = 50, h = 10, txt = str(datos[2]), border = 'TB', align = 'C', fill = 1)
+            pdf.cell(w = 40, h = 10, txt = str(datos[3]), border = 'TBR', align = 'C', fill = 1)
+            pdf.multi_cell(w = 50, h = 10, txt = str(datos[4]), border = 'TBR', align = 'C', fill = 1)
+
+
+
+            pdf.text(x= 75, y= 120, txt='    Total: ')
         
         
         

@@ -313,7 +313,7 @@ where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}'
 
     def imprimir(self,numfactura):
         cursor=connetion.cursor()
-        query=f"""   select codigobarras,descripcion,categoria,idprovedorwe from genera natural join refacciones where numfactura='{numfactura}'   """
+        query=f"""   select codigobarras,cantidadp,categoria,precioventa,descripcion from genera natural join refacciones where numfactura='{numfactura}'   """
 
         
 
