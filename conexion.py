@@ -403,8 +403,6 @@ where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}' an
         
 
     def ver(self,barras):
-        print("dfd")
-        print(barras)
         cursor=connetion.cursor()
         query=f""" select numcliente from factura where numcliente='{barras}'
      """
