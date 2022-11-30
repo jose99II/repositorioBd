@@ -303,7 +303,7 @@ genera.codigobarras=refacciones.codigobarras WHERE codigop='{codigop[0]}' and nu
         query= f"""UPDATE refacciones
 set existencias = existencias-genera.cantidadp
 from genera
-where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}'
+where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}' and existencias>genera.cantidadp
  """
         cursor.execute(query)
         connetion.commit()    
