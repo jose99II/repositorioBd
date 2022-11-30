@@ -313,7 +313,7 @@ where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}'
 
     def imprimir(self,numfactura):
         cursor=connetion.cursor()
-        query=f"""   select codigop,descripcion,categoria,idprovedorwe from genera natural join refacciones where numfactura='{numfactura}'   """
+        query=f"""   select codigobarras,descripcion,categoria,idprovedorwe from genera natural join refacciones where numfactura='{numfactura}'   """
 
         
 
@@ -321,7 +321,6 @@ where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}'
         user=cursor.fetchall()
         connetion.commit()    
         cursor.close()
-        print(user)
         return user
 
 
@@ -336,7 +335,6 @@ where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}'
         user=cursor.fetchone()
         connetion.commit()    
         cursor.close()
-        print(user)
         return user
 
 
@@ -349,7 +347,6 @@ where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}'
         user=cursor.fetchall()
         connetion.commit()    
         cursor.close()
-        print(user)
         return user
 
 
@@ -364,7 +361,6 @@ where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}'
         user=cursor.fetchall()
         connetion.commit()    
         cursor.close()
-        print(user)
         return user
 
 
@@ -379,7 +375,6 @@ where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}'
         user=cursor.fetchall()
         connetion.commit()    
         cursor.close()
-        print(user)
         return user
 
     def mostrarinformacioncLIENTE(self):
@@ -389,7 +384,6 @@ where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}'
         user=cursor.fetchall()
         connetion.commit()    
         cursor.close()
-        print(user)
         return user
 
 

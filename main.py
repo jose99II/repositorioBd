@@ -578,7 +578,6 @@ class VentanaPrincipal(QMainWindow):
                 datos=self.base_datos.mostrarM(self.NUMFACTURA[0])
                 d=self.base_datos.mostra(self.NUMFACTURA[0],barras)
                 self.total=self.total+d[0]
-                print(self.total)
                 
             #self.mostraTabla_productos(datos)
                 self.tableWidget.setRowCount(len(datos))
@@ -633,12 +632,10 @@ class VentanaPrincipal(QMainWindow):
     def crearPdf(self):
         var=(self.base_datos.imprimir(self.NUMFACTURA[0]))
         
-
-
-
-
+        print(var)
         lista_datos = (var
         )#*8
+
 
         variable=self.base_datos.imprimirDATOS(self.NUMFACTURA[0])
 
