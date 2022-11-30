@@ -617,7 +617,7 @@ class VentanaPrincipal(QMainWindow):
         self.a.setText(str(jo))
         self.base_datos.meteractualizacon(var[0],self.total,iva,jo,self.NUMFACTURA[0])
         self.base_datos.bajar(self.NUMFACTURA[0])
-        self.crearPdf()
+        self.crearPdf(jo)
 
     def Limpia(self):
         self.act_buscar.clear()
@@ -629,13 +629,14 @@ class VentanaPrincipal(QMainWindow):
         self.Apellido.clear()
         self.Materno.clear()
         
-    def crearPdf(self):
+    def crearPdf(self,jo):
         var=(self.base_datos.imprimir(self.NUMFACTURA[0]))
 
         print(var)
         lista_datos = (var
         )#*8
-
+        print("total")
+        print(jo)
 
         variable=self.base_datos.imprimirDATOS(self.NUMFACTURA[0])
 
@@ -760,7 +761,7 @@ class VentanaPrincipal(QMainWindow):
 
 
 
-            pdf.text(x= 75, y= 120, txt='    Total: ')
+            pdf.text(x= 75, y= 120, txt='    Total: '+str(jo)) 
         
         
         

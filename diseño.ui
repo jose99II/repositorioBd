@@ -541,7 +541,7 @@ QTableWidget QTableCornerButton::section {
              <item>
               <widget class="QStackedWidget" name="stackedWidget">
                <property name="currentIndex">
-                <number>0</number>
+                <number>7</number>
                </property>
                <widget class="QWidget" name="page_datos">
                 <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -2341,12 +2341,12 @@ QTableWidget QTableCornerButton::section {
                  </column>
                  <column>
                   <property name="text">
-                   <string>codigo</string>
+                   <string>total</string>
                   </property>
                  </column>
                  <column>
                   <property name="text">
-                   <string>total</string>
+                   <string>numerofactura</string>
                   </property>
                  </column>
                 </widget>

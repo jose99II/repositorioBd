@@ -352,7 +352,7 @@ where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}'
 
     def mostrarinformacion_(self,numfactura):
         cursor=connetion.cursor()
-        query=f"""     select fechafactura,cantidadproductos,subtotal,iva,total,numcliente from factura where numcliente='{numfactura}'
+        query=f"""     select fechafactura,cantidadproductos,subtotal,iva,total,numfactura from factura where numcliente='{numfactura}'
 
 
 
