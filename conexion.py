@@ -399,6 +399,18 @@ where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}' an
         else:
             return False
 
-
+    def ver(self,barras):
+        print("dfd")
+        print(barras)
+        cursor=connetion.cursor()
+        query=f""" select numcliente from factura where numcliente='{barras}'
+     """
+        cursor.execute(query)
+        user=cursor.fetchone()
+        cursor.close()
+        if user==None:
+            return False
+        else:
+            return True
 
 
