@@ -129,7 +129,9 @@ class Comunicacion():
 
     def UPDATESurte(self,codigobarras,cantidad):
         cursor=connetion.cursor()
-        query= f""" UPDATE  refacciones SET existencias='{cantidad}' WHERE codigobarras='{codigobarras}' """
+        query= f""" UPDATE refacciones
+set existencias = existencias+'{cantidad}'
+where refacciones.codigobarras='{codigobarras}' """
         cursor.execute(query)
         connetion.commit()    
         cursor.close()
@@ -365,6 +367,30 @@ where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}'
         print(user)
         return user
 
+
+    def mostrarinformacionProvedor(self):
+        cursor=connetion.cursor()
+        query=f"""     select idprovedor,marca,telefono,calle, numexterior,codigopostal,estado from provedor
+
+
+
+   """
+        cursor.execute(query)
+        user=cursor.fetchall()
+        connetion.commit()    
+        cursor.close()
+        print(user)
+        return user
+
+    def mostrarinformacioncLIENTE(self):
+        cursor=connetion.cursor()
+        query=f"""     select numcliente,  nombre, telefono, calle,numexterior, codigopostal,estado  from cliente"""
+        cursor.execute(query)
+        user=cursor.fetchall()
+        connetion.commit()    
+        cursor.close()
+        print(user)
+        return user
 
 
 

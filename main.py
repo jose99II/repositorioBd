@@ -84,6 +84,9 @@ class VentanaPrincipal(QMainWindow):
         self.bt_12.clicked.connect(self.comprar)
         self.limpiar.clicked.connect(self.Limpia)
         self.ingreso.clicked.connect(self.buscarfacturacomponente)
+        self.checkBox_2.clicked.connect(self.mostrarProvedores)
+        self.checkBox.clicked.connect(self.mostrarclientes)
+
 
 
 
@@ -501,6 +504,69 @@ class VentanaPrincipal(QMainWindow):
                    self.Materno.setText(str(var[2]))
                 else:
                     self.Nombre.setText("NO ENCONTRADO")
+
+    def mostrarProvedores(self):
+        
+        var=self.base_datos.mostrarinformacionProvedor()
+        self.tabla_productos_2.setRowCount(len(var))
+       
+        i = len(var)
+        self.tabla_productos_2.setRowCount(i)
+        tablerow = 0
+        for row in var:
+            self.Id = row[0]
+            columna1=QtWidgets.QTableWidgetItem(str(row[0]))
+            columna3=QtWidgets.QTableWidgetItem(str(row[2]))
+            columna4=QtWidgets.QTableWidgetItem(str(row[3]))
+            columna2=QtWidgets.QTableWidgetItem(str(row[1]))
+            columna6=QtWidgets.QTableWidgetItem(str(row[4]))
+            columna7=QtWidgets.QTableWidgetItem(str(row[5]))
+            columna8=QtWidgets.QTableWidgetItem(str(row[6]))
+
+
+            self.tabla_productos_2.setItem(tablerow,0,columna1)
+            self.tabla_productos_2.setItem(tablerow,1,columna2)
+            self.tabla_productos_2.setItem(tablerow,2,columna3)
+            self.tabla_productos_2.setItem(tablerow,3,columna4)
+            self.tabla_productos_2.setItem(tablerow,4,columna6)
+            self.tabla_productos_2.setItem(tablerow,5,columna7)
+            self.tabla_productos_2.setItem(tablerow,6,columna8)
+
+            
+            
+            tablerow +=1
+
+
+    def mostrarclientes(self):
+        
+        var=self.base_datos.mostrarinformacioncLIENTE()
+        self.tabla_productos_2.setRowCount(len(var))
+       
+        i = len(var)
+        self.tabla_productos_2.setRowCount(i)
+        tablerow = 0
+        for row in var:
+            self.Id = row[0]
+            columna1=QtWidgets.QTableWidgetItem(str(row[0]))
+            columna3=QtWidgets.QTableWidgetItem(str(row[2]))
+            columna4=QtWidgets.QTableWidgetItem(str(row[3]))
+            columna2=QtWidgets.QTableWidgetItem(str(row[1]))
+            columna6=QtWidgets.QTableWidgetItem(str(row[4]))
+            columna7=QtWidgets.QTableWidgetItem(str(row[5]))
+            columna8=QtWidgets.QTableWidgetItem(str(row[6]))
+
+
+            self.tabla_productos_2.setItem(tablerow,0,columna1)
+            self.tabla_productos_2.setItem(tablerow,1,columna2)
+            self.tabla_productos_2.setItem(tablerow,2,columna3)
+            self.tabla_productos_2.setItem(tablerow,3,columna4)
+            self.tabla_productos_2.setItem(tablerow,4,columna6)
+            self.tabla_productos_2.setItem(tablerow,5,columna7)
+            self.tabla_productos_2.setItem(tablerow,6,columna8)
+
+            
+            
+            tablerow +=1
 
     def agregar(self):
           
