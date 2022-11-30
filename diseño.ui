@@ -541,7 +541,7 @@ QTableWidget QTableCornerButton::section {
              <item>
               <widget class="QStackedWidget" name="stackedWidget">
                <property name="currentIndex">
-                <number>9</number>
+                <number>0</number>
                </property>
                <widget class="QWidget" name="page_datos">
                 <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -605,22 +605,22 @@ QTableWidget QTableCornerButton::section {
                      </column>
                      <column>
                       <property name="text">
-                       <string>precio Pr</string>
+                       <string>Precio venta</string>
                       </property>
                      </column>
                      <column>
                       <property name="text">
-                       <string>Precio Venta</string>
+                       <string>existencias</string>
                       </property>
                      </column>
                      <column>
                       <property name="text">
-                       <string>Disponibles</string>
+                       <string>descripcion</string>
                       </property>
                      </column>
                      <column>
                       <property name="text">
-                       <string>Descripcion</string>
+                       <string>Id provedor</string>
                       </property>
                      </column>
                     </widget>
@@ -664,19 +664,6 @@ QTableWidget QTableCornerButton::section {
                        </property>
                        <property name="text">
                         <string>Eliminar</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="actua">
-                       <property name="minimumSize">
-                        <size>
-                         <width>120</width>
-                         <height>30</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>Modificar</string>
                        </property>
                       </widget>
                      </item>

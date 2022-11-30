@@ -109,7 +109,7 @@ class VentanaPrincipal(QMainWindow):
         self.bt_ajustes.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_ajustes))
         self.btnProvedor.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_provedor))
         self.RefaccionesBTN.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_refacciones))
-        self.actua.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_actualizar))
+        #self.actua.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_actualizar))
         self.surtir.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_INGRESAR))
         self.CLIENTE.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_registrarCliente))
 
@@ -225,7 +225,7 @@ class VentanaPrincipal(QMainWindow):
             self.tabla_productos.setItem(tablerow,2,QtWidgets.QTableWidgetItem(row[2]))
             self.tabla_productos.setItem(tablerow,3,columna3)
             self.tabla_productos.setItem(tablerow,4,columna4)
-            self.tabla_productos.setItem(tablerow,5,columna5)
+            self.tabla_productos.setItem(tablerow,5,QtWidgets.QTableWidgetItem(row[5]))
             self.tabla_productos.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
             tablerow +=1
 

@@ -11,7 +11,7 @@ connetion.autocommit=True
 class Comunicacion():
     def BuscarRefaccion(self, nombre_producto):#busca entero de codigo de barras de refacciones
         cursor=connetion.cursor()
-        query= f"""    select  * from refacciones where codigobarras={nombre_producto} """   
+        query= f"""    select  codigobarras,codigop,categoria,precioventa,existencias,descripcion,idprovedorwe from refacciones where codigobarras={nombre_producto} """   
         cursor.execute(query)
         nombreX = cursor.fetchall()
         cursor.close()    
@@ -19,14 +19,14 @@ class Comunicacion():
 
     def mostrar(self):#muestra todas las refacciones
         cursor = connetion.cursor()
-        bd = """ SELECT * FROM refacciones """
+        bd = """ select codigobarras,codigop,categoria,precioventa,existencias,descripcion,idprovedorwe from refacciones  """
         cursor.execute(bd)
         registro = cursor.fetchall()
         return (registro)
 
     def busca_refacciones(self):#busca refacciones que ya no esten en el stock
         cursor=connetion.cursor()
-        query= f"""    select * from refacciones where existencias=5 """   
+        query= f"""    select codigobarras,codigop,categoria,precioventa,existencias,descripcion,idprovedorwe from refacciones where existencias<5 """   
         cursor.execute(query)
         nombreX = cursor.fetchall()
         cursor.close()     
@@ -248,7 +248,7 @@ genera.codigobarras=refacciones.codigobarras WHERE numfactura={numfactu}
 
     def BuscarRefaccioncategoria(self, nombre_producto):#busca entero de codigo de barras de refacciones
         cursor=connetion.cursor()
-        query= f"""    select  * from refacciones where categoria ilike '%{nombre_producto}%' """   
+        query= f"""    select  codigobarras,codigop,categoria,precioventa,existencias,descripcion,idprovedorwe from refacciones where categoria ilike '%{nombre_producto}%' """   
         cursor.execute(query)
         nombreX = cursor.fetchall()
         cursor.close()    
