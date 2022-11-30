@@ -230,7 +230,7 @@ class VentanaPrincipal(QMainWindow):
             tablerow +=1
 
     def eliminar_refaccion(self):#elimina refaccion por codigo de barras
-        nombre_producto = self.buscar.text()
+        nombre_producto = self.buscar.text().upper()
         if len(nombre_producto)==0:
             return
         else:
