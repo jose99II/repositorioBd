@@ -388,16 +388,19 @@ where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}' an
 
     def verifi(self,barras):
         cursor=connetion.cursor()
-        query=f""" select existencias from refacciones where '{barras}'=codigobarras
+        query=f""" select existencias from refacciones where codigobarras='{barras}'
      """
         cursor.execute(query)
         user=cursor.fetchone()
-        print(user[0])
         cursor.close()
-        if user[0]>0:
+        if user==None:
+            return False
+        if user[0]>0 and user[0]!= None:
             return True
         else:
             return False
+        
+        
 
     def ver(self,barras):
         print("dfd")

@@ -575,6 +575,7 @@ class VentanaPrincipal(QMainWindow):
             valida=self.is_valid(barras)
             if (valida==True and self.X.text() !='' ):
                 a=self.base_datos.verifi(barras)
+                print(a)
                 if a==True and self.X.text()!='':
                     vari=self.base_datos.ver(int(self.X.text()))
                     print("este")
