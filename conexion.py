@@ -289,13 +289,14 @@ genera.codigobarras=refacciones.codigobarras WHERE codigop='{codigop[0]}' and nu
         return user
 
     def meteractualizacon(self,cantidad,subtotal,iva,total,numfactura):
-        cursor=connetion.cursor()
-        query= f""" update factura set  cantidadproductos='{cantidad}',subtotal='{subtotal}',iva='{iva}',total='{total}' where numfactura='{numfactura}' 
+        if cantidad != None:
+            cursor=connetion.cursor()
+            query= f""" update factura set  cantidadproductos='{cantidad}',subtotal='{subtotal}',iva='{iva}',total='{total}' where numfactura='{numfactura}' 
  """
 
-        cursor.execute(query)
-        connetion.commit()    
-        cursor.close()
+            cursor.execute(query)
+            connetion.commit()    
+            cursor.close()
 
 
     def bajar(self,factura):

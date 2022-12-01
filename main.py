@@ -587,6 +587,8 @@ class VentanaPrincipal(QMainWindow):
                 
                      #self.mostraTabla_productos(datos)
                         self.tableWidget.setRowCount(len(datos))
+                        print("este")
+                        print(datos)
                         if len(datos) == 0:
                             self.aviso.setText(' NO EXISTE')       
                         else:   
@@ -620,8 +622,9 @@ class VentanaPrincipal(QMainWindow):
             if v==True:
 
                 v=self.base_datos.verifi(self.act_buscar.text())
-                if v==True:
+                if v==True and self.Nombre.text()!='':
                     self.label_15.setText(str(self.total))
+                    print(self.NUMFACTURA[0])
                     var=self.base_datos.actualizarFacturas(self.NUMFACTURA[0])
                     iva=(16*self.total)/100#iva
                     jose=str(iva)
