@@ -429,33 +429,33 @@ class VentanaPrincipal(QMainWindow):
     def buscarfacturacomponente(self):
         busca=self.buscar_2.text()
         if self.is_valid(busca)==True:
-            var=self.base_datos.mostrarinformacion_(busca)
-            self.tableWidget_2.setRowCount(len(var))
-        if len(var) == 0:
-            self.aviso.setText(' NO EXISTE')       
-        else:
-            self.aviso.setText('PRODUCTO ENCONTRADO')
-        i = len(var)
-        self.tableWidget_2.setRowCount(i)
-        tablerow = 0
-        for row in var:
-            self.Id = row[0]
-            columna1=QtWidgets.QTableWidgetItem(str(row[0]))
-            columna3=QtWidgets.QTableWidgetItem(str(row[2]))
-            columna4=QtWidgets.QTableWidgetItem(str(row[3]))
-            columna2=QtWidgets.QTableWidgetItem(str(row[1]))
-            columna6=QtWidgets.QTableWidgetItem(str(row[4]))
-            columna7=QtWidgets.QTableWidgetItem(str(row[5]))
+            v=self.base_datos.ver(busca)
+            if v==True:
+                var=self.base_datos.mostrarinformacion_(busca)
+                self.tableWidget_2.setRowCount(len(var))
+                  
+            
+                i = len(var)
+                self.tableWidget_2.setRowCount(i)
+                tablerow = 0
+                for row in var:
+                    self.Id = row[0]
+                    columna1=QtWidgets.QTableWidgetItem(str(row[0]))
+                    columna3=QtWidgets.QTableWidgetItem(str(row[2]))
+                    columna4=QtWidgets.QTableWidgetItem(str(row[3]))
+                    columna2=QtWidgets.QTableWidgetItem(str(row[1]))
+                    columna6=QtWidgets.QTableWidgetItem(str(row[4]))
+                    columna7=QtWidgets.QTableWidgetItem(str(row[5]))
 
-            self.tableWidget_2.setItem(tablerow,0,columna1)
-            self.tableWidget_2.setItem(tablerow,1,columna2)
-            self.tableWidget_2.setItem(tablerow,2,columna3)
-            self.tableWidget_2.setItem(tablerow,3,columna4)
-            self.tableWidget_2.setItem(tablerow,4,columna6)
-            self.tableWidget_2.setItem(tablerow,5,columna7)
+                    self.tableWidget_2.setItem(tablerow,0,columna1)
+                    self.tableWidget_2.setItem(tablerow,1,columna2)
+                    self.tableWidget_2.setItem(tablerow,2,columna3)
+                    self.tableWidget_2.setItem(tablerow,3,columna4)
+                    self.tableWidget_2.setItem(tablerow,4,columna6)
+                    self.tableWidget_2.setItem(tablerow,5,columna7)
             
             
-            tablerow +=1
+                    tablerow +=1
 
 
     def LimpiarProvedor(self):
