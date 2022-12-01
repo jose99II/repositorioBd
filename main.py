@@ -84,8 +84,12 @@ class VentanaPrincipal(QMainWindow):
         self.bt_12.clicked.connect(self.comprar)
         self.limpiar.clicked.connect(self.Limpia)
         self.ingreso.clicked.connect(self.buscarfacturacomponente)
-        self.checkBox_2.clicked.connect(self.mostrarProvedores)
-        self.checkBox.clicked.connect(self.mostrarclientes)
+        self.checkBox_2.stateChanged.connect(self.mostrarProvedores)
+        self.checkBox.stateChanged.connect(self.mostrarclientes)
+        self.pushButton.clicked.connect(self.buscarclient)
+        self.ingreso_2.clicked.connect(self.detalles)
+
+
 
 
 
@@ -228,6 +232,79 @@ class VentanaPrincipal(QMainWindow):
             self.tabla_productos.setItem(tablerow,5,QtWidgets.QTableWidgetItem(row[5]))
             self.tabla_productos.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
             tablerow +=1
+        
+    def buscarclient(self):
+        if self.checkBox.isChecked()==True and self.checkBox_2.isChecked()==False:
+            nombre=self.lineEdit.text().upper()
+            self.tabla_productos_2.clearContents()
+            self.tabla_productos_2.setRowCount(0)
+            res=self.base_datos.mostrarinformacionc(nombre)
+
+
+
+
+            i = len(res)
+            self.tabla_productos_2.setRowCount(i)
+            tablerow = 0
+            for row in res:
+                self.Id = row[0]
+                columna1=QtWidgets.QTableWidgetItem(str(row[0]))
+                columna3=QtWidgets.QTableWidgetItem(str(row[2]))
+                columna4=QtWidgets.QTableWidgetItem(str(row[3]))
+                columna2=QtWidgets.QTableWidgetItem(str(row[1]))
+                columna6=QtWidgets.QTableWidgetItem(str(row[4]))
+                columna7=QtWidgets.QTableWidgetItem(str(row[5]))
+                columna8=QtWidgets.QTableWidgetItem(str(row[6]))
+
+
+                self.tabla_productos_2.setItem(tablerow,0,columna1)
+                self.tabla_productos_2.setItem(tablerow,1,columna2)
+                self.tabla_productos_2.setItem(tablerow,2,columna3)
+                self.tabla_productos_2.setItem(tablerow,3,columna4)
+                self.tabla_productos_2.setItem(tablerow,4,columna6)
+                self.tabla_productos_2.setItem(tablerow,5,columna7)
+                self.tabla_productos_2.setItem(tablerow,6,columna8)
+
+            
+            
+                tablerow +=1
+        elif self.checkBox.isChecked()==False and self.checkBox_2.isChecked()==True:
+            nombre=self.lineEdit.text().upper()
+            self.tabla_productos_2.clearContents()
+            self.tabla_productos_2.setRowCount(0)
+            res=self.base_datos.mostrarinfoprove(nombre)
+
+
+
+
+            i = len(res)
+            self.tabla_productos_2.setRowCount(i)
+            tablerow = 0
+            for row in res:
+                self.Id = row[0]
+                columna1=QtWidgets.QTableWidgetItem(str(row[0]))
+                columna3=QtWidgets.QTableWidgetItem(str(row[2]))
+                columna4=QtWidgets.QTableWidgetItem(str(row[3]))
+                columna2=QtWidgets.QTableWidgetItem(str(row[1]))
+                columna6=QtWidgets.QTableWidgetItem(str(row[4]))
+                columna7=QtWidgets.QTableWidgetItem(str(row[5]))
+                columna8=QtWidgets.QTableWidgetItem(str(row[6]))
+
+
+                self.tabla_productos_2.setItem(tablerow,0,columna1)
+                self.tabla_productos_2.setItem(tablerow,1,columna2)
+                self.tabla_productos_2.setItem(tablerow,2,columna3)
+                self.tabla_productos_2.setItem(tablerow,3,columna4)
+                self.tabla_productos_2.setItem(tablerow,4,columna6)
+                self.tabla_productos_2.setItem(tablerow,5,columna7)
+                self.tabla_productos_2.setItem(tablerow,6,columna8)
+
+            
+            
+                tablerow +=1
+
+
+        
 
     def eliminar_refaccion(self):#elimina refaccion por codigo de barras
         nombre_producto = self.buscar.text().upper()
@@ -429,6 +506,8 @@ class VentanaPrincipal(QMainWindow):
     def buscarfacturacomponente(self):
         busca=self.buscar_2.text()
         if self.is_valid(busca)==True:
+            self.tableWidget_2.clearContents()
+            self.tableWidget_2.setRowCount(0)
             v=self.base_datos.ver(busca)
             if v==True:
                 var=self.base_datos.mostrarinformacion_(busca)
@@ -506,67 +585,108 @@ class VentanaPrincipal(QMainWindow):
                     self.Nombre.setText("NO ENCONTRADO")
 
     def mostrarProvedores(self):
-        
-        var=self.base_datos.mostrarinformacionProvedor()
-        self.tabla_productos_2.setRowCount(len(var))
+        if self.checkBox.isChecked()==False and self.checkBox_2.isChecked()==True:
+            var=self.base_datos.mostrarinformacionProvedor()
+            self.tabla_productos_2.setRowCount(len(var))
        
-        i = len(var)
-        self.tabla_productos_2.setRowCount(i)
-        tablerow = 0
-        for row in var:
-            self.Id = row[0]
-            columna1=QtWidgets.QTableWidgetItem(str(row[0]))
-            columna3=QtWidgets.QTableWidgetItem(str(row[2]))
-            columna4=QtWidgets.QTableWidgetItem(str(row[3]))
-            columna2=QtWidgets.QTableWidgetItem(str(row[1]))
-            columna6=QtWidgets.QTableWidgetItem(str(row[4]))
-            columna7=QtWidgets.QTableWidgetItem(str(row[5]))
-            columna8=QtWidgets.QTableWidgetItem(str(row[6]))
+            i = len(var)
+            self.tabla_productos_2.setRowCount(i)
+            tablerow = 0
+            for row in var:
+                self.Id = row[0]
+                columna1=QtWidgets.QTableWidgetItem(str(row[0]))
+                columna3=QtWidgets.QTableWidgetItem(str(row[2]))
+                columna4=QtWidgets.QTableWidgetItem(str(row[3]))
+                columna2=QtWidgets.QTableWidgetItem(str(row[1]))
+                columna6=QtWidgets.QTableWidgetItem(str(row[4]))
+                columna7=QtWidgets.QTableWidgetItem(str(row[5]))
+                columna8=QtWidgets.QTableWidgetItem(str(row[6]))
 
 
-            self.tabla_productos_2.setItem(tablerow,0,columna1)
-            self.tabla_productos_2.setItem(tablerow,1,columna2)
-            self.tabla_productos_2.setItem(tablerow,2,columna3)
-            self.tabla_productos_2.setItem(tablerow,3,columna4)
-            self.tabla_productos_2.setItem(tablerow,4,columna6)
-            self.tabla_productos_2.setItem(tablerow,5,columna7)
-            self.tabla_productos_2.setItem(tablerow,6,columna8)
+                self.tabla_productos_2.setItem(tablerow,0,columna1)
+                self.tabla_productos_2.setItem(tablerow,1,columna2)
+                self.tabla_productos_2.setItem(tablerow,2,columna3)
+                self.tabla_productos_2.setItem(tablerow,3,columna4)
+                self.tabla_productos_2.setItem(tablerow,4,columna6)
+                self.tabla_productos_2.setItem(tablerow,5,columna7)
+                self.tabla_productos_2.setItem(tablerow,6,columna8)
 
             
             
-            tablerow +=1
+                tablerow +=1
+        else:
+            self.tabla_productos_2.clearContents()
+            self.tabla_productos_2.setRowCount(0)
+        
+    def detalles(self):
+        validad=self.is_valid(self.buscar_3.text())
+        if validad==True:
+            bar=self.base_datos.detalle(self.buscar_3.text())
+            if bar!= None:
+                
+                self.tableWidget_2.setRowCount(len(bar))
+                  
+            
+                i = len(bar)
+                self.tableWidget_2.setRowCount(i)
+                tablerow = 0
+                for row in bar:
+                    self.Id = row[0]
+                    columna1=QtWidgets.QTableWidgetItem(str(row[0]))
+                    columna3=QtWidgets.QTableWidgetItem(str(row[2]))
+                    columna4=QtWidgets.QTableWidgetItem(str(row[3]))
+                    columna2=QtWidgets.QTableWidgetItem(str(row[1]))
+                    columna6=QtWidgets.QTableWidgetItem(str(row[4]))
+                    columna7=QtWidgets.QTableWidgetItem(str(row[5]))
+
+                    self.tableWidget_2.setItem(tablerow,0,columna1)
+                    self.tableWidget_2.setItem(tablerow,1,columna2)
+                    self.tableWidget_2.setItem(tablerow,2,columna3)
+
+
+
+
+                    self.tableWidget_2.setItem(tablerow,3,columna4)
+                    self.tableWidget_2.setItem(tablerow,4,columna6)
+                    self.tableWidget_2.setItem(tablerow,5,columna7)
+            
+            
+                    tablerow +=1
 
 
     def mostrarclientes(self):
-        
-        var=self.base_datos.mostrarinformacioncLIENTE()
-        self.tabla_productos_2.setRowCount(len(var))
+        if self.checkBox.isChecked()==True and self.checkBox_2.isChecked()==False:
+            var=self.base_datos.mostrarinformacioncLIENTE()
+            self.tabla_productos_2.setRowCount(len(var))
        
-        i = len(var)
-        self.tabla_productos_2.setRowCount(i)
-        tablerow = 0
-        for row in var:
-            self.Id = row[0]
-            columna1=QtWidgets.QTableWidgetItem(str(row[0]))
-            columna3=QtWidgets.QTableWidgetItem(str(row[2]))
-            columna4=QtWidgets.QTableWidgetItem(str(row[3]))
-            columna2=QtWidgets.QTableWidgetItem(str(row[1]))
-            columna6=QtWidgets.QTableWidgetItem(str(row[4]))
-            columna7=QtWidgets.QTableWidgetItem(str(row[5]))
-            columna8=QtWidgets.QTableWidgetItem(str(row[6]))
+            i = len(var)
+            self.tabla_productos_2.setRowCount(i)
+            tablerow = 0
+            for row in var:
+                self.Id = row[0]
+                columna1=QtWidgets.QTableWidgetItem(str(row[0]))
+                columna3=QtWidgets.QTableWidgetItem(str(row[2]))
+                columna4=QtWidgets.QTableWidgetItem(str(row[3]))
+                columna2=QtWidgets.QTableWidgetItem(str(row[1]))
+                columna6=QtWidgets.QTableWidgetItem(str(row[4]))
+                columna7=QtWidgets.QTableWidgetItem(str(row[5]))
+                columna8=QtWidgets.QTableWidgetItem(str(row[6]))
 
 
-            self.tabla_productos_2.setItem(tablerow,0,columna1)
-            self.tabla_productos_2.setItem(tablerow,1,columna2)
-            self.tabla_productos_2.setItem(tablerow,2,columna3)
-            self.tabla_productos_2.setItem(tablerow,3,columna4)
-            self.tabla_productos_2.setItem(tablerow,4,columna6)
-            self.tabla_productos_2.setItem(tablerow,5,columna7)
-            self.tabla_productos_2.setItem(tablerow,6,columna8)
+                self.tabla_productos_2.setItem(tablerow,0,columna1)
+                self.tabla_productos_2.setItem(tablerow,1,columna2)
+                self.tabla_productos_2.setItem(tablerow,2,columna3)
+                self.tabla_productos_2.setItem(tablerow,3,columna4)
+                self.tabla_productos_2.setItem(tablerow,4,columna6)
+                self.tabla_productos_2.setItem(tablerow,5,columna7)
+                self.tabla_productos_2.setItem(tablerow,6,columna8)
 
             
             
-            tablerow +=1
+                tablerow +=1
+        else:
+            self.tabla_productos_2.clearContents()
+            self.tabla_productos_2.setRowCount(0)
 
     def agregar(self):
           

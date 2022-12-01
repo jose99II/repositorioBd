@@ -415,4 +415,37 @@ where refacciones.codigobarras=genera.codigobarras and numfactura='{factura}' an
         else:
             return True
 
+    def mostrarinformacionc(self,nombre):
+        cursor=connetion.cursor()
+        query=f"""     select nombre,paterno,materno,email,telefono,estado,numcliente from cliente where nombre ilike '{nombre}'"""
+        cursor.execute(query)
+        user=cursor.fetchall()
+        connetion.commit()    
+        cursor.close()
+        return user
+
+    def mostrarinfoprove(self,marca):
+        cursor=connetion.cursor()
+        query=f"""     select marca,idprovedor,telefono,calle,numexterior,estado,codigopostal from provedor where marca ilike '{marca}'"""
+        cursor.execute(query)
+        user=cursor.fetchall()
+        connetion.commit()    
+        cursor.close()
+        return user
+
+    def detalle(self,numfactura):
+        cursor=connetion.cursor()
+        query=f"""      
+select codigoproducto,categoria,precioventa,descripcion,cantidadp,idprovedorwe from refacciones
+inner join genera on refacciones.codigobarras=genera.codigobarras where numfactura='{numfactura}'
+   """
+
+        
+
+        cursor.execute(query)
+        user=cursor.fetchall()
+        connetion.commit()    
+        cursor.close()
+        return user
+
 
